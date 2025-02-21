@@ -1,0 +1,30 @@
+name: chat_translation
+description: "A new Flutter package project."
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  intl: ^0.20.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter_intl:
+  arb-dir: lib/l10n
+  template-arb-file: intl_en.arb
+  output-dir: lib
+  main_locale: en
+  class_name: S
+  enabled: true
+
+flutter:
+  generate: true
