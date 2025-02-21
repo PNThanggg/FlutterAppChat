@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 class VSingleRename extends StatefulWidget {
   final String appbarTitle;
