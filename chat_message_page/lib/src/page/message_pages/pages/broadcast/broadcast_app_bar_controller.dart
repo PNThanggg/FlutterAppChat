@@ -1,3 +1,4 @@
+import 'package:chat_config/chat_preferences.dart';
 import 'package:chat_core/chat_core.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/material.dart';
@@ -37,7 +38,7 @@ class BroadcastAppBarController extends ValueNotifier<BroadcastAppBarStateModel>
   }
 
   Future<void> _getFromCache() async {
-    final res = VAppPref.getMap("$_cacheKey${vRoom.id}");
+    final res = ChatPreferences.getMap("$_cacheKey${vRoom.id}");
     if (res == null) return;
     updateValue(VMyBroadcastInfo.fromMap(res));
   }
@@ -49,7 +50,7 @@ class BroadcastAppBarController extends ValueNotifier<BroadcastAppBarStateModel>
       },
       onSuccess: (response) async {
         updateValue(response);
-        await VAppPref.setMap("$_cacheKey${vRoom.id}", response.toMap());
+        await ChatPreferences.setMap("$_cacheKey${vRoom.id}", response.toMap());
       },
     );
   }
