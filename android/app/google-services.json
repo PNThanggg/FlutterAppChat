@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "599964709544",
+    "project_id": "chat-swork-dev",
+    "storage_bucket": "chat-swork-dev.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:599964709544:android:645d5d6b5516c00d42889d",
+        "android_client_info": {
+          "package_name": "com.app.test.chat"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOQisDrkgQRxTKa87gytEvFqDLcnEHTZk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
