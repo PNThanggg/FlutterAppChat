@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:logging/logging.dart';
-import 'package:super_up_core/super_up_core.dart';
+import 'package:chat_core/chat_core.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
+import 'package:chat_platform/v_platform.dart';
 
 class VChatControllerHelper {
   final _config = VChatController.I.vChatConfig;
@@ -97,7 +97,6 @@ class VChatControllerHelper {
 
   void _setupTimeAgo() {
     setLocaleMessages('ar', ArMessages());
-    setLocaleMessages('bs', BsMessages());
     setLocaleMessages('cs', CsMessages());
     setLocaleMessages('fi', FiMessages());
     setLocaleMessages('da', DaMessages());

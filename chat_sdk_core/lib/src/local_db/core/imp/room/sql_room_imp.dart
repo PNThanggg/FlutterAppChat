@@ -232,10 +232,10 @@ class SqlRoomImp extends BaseLocalRoomRepo {
   }
 
   @override
-  Future<VRoom?> getOneByPeerId(String peerId) async {
+  Future<VRoom?> getOneByPeerId(String roomId) async {
     final maps = await _database.rawQuery(
       _prefixRoomFilterQuery(
-        "WHERE r1.${RoomTable.columnPeerId} = '$peerId'",
+        "WHERE r1.${RoomTable.columnPeerId} = '$roomId'",
         1,
       ),
     );

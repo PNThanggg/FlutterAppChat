@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:v_chat_sdk_core/src/local_db/tables/api_cache_table.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 
 class ApiCacheModel {
   final String endPoint;

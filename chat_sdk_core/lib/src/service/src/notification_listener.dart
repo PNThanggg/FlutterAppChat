@@ -1,7 +1,7 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:logging/logging.dart';
 import 'package:platform_local_notifications/platform_local_notifications.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:chat_sdk_core/chat_sdk_core.dart';
 
 /// A singleton class that listens to notifications.
 class VNotificationListener {
@@ -56,8 +56,7 @@ class VNotificationListener {
   ///
   /// It listens to notifications, updates room's seen status, and navigates to message page.
   Future<void> _init() async {
-    if (vChatConfig.vPush.enableVForegroundNotification &&
-        vChatConfig.isPushEnable) {
+    if (vChatConfig.vPush.enableVForegroundNotification && vChatConfig.isPushEnable) {
       await PlatformNotifier.I.init(appName: SConstants.appName);
       await PlatformNotifier.I.requestPermissions();
       PlatformNotifier.I.platformNotifierStream.listen((event) async {
@@ -79,11 +78,9 @@ class VNotificationListener {
           return;
         }
         if (event is PluginNotificationClickAction) {
-          final room = await VChatController.I.nativeApi.local.room
-              .getOneWithLastMessageByRoomId(event.payload!);
+          final room = await VChatController.I.nativeApi.local.room.getOneWithLastMessageByRoomId(event.payload!);
           if (room == null) return;
-          vNavigator.messageNavigator
-              .toMessagePage(VChatController.I.navigationContext, room);
+          vNavigator.messageNavigator.toMessagePage(VChatController.I.navigationContext, room);
           return;
         }
       });
@@ -117,8 +114,7 @@ class VNotificationListener {
         );
         return;
       }
-      vNavigator.messageNavigator
-          .toMessagePage(VChatController.I.navigationContext, room);
+      vNavigator.messageNavigator.toMessagePage(VChatController.I.navigationContext, room);
     });
     if (!vChatConfig.isPushEnable) return;
     nativeApi.streams.vOnUpdateNotificationsTokenStream.listen((event) async {
@@ -129,8 +125,7 @@ class VNotificationListener {
 
   /// Fetches room information based on [roomId].
   Future<VRoom?> _getRoom(String roomId) async {
-    return VChatController.I.nativeApi.local.room
-        .getOneWithLastMessageByRoomId(roomId);
+    return VChatController.I.nativeApi.local.room.getOneWithLastMessageByRoomId(roomId);
   }
 
   /// Handles an open application notification.
@@ -141,8 +136,7 @@ class VNotificationListener {
       return;
     }
     await Future.delayed(const Duration(milliseconds: 200));
-    final message = await (await vChatConfig.currentPushProviderService)!
-        .getOpenAppNotification();
+    final message = await (await vChatConfig.currentPushProviderService)!.getOpenAppNotification();
     if (message == null) return;
     final room = await _getRoom(message.roomId);
     final isRoomOpen = VRoomTracker.instance.isRoomOpen(message.roomId);

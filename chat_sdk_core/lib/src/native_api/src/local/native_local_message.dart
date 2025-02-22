@@ -1,6 +1,6 @@
 import 'package:sqflite/sqflite.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
+import 'package:chat_platform/v_platform.dart';
 
 /// Represents the Native Local Message that deals with the message data
 /// in the VChat application, both on local (in memory and SQL) databases.

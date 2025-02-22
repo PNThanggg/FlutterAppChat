@@ -1,5 +1,5 @@
+import 'package:chat_platform/v_platform.dart';
 import 'package:chopper/chopper.dart';
-import 'package:v_platform/v_platform.dart';
 
 /// Data Transfer Object for registration in VChat system.
 class VChatRegisterDto {

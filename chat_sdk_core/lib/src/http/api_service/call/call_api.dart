@@ -1,47 +1,47 @@
-import 'package:chopper/chopper.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chopper/chopper.dart';
 
 part 'call_api.chopper.dart';
 
 @ChopperApi(baseUrl: 'call')
 abstract class CallApi extends ChopperService {
-  @Get(path: "/active", optionalBody: true)
+  @GET(path: "/active", optionalBody: true)
   Future<Response> getActiveCall();
 
-  @Get(path: "/history", optionalBody: true)
+  @GET(path: "/history", optionalBody: true)
   Future<Response> getCallHistory();
 
-  @Get(path: "/agora-access/{roomId}", optionalBody: true)
+  @GET(path: "/agora-access/{roomId}", optionalBody: true)
   Future<Response> getAgoraAccess(
     @Path() String roomId,
   );
 
-  @Post(path: "/create/{roomId}")
+  @POST(path: "/create/{roomId}")
   Future<Response> createCall(
     @Path() String roomId,
     @Body() Map<String, dynamic> body,
   );
 
-  @Post(path: "/accept/{meetId}", optionalBody: true)
+  @POST(path: "/accept/{meetId}", optionalBody: true)
   Future<Response> acceptCall(
     @Path() String meetId,
     @Body() Map<String, dynamic> body,
   );
 
-  @Post(path: "/reject/{meetId}", optionalBody: true)
+  @POST(path: "/reject/{meetId}", optionalBody: true)
   Future<Response> rejectCall(
     @Path() String meetId,
   );
 
-  @Post(path: "/end/v2/{meetId}", optionalBody: true)
+  @POST(path: "/end/v2/{meetId}", optionalBody: true)
   Future<Response> endCallV2(
     @Path() String meetId,
   );
 
-  @Delete(path: "/history/clear", optionalBody: true)
+  @DELETE(path: "/history/clear", optionalBody: true)
   Future<Response> clearHistory();
 
-  @Delete(path: "/history/clear/{id}", optionalBody: true)
+  @DELETE(path: "/history/clear/{id}", optionalBody: true)
   Future<Response> deleteOneHistory(
     @Path() String id,
   );

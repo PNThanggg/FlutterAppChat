@@ -279,11 +279,13 @@ abstract class VAppAlert {
       cancelLabel: cancelLabel,
       isDismissible: true,
       actions: content
-          .map((e) => adaptive_dialog.SheetAction<ModelSheetItem>(
-                label: e.title,
-                icon: e.iconData?.icon,
-                key: e,
-              ))
+          .map(
+            (e) => adaptive_dialog.SheetAction<ModelSheetItem>(
+              label: e.title,
+              icon: e.iconData?.icon,
+              key: e,
+            ),
+          )
           .toList(),
     );
   }
@@ -294,12 +296,8 @@ abstract class VAppAlert {
     Duration? duration,
   }) {
     showToast(
-      message,
-      context: context,
-      duration: duration,
-      position: const ToastPosition(
-        align: Alignment.bottomCenter,
-      ),
+      context,
+      message: message,
     );
   }
 
@@ -307,7 +305,10 @@ abstract class VAppAlert {
     required String message,
     required BuildContext context,
   }) {
-    showToast(message, context: context, backgroundColor: Colors.red);
+    showToast(
+      context,
+      message: message,
+    );
   }
 }
 

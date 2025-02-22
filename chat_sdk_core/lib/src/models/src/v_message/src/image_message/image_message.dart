@@ -1,10 +1,9 @@
 import 'dart:convert';
 
-import 'package:chopper/chopper.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/src/utils/src/v_message_constants.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_platform/v_platform.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
+import 'package:chopper/chopper.dart';
 
 class VImageMessage extends VBaseMessage implements VDownloadableMessage, VUploadMessage {
   final VMessageImageData data;
@@ -36,8 +35,7 @@ class VImageMessage extends VBaseMessage implements VDownloadableMessage, VUploa
     required this.data,
   });
 
-  String get downloadedFileLocalPath =>
-      VFileUtils.getLocalPath(localId + data.fileSource.extension);
+  String get downloadedFileLocalPath => VFileUtils.getLocalPath(localId + data.fileSource.extension);
 
   VImageMessage.fromRemoteMap(super.map)
       : data = VMessageImageData.fromMap(

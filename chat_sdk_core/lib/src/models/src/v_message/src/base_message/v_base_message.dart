@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:objectid/objectid.dart';
 import 'package:uuid/uuid.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
+import 'package:chat_platform/v_platform.dart';
 
 /// Abstract base class for a message.
 ///

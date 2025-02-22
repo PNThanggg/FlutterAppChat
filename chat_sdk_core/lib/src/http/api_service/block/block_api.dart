@@ -1,21 +1,21 @@
-import 'package:chopper/chopper.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chopper/chopper.dart';
 
 part 'block_api.chopper.dart';
 
 @ChopperApi(baseUrl: 'user-ban')
 abstract class BlockApi extends ChopperService {
-  @Post(path: "/{peerId}/ban", optionalBody: true)
+  @POST(path: "/{peerId}/ban", optionalBody: true)
   Future<Response> banUser(
     @Path() String peerId,
   );
 
-  @Post(path: "/{peerId}/un-ban", optionalBody: true)
+  @POST(path: "/{peerId}/un-ban", optionalBody: true)
   Future<Response> unBanUser(
     @Path() String peerId,
   );
 
-  @Get(path: "/{peerId}/ban", optionalBody: true)
+  @GET(path: "/{peerId}/ban", optionalBody: true)
   Future<Response> checkBan(
     @Path() String peerId,
   );

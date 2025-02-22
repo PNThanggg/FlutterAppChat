@@ -1,6 +1,5 @@
+import 'package:chat_core/chat_core.dart';
 import 'package:flutter/material.dart';
-
-import 'package:v_chat_sdk_core/src/utils/src/enums.dart';
 
 // switch between different widgets with animation
 // depending on api call status

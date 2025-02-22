@@ -1,8 +1,6 @@
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 
 class ApiCacheMemoryImp extends BaseLocalApiCacheRepo {
-  // final _apiCaches = <Map<String, Object?>>[];
-
   @override
   Future<ApiCacheModel?> getOneByEndPoint(String endpoint) {
     return Future.value();

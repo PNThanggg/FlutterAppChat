@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:flutter_cache_manager/flutter_cache_manager.dart';
+import 'package:chat_platform/v_platform.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
+import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
 /// EventsDaemon class is responsible for managing message events.
 class EventsDaemon {
@@ -17,15 +17,12 @@ class EventsDaemon {
 
   /// Starts listening to message events.
   void start() {
-    _messageSubscription = _emitter
-        .on<VMessageEvents>()
-        .where((element) => element is VInsertMessageEvent)
-        .listen((event) async {
+    _messageSubscription =
+        _emitter.on<VMessageEvents>().where((element) => element is VInsertMessageEvent).listen((event) async {
       // When a new message is inserted
       if (event is VInsertMessageEvent) {
         await _onNewInsert(event.messageModel);
-        if ((VPlatforms.isWeb || VPlatforms.isWindows) &&
-            !event.messageModel.isMeSender) {
+        if ((VPlatforms.isWeb || VPlatforms.isWindows) && !event.messageModel.isMeSender) {
           /// In case of web platform and the message sender is not the current user,
           /// fires a new notification event.
           _emitter.fire(
@@ -82,9 +79,7 @@ class EventsDaemon {
 
     // If the message is a voice message from a mobile platform and not sent by the current user,
     // get the file from cache.
-    if (message is VVoiceMessage &&
-        VPlatforms.isMobile &&
-        !message.isMeSender) {
+    if (message is VVoiceMessage && VPlatforms.isMobile && !message.isMeSender) {
       await DefaultCacheManager().getSingleFile(
         message.data.fileSource.url!,
         key: message.data.fileSource.getUrlPath,

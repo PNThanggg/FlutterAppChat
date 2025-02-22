@@ -1,4 +1,4 @@
-import 'package:super_up_core/super_up_core.dart';
+import 'package:chat_core/chat_core.dart';
 
 class VBroadcastMember {
   final SBaseUser userData;

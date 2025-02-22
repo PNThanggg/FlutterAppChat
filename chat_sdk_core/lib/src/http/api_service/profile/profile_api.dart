@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:chopper/chopper.dart';
 import 'package:http/io_client.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
+import 'package:chat_platform/v_platform.dart';
 
 part 'profile_api.chopper.dart';
 

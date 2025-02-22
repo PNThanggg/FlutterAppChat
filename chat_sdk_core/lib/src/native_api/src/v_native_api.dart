@@ -1,8 +1,8 @@
 import 'dart:async';
 
-import 'package:http/http.dart' as http;
-import 'package:super_up_core/super_up_core.dart';
+import 'package:chat_core/chat_core.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:http/http.dart' as http;
 
 /// This class handles the API requests both local and remote and also has a Streams class.
 class VNativeApi {

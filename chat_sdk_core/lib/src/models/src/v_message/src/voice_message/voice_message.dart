@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:chopper/chopper.dart';
-import 'package:v_chat_sdk_core/src/utils/src/v_message_constants.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 
 class VVoiceMessage extends VBaseMessage {

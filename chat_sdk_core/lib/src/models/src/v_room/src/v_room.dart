@@ -1,7 +1,7 @@
 import 'package:diacritic/diacritic.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
-import 'package:super_up_core/super_up_core.dart';
+import 'package:chat_core/chat_core.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 
 class VRoom {

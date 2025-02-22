@@ -1,7 +1,7 @@
 import 'dart:convert';
 
 import 'package:chopper/chopper.dart';
-import 'package:v_platform/v_platform.dart';
+import 'package:chat_platform/v_platform.dart';
 
 class CreateGroupDto {
   /// A list of unique peerIds. These could be user peerIds who are

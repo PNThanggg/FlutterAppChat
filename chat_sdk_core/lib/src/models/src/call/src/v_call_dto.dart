@@ -1,4 +1,4 @@
-import 'package:super_up_core/super_up_core.dart';
+import 'package:chat_core/chat_core.dart';
 
 /// Represents a Data Transfer Object (DTO) for a caller in the VChat application.
 class VCallDto {

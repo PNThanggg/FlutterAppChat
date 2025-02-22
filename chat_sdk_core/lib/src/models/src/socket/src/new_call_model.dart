@@ -1,4 +1,4 @@
-import 'package:super_up_core/super_up_core.dart';
+import 'package:chat_core/chat_core.dart';
 
 /// A model class that represents a new call.<br />
 class VNewCallModel {
@@ -25,9 +25,9 @@ class VNewCallModel {
     required this.peerUser,
     required this.payload,
   });
+
   int get getAgoraUserId {
-    final concatenatedNumber =
-        int.parse(peerUser.id.replaceAll(RegExp(r'\D'), ''), radix: 10);
+    final concatenatedNumber = int.parse(peerUser.id.replaceAll(RegExp(r'\D'), ''), radix: 10);
     return concatenatedNumber;
   }
 

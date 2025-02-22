@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_parsed_text/flutter_parsed_text.dart';
-import 'package:super_up_core/super_up_core.dart' hide AutoDirection;
+import 'package:chat_core/chat_core.dart' hide AutoDirection;
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 
 class VTextParserWidget extends StatefulWidget {

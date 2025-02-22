@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:sqflite/sqlite_api.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
+import 'package:chat_platform/v_platform.dart';
 
 /// Represents the Native Local Room that manages room data in the VChat
 /// application, both in local (in-memory and SQL) databases.

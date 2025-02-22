@@ -4,7 +4,7 @@ import 'package:chopper/chopper.dart';
 import 'package:http/http.dart' hide Request, Response;
 import 'package:http/io_client.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
+import 'package:chat_platform/v_platform.dart';
 
 part 'channel_api.chopper.dart';
 
@@ -12,71 +12,71 @@ part 'channel_api.chopper.dart';
 abstract class ChannelApi extends ChopperService {
   /// ----------------------------------------- single chat apis ------------------------------------------
 
-  @Post(path: "/peer-room/{peerId}", optionalBody: true)
+  @POST(path: "/peer-room/{peerId}", optionalBody: true)
   Future<Response> getPeerRoom(@Path() String peerId);
 
-  @Get(path: "/messages/stars", optionalBody: true)
+  @GET(path: "/messages/stars", optionalBody: true)
   Future<Response> getAllStarMessages();
 
-  @Patch(path: "/{roomId}/nick-name")
+  @PATCH(path: "/{roomId}/nick-name")
   Future<Response> updateRoomNickName(
     @Path() String roomId,
     @Body() Map<String, dynamic> body,
   );
 
-  @Get(path: "/{roomId}")
+  @GET(path: "/{roomId}")
   Future<Response> getRoomById(@Path() String roomId);
 
-  @Patch(path: "/{roomId}/notification/mute", optionalBody: true)
+  @PATCH(path: "/{roomId}/notification/mute", optionalBody: true)
   Future<Response> muteRoomNotification(
     @Path() String roomId,
   );
 
-  @Patch(path: "/{roomId}/notification/un-mute", optionalBody: true)
+  @PATCH(path: "/{roomId}/notification/un-mute", optionalBody: true)
   Future<Response> unMuteRoomNotification(
     @Path() String roomId,
   );
 
-  @Patch(path: "/{roomId}/one-seen/off", optionalBody: true)
+  @PATCH(path: "/{roomId}/one-seen/off", optionalBody: true)
   Future<Response> oneSeenOff(
     @Path() String roomId,
   );
 
-  @Patch(path: "/{roomId}/one-seen/on", optionalBody: true)
+  @PATCH(path: "/{roomId}/one-seen/on", optionalBody: true)
   Future<Response> oneSeenOn(
     @Path() String roomId,
   );
 
-  @Patch(path: "/{roomId}/archive", optionalBody: true)
+  @PATCH(path: "/{roomId}/archive", optionalBody: true)
   Future<Response> archiveRoom(
     @Path() String roomId,
   );
 
-  @Patch(path: "/{roomId}/un-archive", optionalBody: true)
+  @PATCH(path: "/{roomId}/un-archive", optionalBody: true)
   Future<Response> unArchiveRoom(
     @Path() String roomId,
   );
 
-  @Get(path: "/{roomId}/un-read-count", optionalBody: true)
+  @GET(path: "/{roomId}/un-read-count", optionalBody: true)
   Future<Response> getRoomUnReadCount(
     @Path() String roomId,
   );
 
-  @Get(path: "/{roomId}/url-preview", optionalBody: true)
+  @GET(path: "/{roomId}/url-preview", optionalBody: true)
   Future<Response> getUrlPreview(
     @Path() String roomId,
     @QueryMap() Map<String, dynamic> query,
   );
 
   ///deliver room messages
-  @Patch(path: "/{roomId}/translate", optionalBody: true)
+  @PATCH(path: "/{roomId}/translate", optionalBody: true)
   Future<Response> transTo(
     @Path() String roomId,
     @Body() Map<String, dynamic> body,
   );
 
   /// translate/stop
-  @Patch(path: "/{roomId}/translate/stop", optionalBody: true)
+  @PATCH(path: "/{roomId}/translate/stop", optionalBody: true)
   Future<Response> stopRoomAutoTranslate(
     @Path() String roomId,
   );
@@ -87,16 +87,16 @@ abstract class ChannelApi extends ChopperService {
     @Path() String roomId,
   );
 
-  @Get(path: "/")
+  @GET(path: "/")
   Future<Response> getRooms(@QueryMap() Map<String, dynamic> query);
 
-  @Get(path: "/workspace")
+  @GET(path: "/workspace")
   Future<Response> getWorkspace(@QueryMap() Map<String, dynamic> query);
 
-  @Get(path: "/list")
+  @GET(path: "/list")
   Future<Response> getList(@QueryMap() Map<String, dynamic> query);
 
-  @Patch(path: "/{roomId}/deliver", optionalBody: true)
+  @PATCH(path: "/{roomId}/deliver", optionalBody: true)
   Future<Response> deliverRoomMessages(
     @Path() String roomId,
   );
@@ -109,26 +109,26 @@ abstract class ChannelApi extends ChopperService {
     @PartFile("file") MultipartFile? file,
   );
 
-  @Patch(path: "/{roomId}/broadcast/title")
+  @PATCH(path: "/{roomId}/broadcast/title")
   Future<Response> updateBroadcastTitle(
     @Path("roomId") String roomId,
     @Body() Map<String, dynamic> body,
   );
 
-  @Patch(path: "/{roomId}/broadcast/image")
+  @PATCH(path: "/{roomId}/broadcast/image")
   @multipart
   Future<Response> updateBroadcastImage(
     @Path('roomId') String roomId,
     @PartFile("file") MultipartFile file,
   );
 
-  @Get(path: "/{roomId}/broadcast/members", optionalBody: true)
+  @GET(path: "/{roomId}/broadcast/members", optionalBody: true)
   Future<Response> getBroadcastMembers(
     @Path("roomId") String roomId,
     @QueryMap() Map<String, dynamic> query,
   );
 
-  @Get(path: "/{roomId}/broadcast/available-users-to-add", optionalBody: true)
+  @GET(path: "/{roomId}/broadcast/available-users-to-add", optionalBody: true)
   Future<Response> getAvailableBroadcastMembersToAdded(
     @Path("roomId") String roomId,
     @QueryMap() Map<String, dynamic> query,
@@ -146,12 +146,12 @@ abstract class ChannelApi extends ChopperService {
     @Path('peerId') String peerId,
   );
 
-  @Get(path: "/{roomId}/broadcast/my-info")
+  @GET(path: "/{roomId}/broadcast/my-info")
   Future<Response> getMyBroadcastInfo(
     @Path("roomId") String roomId,
   );
 
-  @Get(
+  @GET(
     path: "/{roomId}/broadcast/message/{messageId}/status/{type}",
     optionalBody: true,
   )
@@ -176,25 +176,25 @@ abstract class ChannelApi extends ChopperService {
   Future<Response> leaveGroup(@Path("roomId") String roomId);
 
   ///updateRoomTitle
-  @Patch(path: "/{roomId}/group/title")
+  @PATCH(path: "/{roomId}/group/title")
   Future<Response> updateGroupTitle(
     @Path("roomId") String roomId,
     @Body() Map<String, dynamic> body,
   );
 
-  @Patch(path: "/{roomId}/group/description")
+  @PATCH(path: "/{roomId}/group/description")
   Future<Response> updateGroupDescription(
     @Path("roomId") String roomId,
     @Body() Map<String, dynamic> body,
   );
 
-  @Get(path: "/{roomId}/group/available-users-to-add", optionalBody: true)
+  @GET(path: "/{roomId}/group/available-users-to-add", optionalBody: true)
   Future<Response> getAvailableGroupMembersToAdded(
     @Path("roomId") String roomId,
     @QueryMap() Map<String, dynamic> query,
   );
 
-  @Get(
+  @GET(
     path: "/{roomId}/group/message/{messageId}/status/{type}",
     optionalBody: true,
   )
@@ -208,32 +208,32 @@ abstract class ChannelApi extends ChopperService {
   );
 
   ///updateRoomExtra data
-  @Patch(path: "/{roomId}/group/extra-data")
+  @PATCH(path: "/{roomId}/group/extra-data")
   Future<Response> updateGroupExtraData(
     @Path("roomId") String roomId,
     @Body() Map<String, dynamic> body,
   );
 
   ///updateRoomImage
-  @Patch(path: "/{roomId}/group/image")
+  @PATCH(path: "/{roomId}/group/image")
   @multipart
   Future<Response> updateGroupImage(
     @Path('roomId') String roomId,
     @PartFile("file") MultipartFile file,
   );
 
-  @Get(path: "/{roomId}/group/my-info")
+  @GET(path: "/{roomId}/group/my-info")
   Future<Response> getMyGroupInfo(
     @Path("roomId") String roomId,
   );
 
-  @Get(path: "/{roomId}/group/my-status")
+  @GET(path: "/{roomId}/group/my-status")
   Future<Response> getMyGroupStatus(
     @Path("roomId") String roomId,
   );
 
   ///get getGroupMembers
-  @Get(path: "/{roomId}/group/members", optionalBody: true)
+  @GET(path: "/{roomId}/group/members", optionalBody: true)
   Future<Response> getGroupMembers(
     @Path("roomId") String roomId,
     @QueryMap() Map<String, dynamic> query,
@@ -246,7 +246,7 @@ abstract class ChannelApi extends ChopperService {
     @Body() Map<String, dynamic> body,
   );
 
-  @Patch(
+  @PATCH(
     path: "/{roomId}/group/members/{peerId}/{role}",
     optionalBody: true,
   )
@@ -264,7 +264,7 @@ abstract class ChannelApi extends ChopperService {
 
   /// ----------------------------------------- order apis ------------------------------------------
 
-  @Get(path: "/{roomId}/group/members", optionalBody: true)
+  @GET(path: "/{roomId}/group/members", optionalBody: true)
   Future<Response> getOrderRoomInfo(
     @Path("roomId") String roomId,
   );

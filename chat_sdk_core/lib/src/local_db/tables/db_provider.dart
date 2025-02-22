@@ -1,12 +1,12 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:logging/logging.dart';
 import 'package:path/path.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
-import 'package:chat_sdk_core/chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 class DBProvider {
   DBProvider._();
@@ -36,8 +36,7 @@ class DBProvider {
 
   Future<Database> _open() async {
     final Directory windowsApplicationDocument = await getApplicationDocumentsDirectory();
-    final documentsDirectory =
-        VPlatforms.isWindows ? windowsApplicationDocument.path : await getDatabasesPath();
+    final documentsDirectory = VPlatforms.isWindows ? windowsApplicationDocument.path : await getDatabasesPath();
     final path = join(documentsDirectory, VAppConstants.dbName);
 
     if (VPlatforms.isWindows) {
