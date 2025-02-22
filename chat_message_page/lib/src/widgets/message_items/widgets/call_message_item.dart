@@ -1,4 +1,5 @@
 import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
@@ -29,7 +30,7 @@ class CallMessageItem extends StatelessWidget {
               VCallDto(
                 isVideoEnable: message.data.withVideo,
                 roomId: message.roomId,
-                peerUser: SBaseUser(
+                peerUser: BaseUser(
                   id: message.roomId,
                   fullName: S.of(context).group,
                   userImage: "default_group_image.png",
