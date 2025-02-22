@@ -1,10 +1,12 @@
 import 'dart:convert';
 
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_config/chat_preferences.dart';
+import 'package:chat_core/chat_core.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 import '../../mobile/settings_tab/widgets/settings_list_item_tile.dart';
 
@@ -28,7 +30,7 @@ class _TestNotificationScreenState extends State<TestNotificationScreen> {
 
     _isLoading = true;
 
-    String url = "${SConstants.sApiBaseUrl}/notification/test";
+    String url = "${ChatConstants.sApiBaseUrl}/notification/test";
 
     final Dio dio = Dio();
     dio.options = BaseOptions(
@@ -53,18 +55,15 @@ class _TestNotificationScreenState extends State<TestNotificationScreen> {
           ),
           options: Options(
             headers: {
-              "Authorization": "Bearer ${VAppPref.getHashedString(key: SStorageKeys.vAccessToken.name)}",
+              "Authorization": "Bearer ${ChatPreferences.getHashedString(key: SStorageKeys.vAccessToken.name)}",
             },
           ),
         );
       },
       onSuccess: (response) {
-        print("Data: ${response.data}");
-        print("Data: $response");
-
         showToast(
-          response.data['data']['body'],
-          context: context,
+          message: response.data['data']['body'],
+          context,
         );
 
         _resultSuccess = response.data['data']['result']['successResponses'] as List<dynamic>;

@@ -1,11 +1,12 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:loadmore/loadmore.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:super_up_core/super_up_core.dart' hide NoAnimationPageRoute;
-import 'package:s_translation/generated/l10n.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../../../core/api_service/profile/profile_api_service.dart';
 import '../controllers/choose_members_controller.dart';
@@ -13,7 +14,7 @@ import '../widgets/cupertino_checkbox_list_tile.dart';
 
 class ChooseMembersView extends StatefulWidget {
   final VoidCallback onCloseSheet;
-  final Function(List<SBaseUser> selectedUsers) onDone;
+  final Function(List<BaseUser> selectedUsers) onDone;
   final String? groupId;
   final String? broadcastId;
   final int maxCount;
@@ -62,7 +63,7 @@ class _ChooseMembersViewState extends State<ChooseMembersView> {
           onPressed: widget.onCloseSheet,
           child: Text(S.of(context).close),
         ),
-        trailing: ValueListenableBuilder<SLoadingState<List<SSelectableUser>>>(
+        trailing: ValueListenableBuilder<LoadingState<List<SelectableUser>>>(
           valueListenable: controller,
           builder: (_, value, ___) {
             return TextButton(
@@ -122,7 +123,7 @@ class _ChooseMembersViewState extends State<ChooseMembersView> {
                                 children: [
                                   VCircleAvatar(
                                     vFileSource: VPlatformFile.fromUrl(
-                                      url: controller.selectedUsers[index].searchUser.baseUser.userImage,
+                                      networkUrl: controller.selectedUsers[index].searchUser.baseUser.userImage,
                                     ),
                                     radius: 25,
                                   ),
@@ -142,7 +143,12 @@ class _ChooseMembersViewState extends State<ChooseMembersView> {
                                   )
                                 ],
                               ),
-                              controller.selectedUsers[index].searchUser.baseUser.fullName.split(" ").first.h6.size(12).color(Colors.grey)
+                              controller.selectedUsers[index].searchUser.baseUser.fullName
+                                  .split(" ")
+                                  .first
+                                  .h6
+                                  .size(12)
+                                  .color(Colors.grey)
                             ],
                           );
                         },
@@ -153,7 +159,7 @@ class _ChooseMembersViewState extends State<ChooseMembersView> {
                   elseBuilder: () => const SizedBox.shrink(),
                 ),
               ),
-              ValueListenableBuilder<SLoadingState<List<SSelectableUser>>>(
+              ValueListenableBuilder<LoadingState<List<SelectableUser>>>(
                 valueListenable: controller,
                 builder: (_, value, ___) => VAsyncWidgetsBuilder(
                   loadingState: value.loadingState,

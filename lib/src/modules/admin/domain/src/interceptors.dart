@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:chat_config/chat_preferences.dart';
 import 'package:chopper/chopper.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 import 'exceptions.dart';
 
@@ -53,7 +53,7 @@ class SAdminHeaderKeySetterInterceptor implements Interceptor {
     final request = applyHeader(
       chain.request,
       'admin-key',
-      "${VAppPref.getHashedString(key: SStorageKeys.adminAccessPassword.name)}",
+      "${ChatPreferences.getHashedString(key: SStorageKeys.adminAccessPassword.name)}",
     );
 
     return chain.proceed(request);
@@ -74,7 +74,7 @@ class AuthInterceptor implements Interceptor {
     final request = applyHeader(
       chain.request,
       'authorization',
-      "Bearer ${access ?? VAppPref.getHashedString(key: SStorageKeys.vAccessToken.name)}",
+      "Bearer ${access ?? ChatPreferences.getHashedString(key: SStorageKeys.vAccessToken.name)}",
     );
     return chain.proceed(request);
   }
@@ -94,7 +94,7 @@ class ViolationInterceptor implements Interceptor {
     final request = applyHeader(
       chain.request,
       'authorization',
-      "Bearer ${access ?? VAppPref.getHashedString(key: SStorageKeys.vAccessToken.name)}",
+      "Bearer ${access ?? ChatPreferences.getHashedString(key: SStorageKeys.vAccessToken.name)}",
     );
     return chain.proceed(request);
   }

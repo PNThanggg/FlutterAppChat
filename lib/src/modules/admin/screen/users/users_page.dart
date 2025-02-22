@@ -1,9 +1,9 @@
+import 'package:chat_core/chat_core.dart' hide NoAnimationPageRoute;
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart' hide NoAnimationPageRoute;
-import 'package:v_platform/v_platform.dart';
 
 import '../../admin.dart';
 import 'users_controller.dart';
@@ -138,7 +138,7 @@ class _UsersPageState extends State<UsersPage> {
                                   children: [
                                     VCircleAvatar(
                                       vFileSource: VPlatformFile.fromUrl(
-                                        url: e.userImage,
+                                        networkUrl: e.userImage,
                                       ),
                                       radius: 15,
                                     ),

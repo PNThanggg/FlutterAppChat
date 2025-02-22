@@ -1,18 +1,20 @@
 import 'dart:async';
+
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 import '../../../core/api_service/profile/profile_api_service.dart';
 
-class ChooseMembersController extends SLoadingController<List<SSelectableUser>> {
+class ChooseMembersController extends SLoadingController<List<SelectableUser>> {
   final txtController = TextEditingController();
   final ProfileApiService profileApiService;
-  final Function(List<SBaseUser> selectedUsers) onDone;
+  final Function(List<BaseUser> selectedUsers) onDone;
   Timer? _debounce;
-  final selectedUsers = <SSelectableUser>[];
+  final selectedUsers = <SelectableUser>[];
   bool isFinishLoadMore = false;
   final String? groupId;
   final String? broadcastId;
@@ -22,7 +24,11 @@ class ChooseMembersController extends SLoadingController<List<SSelectableUser>> 
     this.onDone,
     this.groupId,
     this.broadcastId,
-  ) : super(SLoadingState(<SSelectableUser>[]));
+  ) : super(
+          LoadingState(
+            <SelectableUser>[],
+          ),
+        );
 
   UserFilterDto _filterDto = UserFilterDto.init();
 
@@ -32,7 +38,7 @@ class ChooseMembersController extends SLoadingController<List<SSelectableUser>> 
   }
 
   Future<void> getData() async {
-    await vSafeApiCall<List<SSelectableUser>>(
+    await vSafeApiCall<List<SelectableUser>>(
       onLoading: () async {
         setStateLoading();
         update();
@@ -50,16 +56,16 @@ class ChooseMembersController extends SLoadingController<List<SSelectableUser>> 
             filter: _filterDto,
           );
 
-          return users.map((e) => SSelectableUser(searchUser: e)).toList();
+          return users.map((e) => SelectableUser(searchUser: e)).toList();
         } else if (broadcastId != null) {
           final users = await VChatController.I.nativeApi.remote.room.getAvailableBroadcastMembersToAdded(
             roomId: broadcastId!,
             filter: _filterDto,
           );
-          return users.map((e) => SSelectableUser(searchUser: e)).toList();
+          return users.map((e) => SelectableUser(searchUser: e)).toList();
         } else {
           final users = await profileApiService.appUsers(_filterDto);
-          return users.map((e) => SSelectableUser(searchUser: e)).toList();
+          return users.map((e) => SelectableUser(searchUser: e)).toList();
         }
       },
       onSuccess: (response) {
@@ -79,7 +85,7 @@ class ChooseMembersController extends SLoadingController<List<SSelectableUser>> 
     if (_debounce?.isActive ?? false) _debounce?.cancel();
 
     _debounce = Timer(const Duration(milliseconds: 1500), () {
-      vSafeApiCall<List<SSelectableUser>>(
+      vSafeApiCall<List<SelectableUser>>(
         onLoading: () {
           setStateLoading();
           update();
@@ -92,7 +98,7 @@ class ChooseMembersController extends SLoadingController<List<SSelectableUser>> 
           _filterDto = UserFilterDto.init();
           _filterDto.fullName = query;
           isFinishLoadMore = false;
-          var users = <SSearchUser>[];
+          var users = <SearchUser>[];
 
           if (groupId != null) {
             users = await VChatController.I.nativeApi.remote.room.getAvailableGroupMembersToAdded(
@@ -107,7 +113,7 @@ class ChooseMembersController extends SLoadingController<List<SSelectableUser>> 
           } else {
             users = await profileApiService.appUsers(_filterDto);
           }
-          return users.map((e) => SSelectableUser(searchUser: e)).toList();
+          return users.map((e) => SelectableUser(searchUser: e)).toList();
         },
         onSuccess: (response) {
           data.clear();
@@ -126,7 +132,7 @@ class ChooseMembersController extends SLoadingController<List<SSelectableUser>> 
 
   void maintainTheUsers() {
     //i need to let the selectedUsers each user inside the selectedUsers must find the same user inside the data and set isSelected it to true founded
-    Map<String, SSelectableUser> dataMap = {for (var v in data) v.searchUser.baseUser.id: v};
+    Map<String, SelectableUser> dataMap = {for (var v in data) v.searchUser.baseUser.id: v};
     for (var selectedUser in selectedUsers) {
       var foundedUser = dataMap[selectedUser.searchUser.baseUser.id];
       if (foundedUser != null) {
@@ -143,7 +149,7 @@ class ChooseMembersController extends SLoadingController<List<SSelectableUser>> 
     _debounce?.cancel();
   }
 
-  void selectUser(SSelectableUser user) {
+  void selectUser(SelectableUser user) {
     if (selectedUsers.length >= VChatController.I.vChatConfig.maxForward) {
       return;
     }
@@ -154,7 +160,7 @@ class ChooseMembersController extends SLoadingController<List<SSelectableUser>> 
     update();
   }
 
-  void unSelectUser(SSelectableUser user) {
+  void unSelectUser(SelectableUser user) {
     final founded = data.firstWhereOrNull((e) => e.searchUser.baseUser.id == user.searchUser.baseUser.id);
     founded?.isSelected = false;
     selectedUsers.removeWhere((element) => element.searchUser.baseUser.id == user.searchUser.baseUser.id);
@@ -180,14 +186,14 @@ class ChooseMembersController extends SLoadingController<List<SSelectableUser>> 
     if (_isLoadMoreActive) {
       return false;
     }
-    final res = await vSafeApiCall<List<SSelectableUser>>(
+    final res = await vSafeApiCall<List<SelectableUser>>(
       onLoading: () {
         _isLoadMoreActive = true;
       },
       request: () async {
         _filterDto.page = _filterDto.page + 1;
         final users = await profileApiService.appUsers(_filterDto);
-        return users.map((e) => SSelectableUser(searchUser: e)).toList();
+        return users.map((e) => SelectableUser(searchUser: e)).toList();
       },
       onSuccess: (response) {
         if (response.isEmpty) {

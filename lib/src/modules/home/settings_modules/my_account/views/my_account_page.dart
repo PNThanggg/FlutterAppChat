@@ -1,9 +1,10 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../../../../../core/api_service/profile/profile_api_service.dart';
 import '../../../mobile/settings_tab/widgets/settings_list_item_tile.dart';
@@ -53,20 +54,14 @@ class _MyAccountPageState extends State<MyAccountPage> {
                           height: 12,
                         ),
                         CupertinoListTile(
-                          title: S
-                              .of(context)
-                              .updateYourProfile
-                              .h6
-                              .maxLine(2)
-                              .size(14)
-                              .color(Colors.grey),
+                          title: S.of(context).updateYourProfile.h6.maxLine(2).size(14).color(Colors.grey),
                           leadingSize: 56,
                           padding: EdgeInsets.zero,
                           leading: GestureDetector(
                             onTap: () => controller.updateUserImage(context),
                             child: VCircleAvatar(
                               vFileSource: VPlatformFile.fromUrl(
-                                url: AppAuth.myProfile.baseUser.userImage,
+                                networkUrl: AppAuth.myProfile.baseUser.userImage,
                               ),
                             ),
                           ),

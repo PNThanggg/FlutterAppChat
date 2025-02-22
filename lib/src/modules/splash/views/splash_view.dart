@@ -1,5 +1,6 @@
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_core/chat_core.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 import '../controllers/splash_controller.dart';
 
@@ -48,7 +49,7 @@ class _SplashViewState extends State<SplashView> {
                   const SizedBox(
                     height: 20,
                   ),
-                  SConstants.appName.h6.semiBold.size(24).color(Colors.black)
+                  ChatConstants.appName.h6.semiBold.size(24).color(Colors.black)
                 ],
               ),
               Column(

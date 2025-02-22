@@ -1,6 +1,7 @@
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart' hide ProfileApi, throwIfNotSuccess, extractDataFromResponse;
-import 'package:v_platform/v_platform.dart';
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart' hide ProfileApi, throwIfNotSuccess, extractDataFromResponse;
 
 import '../../../modules/home/settings_modules/my_account/views/sheet_for_update_password.dart';
 import '../../../modules/peer_profile/states/peer_profile_state.dart';
@@ -71,13 +72,13 @@ class ProfileApiService {
     return l.map((e) => UserDeviceModel.fromMap(e)).toList();
   }
 
-  Future<List<SBaseUser>> getMyBlocked({
+  Future<List<BaseUser>> getMyBlocked({
     VBaseFilter? filter,
   }) async {
     final res = await _profileApi!.myBlocked(filter?.toMap() ?? {});
     throwIfNotSuccess(res);
     final l = (res.body as Map<String, dynamic>)['data']['docs'] as List;
-    return l.map((e) => SBaseUser.fromMap(e['targetId'])).toList();
+    return l.map((e) => BaseUser.fromMap(e['targetId'])).toList();
   }
 
   Future<bool> updatePrivacy(UserPrivacy userPrivacy) async {
@@ -109,10 +110,10 @@ class ProfileApiService {
     return true;
   }
 
-  Future<SMyProfile> getMyProfile() async {
+  Future<MyProfile> getMyProfile() async {
     final res = await _profileApi!.myProfile();
     throwIfNotSuccess(res);
-    return SMyProfile.fromMap(extractDataFromResponse(res));
+    return MyProfile.fromMap(extractDataFromResponse(res));
   }
 
   Future<bool> passwordCheck(String password) async {
@@ -133,12 +134,12 @@ class ProfileApiService {
     return AppConfigModel.fromMap(res.body['data'] as Map<String, dynamic>);
   }
 
-  Future<List<SSearchUser>> appUsers(UserFilterDto dto) async {
+  Future<List<SearchUser>> appUsers(UserFilterDto dto) async {
     final res = await _profileApi!.appUsers(dto.toMap());
     throwIfNotSuccess(res);
     return (extractDataFromResponse(res)['docs'] as List)
         .map(
-          (e) => SSearchUser.fromMap(e),
+          (e) => SearchUser.fromMap(e),
         )
         .toList();
   }
@@ -149,7 +150,7 @@ class ProfileApiService {
   }) {
     _profileApi ??= ProfileApi.create(
       accessToken: accessToken,
-      baseUrl: baseUrl ?? SConstants.sApiBaseUrl,
+      baseUrl: baseUrl ?? ChatConstants.sApiBaseUrl,
     );
     return ProfileApiService._();
   }

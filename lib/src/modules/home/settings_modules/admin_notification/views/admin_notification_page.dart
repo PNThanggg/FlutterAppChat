@@ -1,10 +1,12 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loadmore/loadmore.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
+
 import '../controllers/admin_notification_controller.dart';
 
 class AdminNotificationPage extends StatefulWidget {
@@ -30,7 +32,7 @@ class _AdminNotificationPageState extends State<AdminNotificationPage> {
       ),
       child: SafeArea(
         bottom: false,
-        child: ValueListenableBuilder<SLoadingState<List<AdminNotificationsModel>>>(
+        child: ValueListenableBuilder<LoadingState<List<AdminNotificationsModel>>>(
           valueListenable: controller,
           builder: (_, value, ___) => VAsyncWidgetsBuilder(
             loadingState: value.loadingState,
@@ -59,13 +61,15 @@ class _AdminNotificationPageState extends State<AdminNotificationPage> {
                                 VChatController.I.vNavigator.messageNavigator.toImageViewer(
                                   context,
                                   VPlatformFile.fromUrl(
-                                    url: value.data[index].imageUrl!,
+                                    networkUrl: value.data[index].imageUrl!,
                                   ),
                                   true,
                                 );
                               },
                               child: VCircleAvatar(
-                                vFileSource: VPlatformFile.fromUrl(url: value.data[index].imageUrl!),
+                                vFileSource: VPlatformFile.fromUrl(
+                                  networkUrl: value.data[index].imageUrl!,
+                                ),
                               ),
                             ),
                     );

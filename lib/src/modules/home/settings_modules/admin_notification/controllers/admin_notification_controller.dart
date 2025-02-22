@@ -1,12 +1,19 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 import '../../../../../core/api_service/profile/profile_api_service.dart';
 
 class AdminNotificationController extends SLoadingController<List<AdminNotificationsModel>> {
-  AdminNotificationController() : super(SLoadingState([]));
+  AdminNotificationController()
+      : super(
+          LoadingState(
+            [],
+          ),
+        );
+
   final _apiService = GetIt.I.get<ProfileApiService>();
   bool isFinishLoadMore = false;
   bool _isLoadMoreActive = false;

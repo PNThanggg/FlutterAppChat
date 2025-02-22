@@ -1,17 +1,22 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_it/get_it.dart';
 import 'package:number_paginator/number_paginator.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart' hide NoAnimationPageRoute;
 
 import '../../admin.dart';
-import '../user_profile/user_profile.dart';
-import 'users_page.dart';
 
 class UsersController extends SLoadingController<PaginateModel<DashUser>> {
-  UsersController() : super(SLoadingState(PaginateModel.empty()));
+  UsersController()
+      : super(
+          LoadingState(
+            PaginateModel.empty(),
+          ),
+        );
+
   final adminApi = GetIt.I.get<SAdminApiService>();
   final paginatorController = NumberPaginatorController();
   int currentPage = 1;

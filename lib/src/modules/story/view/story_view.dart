@@ -1,11 +1,11 @@
 import 'dart:async';
 
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_platform/v_platform.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:story_view/controller/story_controller.dart';
 import 'package:story_view/widgets/story_view.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../../../core/api_service/story/story_api_service.dart';
 import '../../../core/models/story/story_model.dart';
@@ -93,7 +93,7 @@ class _StoryViewpageState extends State<StoryViewpage> {
                       ),
                       VCircleAvatar(
                         vFileSource: VPlatformFile.fromUrl(
-                          url: widget.storyModel.userData.userImage,
+                          networkUrl: widget.storyModel.userData.userImage,
                         ),
                         radius: 20,
                       ),
@@ -138,7 +138,9 @@ class _StoryViewpageState extends State<StoryViewpage> {
       if (story.storyType == StoryType.image) {
         stories.add(
           StoryItem.pageImage(
-            url: VPlatformFile.fromUrl(url: story.att!['url']!).url!,
+            url: VPlatformFile.fromUrl(
+              networkUrl: story.att!['url']!,
+            ).networkUrl!,
             controller: controller,
             caption: story.caption == null ? null : Text(story.caption!),
             duration: const Duration(seconds: 7),

@@ -1,5 +1,5 @@
+import 'package:chat_model/model.dart';
 import 'package:enum_to_string/enum_to_string.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 import '../../utils/enums.dart';
 
@@ -85,7 +85,7 @@ class StoryModel {
 }
 
 class UserStoryModel {
-  final SBaseUser userData;
+  final BaseUser userData;
 
   final List<StoryModel> stories;
 
@@ -115,7 +115,7 @@ class UserStoryModel {
 
   factory UserStoryModel.fromMap(Map<String, dynamic> map) {
     return UserStoryModel(
-      userData: SBaseUser.fromMap(map['userData']),
+      userData: BaseUser.fromMap(map['userData']),
       stories: (map['stories'] as List)
           .map(
             (e) => StoryModel.fromMap(e),

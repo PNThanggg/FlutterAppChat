@@ -1,12 +1,12 @@
 import 'dart:async';
 
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../../../core/api_service/api_service.dart';
 import '../../admin/admin.dart';
@@ -16,12 +16,13 @@ import '../states/peer_profile_state.dart';
 
 class PeerProfileController extends SLoadingController<PeerProfileModel?> {
   final String peerId;
+
   final ProfileApiService _profileApiService = GetIt.I.get<ProfileApiService>();
   final SAdminApiService _sAdminApiService = GetIt.I.get<SAdminApiService>();
 
   PeerProfileController(this.peerId)
       : super(
-          SLoadingState(
+          LoadingState(
             null,
           ),
         );
@@ -60,7 +61,9 @@ class PeerProfileController extends SLoadingController<PeerProfileModel?> {
     context.toPage(
       VImageViewer(
         showDownload: true,
-        platformFileSource: VPlatformFile.fromUrl(url: data!.searchUser.baseUser.userImage),
+        platformFileSource: VPlatformFile.fromUrl(
+          networkUrl: data!.searchUser.baseUser.userImage,
+        ),
         downloadingLabel: S.of(context).downloading,
         successfullyDownloadedInLabel: S.of(context).successfullyDownloadedIn,
       ),
@@ -85,7 +88,7 @@ class PeerProfileController extends SLoadingController<PeerProfileModel?> {
       onError: (exception, trace) {
         isOpeningChat = false;
 
-        showToast(exception);
+        showToast(context, message: exception);
 
         notifyListeners();
       },

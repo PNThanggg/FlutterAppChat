@@ -1,8 +1,8 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 import '../../admin.dart';
 import 'models/dash_grid_item_model.dart';
@@ -25,7 +25,12 @@ class DashboardController extends SLoadingController<MainDashBoardModel> {
     getData();
   }
 
-  DashboardController() : super(SLoadingState<MainDashBoardModel>(MainDashBoardModel.empty()));
+  DashboardController()
+      : super(
+          LoadingState<MainDashBoardModel>(
+            MainDashBoardModel.empty(),
+          ),
+        );
 
   Future getData() async {
     await vSafeApiCall<MainDashBoardModel>(

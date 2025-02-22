@@ -1,12 +1,13 @@
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_config/chat_preferences.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_firebase_fcm/v_chat_firebase_fcm.dart';
+import 'package:chat_message_page/chat_message_page.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_room_page/chat_room_page.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:v_chat_v2/v_chat_v2.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_firebase_fcm/v_chat_firebase_fcm.dart';
-import 'package:v_chat_message_page/v_chat_message_page.dart';
-import 'package:v_chat_room_page/v_chat_room_page.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../src/core/app_config/app_config_controller.dart';
 import '../src/core/app_nav/app_navigation.dart';
@@ -21,13 +22,13 @@ Future<void> initVChat(GlobalKey<NavigatorState> navigatorKey) async {
     navigatorKey: navigatorKey,
     vChatConfig: VChatConfig(
       ///don't update
-      baseUrl: SConstants.sApiBaseUrl,
+      baseUrl: ChatConstants.sApiBaseUrl,
       vPush: VPush(
         enableVForegroundNotification: true,
         vPushConfig: const VLocalNotificationPushConfig(),
 
         ///if you support fcm push notifications
-        fcmProvider: VChatFcmProver(),
+        fcmProvider: ChatFcmProver(),
 
         ///if you support OneSignal push notifications
         // oneSignalProvider: VChatOneSignalProver(
@@ -78,7 +79,7 @@ Future<void> initVChat(GlobalKey<NavigatorState> navigatorKey) async {
         toMessagePage: (context, vRoom) {
           final config = VAppConfigController.appConfig;
           final messageConfig = VMessageConfig(
-            googleMapsApiKey: SConstants.googleMapsApiKey,
+            googleMapsApiKey: ChatConstants.googleMapsApiKey,
             isCallsAllowed: VPlatforms.isMobile ? config.allowCall : false,
             isSendMediaAllowed: config.allowSendMedia,
             isEnableAds: config.enableAds,

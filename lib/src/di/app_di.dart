@@ -1,5 +1,5 @@
+import 'package:chat_core/chat_core.dart';
 import 'package:get_it/get_it.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 import '../core/api_service/api_service.dart';
 import '../core/api_service/story/story_api_service.dart';

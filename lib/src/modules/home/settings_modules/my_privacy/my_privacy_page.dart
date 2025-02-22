@@ -1,12 +1,14 @@
 import 'dart:async';
 
+import 'package:chat_config/chat_preferences.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../../../../core/api_service/api_service.dart';
 import '../../mobile/settings_tab/widgets/settings_list_item_tile.dart';
@@ -31,7 +33,13 @@ class _MyPrivacyPageState extends State<MyPrivacyPage> {
           CupertinoSliverNavigationBar(
             backgroundColor: context.theme.scaffoldBackgroundColor,
             border: Border.all(color: Colors.transparent),
-            largeTitle: Text(S.of(context).myPrivacy, style: TextStyle(color: Theme.of(context).textTheme.bodyLarge!.color, fontSize: 25)),
+            largeTitle: Text(
+              S.of(context).myPrivacy,
+              style: TextStyle(
+                color: Theme.of(context).textTheme.bodyLarge!.color,
+                fontSize: 25,
+              ),
+            ),
           )
         ],
         body: SingleChildScrollView(
@@ -162,7 +170,7 @@ class _MyPrivacyPageState extends State<MyPrivacyPage> {
     final newProfile = AppAuth.myProfile.copyWith(
       userPrivacy: _userPrivacy,
     );
-    await VAppPref.setMap(SStorageKeys.myProfile.name, newProfile.toMap());
+    await ChatPreferences.setMap(SStorageKeys.myProfile.name, newProfile.toMap());
     AppAuth.setProfileNull();
     setState(() {});
     _updateInApi();

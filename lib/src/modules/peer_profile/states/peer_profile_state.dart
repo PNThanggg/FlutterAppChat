@@ -1,8 +1,8 @@
+import 'package:chat_model/model.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 class PeerProfileModel {
-  final SSearchUser searchUser;
+  final SearchUser searchUser;
   final String lastSeenAt;
   final bool isMeBanner;
   final bool isPeerBanner;
@@ -23,7 +23,7 @@ class PeerProfileModel {
   bool get getIsThereBan => isMeBanner || isPeerBanner;
 
   PeerProfileModel copyWith({
-    SSearchUser? searchUser,
+    SearchUser? searchUser,
     String? lastSeenAt,
     UserPrivacy? userPrivacy,
     bool? isMeBanner,
@@ -46,7 +46,7 @@ class PeerProfileModel {
     debugPrint("PeerProfileModel.fromMap:: $map");
 
     return PeerProfileModel(
-      searchUser: SSearchUser.fromMap(map),
+      searchUser: SearchUser.fromMap(map),
       lastSeenAt: map['lastSeenAt'] as String,
       isMeBanner: map['isMeBanner'] as bool,
       userPrivacy: UserPrivacy.fromMap(map['userPrivacy'] as Map<String, dynamic>),

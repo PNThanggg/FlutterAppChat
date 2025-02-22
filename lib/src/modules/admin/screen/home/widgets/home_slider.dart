@@ -1,11 +1,12 @@
 import 'dart:async';
 
+import 'package:chat_config/chat_preferences.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:s_translation/generated/l10n.dart';
 import 'package:sidebarx/sidebarx.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 import 'sheet_for_choose_language.dart';
 import 'slider_colors.dart';
@@ -102,7 +103,7 @@ class _HomeSliderState extends State<HomeSlider> {
                     onLanguageChange(context);
                   },
                   child: Text(
-                    VAppPref.getStringOrNullKey(
+                    ChatPreferences.getStringOrNullKey(
                           SStorageKeys.appLanguageTitle.name,
                         ) ??
                         "English",
@@ -163,7 +164,7 @@ class _HomeSliderState extends State<HomeSlider> {
     }
     //value.data = value.data.copyWith(language: res.title);
     await VLanguageListener.I.setLocal(Locale(res.id.toString()));
-    await VAppPref.setStringKey(
+    await ChatPreferences.setStringKey(
       SStorageKeys.appLanguageTitle.name,
       res.title,
     );

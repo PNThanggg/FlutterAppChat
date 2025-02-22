@@ -1,16 +1,21 @@
 import 'dart:developer';
 
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/material.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:super_up_core/super_up_core.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 import '../../../../../../core/app_config/app_config_controller.dart';
 import '../states/help_state.dart';
 
 class HelpController extends SLoadingController<HelpState> {
-  HelpController() : super(SLoadingState(HelpState()));
+  HelpController()
+      : super(
+          LoadingState(HelpState()),
+        );
+
   bool isOpeningChat = false;
   final appConfig = VAppConfigController.appConfig;
 
@@ -58,7 +63,7 @@ class HelpController extends SLoadingController<HelpState> {
 
   Future<void> onEmailContact(BuildContext context) async {
     if (!await launchUrl(Uri.parse(
-      "mailto:${appConfig.feedbackEmail}?subject=${SConstants.appName}&body= ",
+      "mailto:${appConfig.feedbackEmail}?subject=${ChatConstants.appName}&body= ",
     ))) {
       throw Exception('Could not launch  ');
     }

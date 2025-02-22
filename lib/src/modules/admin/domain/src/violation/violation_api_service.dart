@@ -1,4 +1,4 @@
-import 'package:super_up_core/super_up_core.dart';
+import 'package:chat_config/chat_constants.dart';
 
 import '../../../admin.dart';
 import 'violation_api.dart';
@@ -16,7 +16,7 @@ class ViolationApiService {
     _violationApi ??= ViolationApi.create(
       accessToken: accessToken,
       headers: headers,
-      baseUrl: baseUrl ?? SConstants.sApiBaseUrl,
+      baseUrl: baseUrl ?? ChatConstants.sApiBaseUrl,
     );
     return ViolationApiService._();
   }

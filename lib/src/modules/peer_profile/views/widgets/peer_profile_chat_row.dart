@@ -1,6 +1,6 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 import '../../../chat_settings/widgets/chat_settings_list_section.dart';
 
@@ -41,7 +41,7 @@ class PeerProfileChatRow extends StatelessWidget {
           onPressed: isThereBan == true ? null : createGroupWith,
         ),
         ChatSettingsListSection(
-          icon: PhosphorIcons.bug,
+          icon: PhosphorIconsLight.bug,
           iconWidget: blockLoading ? const CupertinoActivityIndicator() : null,
           title: _getBlockTitle(context),
           onPressed: updateBlock,

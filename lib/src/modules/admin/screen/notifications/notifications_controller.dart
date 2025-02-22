@@ -1,14 +1,21 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../../admin.dart';
 
 class NotificationsController extends SLoadingController<List<AdminNotificationsModel>> {
-  NotificationsController() : super(SLoadingState([]));
+  NotificationsController()
+      : super(
+          LoadingState(
+            [],
+          ),
+        );
+
   final SAdminApiService adminApi = GetIt.I.get<SAdminApiService>();
 
   @override

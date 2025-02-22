@@ -1,6 +1,7 @@
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
 import 'package:chopper/chopper.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../../../admin.dart';
 import 's_admin_api.dart';
@@ -88,7 +89,7 @@ class SAdminApiService {
     return true;
   }
 
-  Future<List<SSearchUser>> getAllStaff() async {
+  Future<List<SearchUser>> getAllStaff() async {
     Response res = await _sAdminApi!.getAllStaff();
 
     throwIfNotSuccess(res);
@@ -96,7 +97,7 @@ class SAdminApiService {
     Map<String, dynamic> obj = extractDataFromResponse(res);
     return (obj['docs'] as List)
         .map(
-          (e) => SSearchUser.fromMap(e),
+          (e) => SearchUser.fromMap(e),
         )
         .toList();
   }
@@ -115,7 +116,7 @@ class SAdminApiService {
     _sAdminApi ??= SAdminApi.create(
       accessToken: accessToken,
       headers: headers,
-      baseUrl: baseUrl ?? SConstants.sApiBaseUrl,
+      baseUrl: baseUrl ?? ChatConstants.sApiBaseUrl,
     );
     return SAdminApiService._();
   }

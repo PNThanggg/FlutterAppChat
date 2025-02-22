@@ -1,6 +1,6 @@
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:s_translation/generated/l10n.dart';
 
 import '../../color_schemes.g.dart';
 import '../dashboard/dashboard_page.dart';

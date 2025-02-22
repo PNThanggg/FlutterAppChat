@@ -1,4 +1,5 @@
-import 'package:super_up_core/super_up_core.dart';
+import 'package:chat_config/chat_preferences.dart';
+import 'package:chat_model/model.dart';
 
 import 'dash_country.dart';
 
@@ -41,7 +42,7 @@ class DashUser {
     required this.updatedAt,
   });
 
-  String get email => VAppPref.getBool(SStorageKeys.isViewer.name) == true ? "xxxxxx@xxx.xxxx" : emailX;
+  String get email => ChatPreferences.getBool(SStorageKeys.isViewer.name) == true ? "xxxxxx@xxx.xxxx" : emailX;
 
   DashUser.empty()
       : country = null,

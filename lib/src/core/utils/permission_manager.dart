@@ -1,5 +1,5 @@
+import 'package:chat_platform/v_platform.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:v_platform/v_platform.dart';
 
 abstract class PermissionManager {
   static Future<bool> isAllowRecord() async {

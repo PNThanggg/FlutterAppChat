@@ -1,13 +1,16 @@
 import 'dart:developer';
 
 import 'package:background_downloader/background_downloader.dart';
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_config/chat_preferences.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../../../../main.dart';
 import '../../../core/app_config/app_config_controller.dart';
@@ -24,7 +27,7 @@ class SplashController extends SLoadingController<String> {
 
   SplashController()
       : super(
-          SLoadingState(""),
+          LoadingState(""),
         );
 
   BuildContext get context => navigatorKey.currentState!.context;
@@ -49,7 +52,7 @@ class SplashController extends SLoadingController<String> {
         );
         await VChatController.I.profileApi.logout();
         AppAuth.setProfileNull();
-        await VAppPref.clear();
+        await ChatPreferences.clear();
         await VAppAlert.showOkAlertDialog(
           context: context,
           title: S.of(context).loginAgain,
@@ -103,7 +106,7 @@ class SplashController extends SLoadingController<String> {
       await FileDownloader().trackTasks();
       FileDownloader().configureNotificationForGroup(
         "files",
-        running: const TaskNotification(SConstants.appName, 'File 📁 : {filename}'),
+        running: const TaskNotification(ChatConstants.appName, 'File 📁 : {filename}'),
         progressBar: true,
         tapOpensFile: true,
       );
@@ -111,7 +114,7 @@ class SplashController extends SLoadingController<String> {
 
     await Future.delayed(const Duration(milliseconds: 650));
 
-    final map = VAppPref.getMap(SStorageKeys.myProfile.name);
+    final map = ChatPreferences.getMap(SStorageKeys.myProfile.name);
     if (map == null) {
       context.toPage(
         const RegisterView(),
@@ -120,11 +123,11 @@ class SplashController extends SLoadingController<String> {
       );
       return;
     }
-    final myProfile = SMyProfile.fromMap(map);
+    final myProfile = MyProfile.fromMap(map);
 
-    final isLogin = VAppPref.getBool(SStorageKeys.isLogin.name);
+    final isLogin = ChatPreferences.getBool(SStorageKeys.isLogin.name);
     if (isLogin) {
-      if (myProfile.roles.contains(UserRoles.admin)) {
+      if (myProfile.roles.contains(UserRole.admin)) {
         GetIt.I.get<AppController>().updateAdmin();
       }
 

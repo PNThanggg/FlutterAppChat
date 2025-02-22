@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:chat_config/chat_preferences.dart';
+import 'package:chat_core/chat_core.dart';
 import 'package:chopper/chopper.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 import 'exceptions.dart';
 
@@ -63,7 +64,7 @@ class AuthInterceptor implements Interceptor {
     final request = applyHeader(
       chain.request,
       'authorization',
-      "Bearer ${access ?? VAppPref.getHashedString(key: SStorageKeys.vAccessToken.name)}",
+      "Bearer ${access ?? ChatPreferences.getHashedString(key: SStorageKeys.vAccessToken.name)}",
     );
     return chain.proceed(request);
   }

@@ -1,7 +1,7 @@
 import 'dart:convert';
 
+import 'package:chat_platform/v_platform.dart';
 import 'package:chopper/chopper.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../../utils/enums.dart';
 

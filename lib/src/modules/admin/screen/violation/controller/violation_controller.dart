@@ -1,7 +1,7 @@
+import 'package:chat_core/chat_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get_it/get_it.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 import '../../../admin.dart';
 import '../state/violation_state.dart';
@@ -9,7 +9,7 @@ import '../state/violation_state.dart';
 class ViolationController extends SLoadingController<ViolationState> {
   ViolationController()
       : super(
-          SLoadingState<ViolationState>(
+          LoadingState<ViolationState>(
             ViolationState.empty(),
           ),
         );
@@ -69,8 +69,7 @@ class ViolationController extends SLoadingController<ViolationState> {
         setStateSuccess();
       },
       onError: (exception, trace) {
-        showToast(exception);
-
+        // showToast(exception);
         if (kDebugMode) {
           print(exception);
           print(trace);
@@ -81,7 +80,7 @@ class ViolationController extends SLoadingController<ViolationState> {
 
   Future<void> addViolation() async {
     if (textEditingController.text.isEmpty) {
-      showToast("Violation empty!!!");
+      // showToast("Violation empty!!!");
       return;
     }
 
@@ -105,7 +104,7 @@ class ViolationController extends SLoadingController<ViolationState> {
         setStateSuccess();
       },
       onError: (exception, trace) {
-        showToast(exception);
+        // showToast(exception);
 
         if (kDebugMode) {
           print(exception);

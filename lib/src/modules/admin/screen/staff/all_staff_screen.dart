@@ -1,7 +1,8 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 import 'all_staff_controller.dart';
 
@@ -34,7 +35,7 @@ class _AllStaffScreeState extends State<AllStaffScreen> {
           title: "List Staff".text.medium,
           centerTitle: true,
         ),
-        body: ValueListenableBuilder<SLoadingState<List<SSearchUser>>>(
+        body: ValueListenableBuilder<LoadingState<List<SearchUser>>>(
           valueListenable: controller,
           builder: (_, value, __) {
             return VAsyncWidgetsBuilder(

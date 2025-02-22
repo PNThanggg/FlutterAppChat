@@ -1,22 +1,25 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:s_translation/generated/l10n.dart';
 
 import '../../../../core/api_service/auth/auth_api_service.dart';
 import '../../../../core/dto/reset_password_dto.dart';
 import '../../auth_utils.dart';
 import '../../login/views/login_view.dart';
 
-class ResetPasswordController extends SLoadingController<SLoadingState?> {
+class ResetPasswordController extends SLoadingController<LoadingState?> {
   final codeController = TextEditingController();
   final newPasswordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
   final _authApiService = GetIt.I.get<AuthApiService>();
   final String email;
 
-  ResetPasswordController(this.email) : super(SLoadingState(null));
+  ResetPasswordController(this.email)
+      : super(
+          LoadingState(null),
+        );
 
   @override
   void onClose() {

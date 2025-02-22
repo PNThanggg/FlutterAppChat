@@ -1,10 +1,10 @@
 import 'dart:io';
 
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_platform/v_platform.dart';
 import 'package:chopper/chopper.dart';
 import 'package:http/http.dart' hide Response, Request;
 import 'package:http/io_client.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../interceptors.dart';
 
@@ -12,29 +12,29 @@ part 'story_api.chopper.dart';
 
 @ChopperApi(baseUrl: 'user-story')
 abstract class StoryApi extends ChopperService {
-  @Post(path: "/")
+  @POST(path: "/")
   @multipart
   Future<Response> createStory(
     @PartMap() List<PartValue> body,
     @PartFile("file") MultipartFile? file,
   );
 
-  @Delete(path: "/{id}", optionalBody: true)
+  @DELETE(path: "/{id}", optionalBody: true)
   Future<Response> deleteStory(@Path("id") String id);
 
-  @Get(path: "/")
+  @GET(path: "/")
   Future<Response> getUsersStories(@QueryMap() Map<String, dynamic> query);
 
-  @Post(path: "/views/{id}")
+  @POST(path: "/views/{id}")
   Future<Response> setSeen(@Path("id") String id);
 
-  @Get(path: "/me")
+  @GET(path: "/me")
   Future<Response> getMyStories();
 
-  @Post(path: "/views/{id}", optionalBody: true)
+  @POST(path: "/views/{id}", optionalBody: true)
   Future<Response> addViewToStory();
 
-  @Get(path: "/views/{id}")
+  @GET(path: "/views/{id}")
   Future<Response> getStoryViews(@QueryMap() Map<String, dynamic> query);
 
   static StoryApi create({
@@ -42,13 +42,15 @@ abstract class StoryApi extends ChopperService {
     String? accessToken,
   }) {
     final client = ChopperClient(
-      baseUrl: SConstants.sApiBaseUrl,
+      baseUrl: ChatConstants.sApiBaseUrl,
       services: [
         _$StoryApi(),
       ],
       converter: const JsonConverter(),
       //, HttpLoggingInterceptor()
-      interceptors: [AuthInterceptor()],
+      interceptors: [
+        AuthInterceptor(),
+      ],
       errorConverter: ErrorInterceptor(),
       client: VPlatforms.isWeb
           ? null

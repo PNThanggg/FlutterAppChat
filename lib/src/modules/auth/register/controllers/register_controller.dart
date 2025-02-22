@@ -1,10 +1,13 @@
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_config/chat_preferences.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart' hide DeviceInfoHelper;
-import 'package:v_platform/v_platform.dart';
 
 import '../../../../core/api_service/auth/auth_api_service.dart';
 import '../../../../core/api_service/profile/profile_api_service.dart';
@@ -13,7 +16,7 @@ import '../../../home/home_controller/views/home_view.dart';
 import '../../auth_utils.dart';
 import '../../waiting_list/views/waiting_list_page.dart';
 
-class RegisterController implements SBaseController {
+class RegisterController implements BaseController {
   final AuthApiService authService;
   final ProfileApiService profileService;
 
@@ -70,7 +73,7 @@ class RegisterController implements SBaseController {
       return;
     }
 
-    await vSafeApiCall<SMyProfile>(
+    await vSafeApiCall<MyProfile>(
       onLoading: () async {
         VAppAlert.showLoading(context: context);
       },
@@ -85,26 +88,28 @@ class RegisterController implements SBaseController {
       },
       request: () async {
         final deviceHelper = DeviceInfoHelper();
-        await authService.register(RegisterDto(
-          email: email,
-          method: RegisterMethod.email,
-          fullName: name,
-          pushKey: await (await VChatController.I.vChatConfig.currentPushProviderService)?.getToken(
-            VPlatforms.isWeb ? SConstants.webVapidKey : null,
+        await authService.register(
+          RegisterDto(
+            email: email,
+            method: RegisterMethod.email,
+            fullName: name,
+            pushKey: await (await VChatController.I.vChatConfig.currentPushProviderService)?.getToken(
+              VPlatforms.isWeb ? ChatConstants.webVapidKey : null,
+            ),
+            deviceInfo: await deviceHelper.getDeviceMapInfo(),
+            deviceId: await deviceHelper.getId(),
+            language: VLanguageListener.I.appLocal.languageCode,
+            platform: VPlatforms.currentPlatform,
+            password: password,
           ),
-          deviceInfo: await deviceHelper.getDeviceMapInfo(),
-          deviceId: await deviceHelper.getId(),
-          language: VLanguageListener.I.appLocal.languageCode,
-          platform: VPlatforms.currentPlatform,
-          password: password,
-        ));
+        );
         return profileService.getMyProfile();
       },
       onSuccess: (response) async {
         final status = response.registerStatus;
-        await VAppPref.setMap(SStorageKeys.myProfile.name, response.toMap());
+        await ChatPreferences.setMap(SStorageKeys.myProfile.name, response.toMap());
         if (status == RegisterStatus.accepted) {
-          await VAppPref.setBool(SStorageKeys.isLogin.name, true);
+          await ChatPreferences.setBool(SStorageKeys.isLogin.name, true);
           _homeNav(context);
         } else {
           context.toPage(

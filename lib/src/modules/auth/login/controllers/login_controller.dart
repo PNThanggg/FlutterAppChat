@@ -1,12 +1,16 @@
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_config/chat_preferences.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_shared_page/states.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart' hide DeviceInfoHelper;
-import 'package:v_platform/v_platform.dart';
 
 import '../../../../core/api_service/auth/auth_api_service.dart';
 import '../../../../core/api_service/profile/profile_api_service.dart';
@@ -17,7 +21,7 @@ import '../../../home/home_controller/views/home_view.dart';
 import '../../auth_utils.dart';
 import '../../waiting_list/views/waiting_list_page.dart';
 
-class LoginController implements SBaseController {
+class LoginController implements BaseController {
   final AuthApiService authService;
   final ProfileApiService profileService;
 
@@ -73,7 +77,7 @@ class LoginController implements SBaseController {
       return;
     }
 
-    await vSafeApiCall<SMyProfile>(
+    await vSafeApiCall<MyProfile>(
       onLoading: () async {
         VAppAlert.showLoading(context: context);
       },
@@ -99,7 +103,7 @@ class LoginController implements SBaseController {
           email: email,
           method: RegisterMethod.email,
           pushKey: await (await VChatController.I.vChatConfig.currentPushProviderService)?.getToken(
-            VPlatforms.isWeb ? SConstants.webVapidKey : null,
+            VPlatforms.isWeb ? ChatConstants.webVapidKey : null,
           ),
           deviceInfo: await deviceHelper.getDeviceMapInfo(),
           deviceId: await deviceHelper.getId(),
@@ -123,7 +127,7 @@ class LoginController implements SBaseController {
           }
         }
 
-        await VAppPref.setHashedString(
+        await ChatPreferences.setHashedString(
           SStorageKeys.adminAccessPassword.name,
           "adminsieunhancuongphong",
         );
@@ -133,9 +137,9 @@ class LoginController implements SBaseController {
           await vAdminApiService.login();
         }
 
-        await VAppPref.setMap(SStorageKeys.myProfile.name, response.toMap());
+        await ChatPreferences.setMap(SStorageKeys.myProfile.name, response.toMap());
         if (status == RegisterStatus.accepted) {
-          await VAppPref.setBool(SStorageKeys.isLogin.name, true);
+          await ChatPreferences.setBool(SStorageKeys.isLogin.name, true);
           _homeNav(context);
         } else {
           context.toPage(
@@ -151,8 +155,8 @@ class LoginController implements SBaseController {
     );
   }
 
-  void _setIsAdmin(SMyProfile value) {
-    if (value.roles.contains(UserRoles.admin)) {
+  void _setIsAdmin(MyProfile value) {
+    if (value.roles.contains(UserRole.admin)) {
       GetIt.I.get<AppController>().updateAdmin();
     }
   }

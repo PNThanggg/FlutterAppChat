@@ -1,12 +1,12 @@
+import 'package:chat_core/chat_core.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:number_paginator/number_paginator.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 class SDataTable extends StatelessWidget {
   final List<DataRow> data;
   final List<DataColumn2> columns;
-  final VChatLoadingState loadingState;
+  final ChatLoadingState loadingState;
   final NumberPaginatorController? paginatorController;
   final int maxPages;
 
@@ -21,7 +21,7 @@ class SDataTable extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (loadingState == VChatLoadingState.loading) {
+    if (loadingState == ChatLoadingState.loading) {
       return const Center(
         child: SizedBox(
           width: 40,

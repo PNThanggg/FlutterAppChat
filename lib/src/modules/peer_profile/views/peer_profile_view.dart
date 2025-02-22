@@ -1,9 +1,10 @@
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../../app/controller/app_controller.dart';
 import '../../home/mobile/settings_tab/widgets/settings_list_item_tile.dart';
@@ -54,13 +55,7 @@ class _PeerProfileViewState extends State<PeerProfileView> {
       navigationBar: CupertinoNavigationBar(
         border: Border.all(color: Colors.transparent),
         backgroundColor: context.theme.scaffoldBackgroundColor,
-        middle: S
-            .of(context)
-            .contactInfo
-            .h3
-            .semiBold
-            .color(context.theme.textTheme.bodyLarge!.color!)
-            .size(22),
+        middle: S.of(context).contactInfo.h3.semiBold.color(context.theme.textTheme.bodyLarge!.color!).size(22),
       ),
       child: SafeArea(
         child: ValueListenableBuilder(
@@ -82,13 +77,13 @@ class _PeerProfileViewState extends State<PeerProfileView> {
                           child: controller.data!.searchUser.hasBadge
                               ? VCircleVerifiedAvatar(
                                   vFileSource: VPlatformFile.fromUrl(
-                                    url: controller.data!.searchUser.baseUser.userImage,
+                                    networkUrl: controller.data!.searchUser.baseUser.userImage,
                                   ),
                                   radius: 90,
                                 )
                               : VCircleAvatar(
                                   vFileSource: VPlatformFile.fromUrl(
-                                    url: controller.data!.searchUser.baseUser.userImage,
+                                    networkUrl: controller.data!.searchUser.baseUser.userImage,
                                   ),
                                   radius: 90,
                                 ),
@@ -104,8 +99,7 @@ class _PeerProfileViewState extends State<PeerProfileView> {
                         const SizedBox(
                           height: 8,
                         ),
-                        (controller.data!.searchUser.bio ??
-                                "${S.of(context).hiIamUse} ${SConstants.appName}")
+                        (controller.data!.searchUser.bio ?? "${S.of(context).hiIamUse} ${ChatConstants.appName}")
                             .h6
                             .size(16)
                             .color(CupertinoColors.systemGrey),
@@ -142,9 +136,7 @@ class _PeerProfileViewState extends State<PeerProfileView> {
                                     width: 5,
                                   ),
                                   Text(
-                                    value.data!.isOnline
-                                        ? S.of(context).online
-                                        : S.of(context).offline,
+                                    value.data!.isOnline ? S.of(context).online : S.of(context).offline,
                                     style: context.textTheme.bodyLarge?.copyWith(
                                       color: value.data!.isOnline ? Colors.green : Colors.grey,
                                     ),
@@ -198,10 +190,7 @@ class _PeerProfileViewState extends State<PeerProfileView> {
                                       ),
                                     ),
                                     Expanded(
-                                      child: "Staff"
-                                          .text
-                                          .medium
-                                          .color(Theme.of(context).textTheme.bodyLarge!.color!),
+                                      child: "Staff".text.medium.color(Theme.of(context).textTheme.bodyLarge!.color!),
                                     ),
                                     ValueListenableBuilder(
                                       valueListenable: controller,

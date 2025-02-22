@@ -1,11 +1,7 @@
-// Copyright 2023, the hatemragab project author.
-// All rights reserved. Use of this source code is governed by a
-// MIT license that can be found in the LICENSE file.
-
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:s_translation/generated/l10n.dart';
+
 import '../../../../mobile/settings_tab/widgets/settings_list_item_tile.dart';
 import '../controllers/help_controller.dart';
 

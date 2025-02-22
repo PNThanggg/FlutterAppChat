@@ -1,9 +1,12 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:chat_config/chat_preferences.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_shared_page/states.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 import '../../../../../core/api_service/profile/profile_api_service.dart';
 import '../../../../splash/views/splash_view.dart';
@@ -13,7 +16,10 @@ import '../views/sheet_for_update_password.dart';
 class MyAccountController extends SLoadingController<MyAccountState?> {
   final ProfileApiService profileApiService;
 
-  MyAccountController(this.profileApiService) : super(SLoadingState(null));
+  MyAccountController(this.profileApiService)
+      : super(
+          LoadingState(null),
+        );
 
   @override
   void onClose() {}
@@ -36,7 +42,7 @@ class MyAccountController extends SLoadingController<MyAccountState?> {
         final newProfile = AppAuth.myProfile.copyWith(
           baseUser: AppAuth.myProfile.baseUser.copyWith(userImage: response),
         );
-        await VAppPref.setMap(SStorageKeys.myProfile.name, newProfile.toMap());
+        await ChatPreferences.setMap(SStorageKeys.myProfile.name, newProfile.toMap());
         AppAuth.setProfileNull();
         update();
         // context.pop();
@@ -65,7 +71,7 @@ class MyAccountController extends SLoadingController<MyAccountState?> {
         final newProfile = AppAuth.myProfile.copyWith(
           baseUser: AppAuth.myProfile.baseUser.copyWith(fullName: response),
         );
-        await VAppPref.setMap(SStorageKeys.myProfile.name, newProfile.toMap());
+        await ChatPreferences.setMap(SStorageKeys.myProfile.name, newProfile.toMap());
         AppAuth.setProfileNull();
         update();
         //  context.pop();
@@ -92,7 +98,7 @@ class MyAccountController extends SLoadingController<MyAccountState?> {
       },
       onSuccess: (response) async {
         final newProfile = AppAuth.myProfile.copyWith(bio: response);
-        await VAppPref.setMap(SStorageKeys.myProfile.name, newProfile.toMap());
+        await ChatPreferences.setMap(SStorageKeys.myProfile.name, newProfile.toMap());
         AppAuth.setProfileNull();
         update();
         //context.pop();
@@ -132,7 +138,7 @@ class MyAccountController extends SLoadingController<MyAccountState?> {
           await VChatController.I.profileApi.logout();
           await profileApiService.deleteMyAccount(passwordRes.first);
           AppAuth.setProfileNull();
-          await VAppPref.clear();
+          await ChatPreferences.clear();
         },
         onSuccess: (response) async {
           VChatController.I.navigatorKey.currentContext!.toPage(

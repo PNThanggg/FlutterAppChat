@@ -1,8 +1,8 @@
 import 'dart:io';
 
+import 'package:chat_platform/v_platform.dart';
 import 'package:chopper/chopper.dart';
 import 'package:http/io_client.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../interceptors.dart';
 
@@ -34,15 +34,15 @@ abstract class ViolationApi extends ChopperService {
     return _$ViolationApi(client);
   }
 
-  @Get(path: "/")
+  @GET(path: "/")
   Future<Response> getAllViolation();
 
-  @Post(path: "/create")
+  @POST(path: "/create")
   Future<Response> addViolation(
     @Body() Map<String, String> body,
   );
 
-  @Delete(path: "/{id}")
+  @DELETE(path: "/{id}")
   Future<Response> deleteViolation(
     @Path("id") String id,
   );

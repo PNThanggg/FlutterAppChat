@@ -1,11 +1,11 @@
-import 'package:super_up_core/super_up_core.dart';
+import 'package:chat_core/chat_core.dart';
 
 import '../state/app_state.dart';
 
 class AppController extends SLoadingController<AppState> {
   AppController()
       : super(
-          SLoadingState(
+          LoadingState(
             AppState(isAdmin: false),
           ),
         );

@@ -1,6 +1,7 @@
-import 'package:flutter/foundation.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_platform/v_platform.dart';
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_config/chat_preferences.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
 
 import '../../dto/reset_password_dto.dart';
 import '../interceptors.dart';
@@ -15,7 +16,7 @@ class AuthApiService {
     final body = dto.toMap();
     final response = await _authApi!.login(body);
     throwIfNotSuccess(response);
-    await VAppPref.setHashedString(
+    await ChatPreferences.setHashedString(
       SStorageKeys.vAccessToken.name,
       extractDataFromResponse(response)['accessToken'].toString(),
     );
@@ -42,7 +43,7 @@ class AuthApiService {
             ),
     );
     throwIfNotSuccess(response);
-    await VAppPref.setHashedString(
+    await ChatPreferences.setHashedString(
       SStorageKeys.vAccessToken.name,
       extractDataFromResponse(response)['accessToken'].toString(),
     );
@@ -54,7 +55,7 @@ class AuthApiService {
   }) {
     _authApi ??= AuthApi.create(
       accessToken: accessToken,
-      baseUrl: baseUrl ?? SConstants.sApiBaseUrl,
+      baseUrl: baseUrl ?? ChatConstants.sApiBaseUrl,
     );
     return AuthApiService._();
   }

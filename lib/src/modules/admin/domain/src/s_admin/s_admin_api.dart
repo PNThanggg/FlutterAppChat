@@ -1,9 +1,9 @@
 import 'dart:io';
 
+import 'package:chat_platform/v_platform.dart';
 import 'package:chopper/chopper.dart';
 import 'package:http/http.dart' hide Response, Request;
 import 'package:http/io_client.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../interceptors.dart';
 
@@ -11,48 +11,48 @@ part 's_admin_api.chopper.dart';
 
 @ChopperApi(baseUrl: 'admin-panel')
 abstract class SAdminApi extends ChopperService {
-  @Get(path: "/dashboard")
+  @GET(path: "/dashboard")
   Future<Response> dashboard();
 
-  @Get(path: "/config")
+  @GET(path: "/config")
   Future<Response> config();
 
-  @Patch(path: "/config")
+  @PATCH(path: "/config")
   Future<Response> updateConfig(@Body() Map<String, dynamic> body);
 
-  @Post(path: "/login")
+  @POST(path: "/login")
   Future<Response> login();
 
-  @Get(path: "/users")
+  @GET(path: "/users")
   Future<Response> getDashUsers(
     @QueryMap() Map<String, dynamic> body,
   );
 
-  @Get(path: "/notifications")
+  @GET(path: "/notifications")
   Future<Response> getNotifications();
 
-  @Post(path: '/notifications')
+  @POST(path: '/notifications')
   @multipart
   Future<Response> createNotifications(
     @PartFile("file") MultipartFile? file,
     @PartMap() List<PartValue> body,
   );
 
-  @Patch(path: "/user/info/{id}")
+  @PATCH(path: "/user/info/{id}")
   Future<Response> updateUserData(
     @Path("id") String id,
     @Body() Map<String, dynamic> body,
   );
 
-  @Get(path: "/user/info/{id}")
+  @GET(path: "/user/info/{id}")
   Future<Response> getUserInfo(
     @Path("id") String id,
   );
 
-  @Get(path: "/users/all-staff")
+  @GET(path: "/users/all-staff")
   Future<Response> getAllStaff();
 
-  @Put(path: "/users/toggle-staff/{id}")
+  @PUT(path: "/users/toggle-staff/{id}")
   Future<Response> toggleStaff(
     @Path("id") String id,
   );

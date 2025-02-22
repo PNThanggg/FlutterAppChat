@@ -1,16 +1,17 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/widgets.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 import '../../../peer_profile/views/peer_profile_view.dart';
 import '../../admin.dart';
 
-class AllStaffController extends SLoadingController<List<SSearchUser>> {
+class AllStaffController extends SLoadingController<List<SearchUser>> {
   final SAdminApiService adminApiService;
 
   AllStaffController(this.adminApiService)
       : super(
-          SLoadingState(
+          LoadingState(
             [],
           ),
         );
@@ -26,7 +27,7 @@ class AllStaffController extends SLoadingController<List<SSearchUser>> {
   }
 
   Future<void> getData() async {
-    await vSafeApiCall<List<SSearchUser>>(
+    await vSafeApiCall<List<SearchUser>>(
       onLoading: () {
         setStateLoading();
       },
@@ -47,7 +48,7 @@ class AllStaffController extends SLoadingController<List<SSearchUser>> {
     );
   }
 
-  void onItemPress(SSearchUser item, BuildContext context) {
+  void onItemPress(SearchUser item, BuildContext context) {
     debugPrint("ALL_STAFF_CONTROLLER:: ${item.toString()}");
 
     context

@@ -1,9 +1,9 @@
 import 'package:auto_animated/auto_animated.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../../admin.dart';
 import 'dashboard_controller.dart';
@@ -152,7 +152,7 @@ class _DashboardPageState extends State<DashboardPage> with TickerProviderStateM
       body: ValueListenableBuilder(
         valueListenable: controller,
         builder: (context, value, child) {
-          if (value.loadingState == VChatLoadingState.loading) {
+          if (value.loadingState == ChatLoadingState.loading) {
             return const Center(
               child: SizedBox(
                 width: 40,

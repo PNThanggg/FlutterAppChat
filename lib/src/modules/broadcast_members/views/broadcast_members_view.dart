@@ -1,8 +1,8 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:loadmore/loadmore.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 import '../controllers/broadcast_members_controller.dart';
 
@@ -45,7 +45,7 @@ class _BroadcastMembersViewState extends State<BroadcastMembersView> {
       child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(5),
-          child: ValueListenableBuilder<SLoadingState<List<VBroadcastMember>>>(
+          child: ValueListenableBuilder<LoadingState<List<VBroadcastMember>>>(
             valueListenable: controller,
             builder: (_, value, __) {
               return VAsyncWidgetsBuilder(
@@ -63,7 +63,8 @@ class _BroadcastMembersViewState extends State<BroadcastMembersView> {
                       padding: const EdgeInsets.all(10),
                       itemBuilder: (context, index) {
                         return SUserItem(
-                          subtitle: format(value.data[index].createdAtLocal, locale: Localizations.localeOf(context).languageCode),
+                          subtitle: format(value.data[index].createdAtLocal,
+                              locale: Localizations.localeOf(context).languageCode),
                           onTap: () => controller.onUserTab(context, value.data[index].userData),
                           baseUser: value.data[index].userData,
                         );

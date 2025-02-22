@@ -1,12 +1,13 @@
 import 'dart:async';
 
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:package_info_plus/package_info_plus.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
 import 'package:universal_html/html.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../api_service/profile/profile_api_service.dart';
 import '../app_config/app_config_controller.dart';
@@ -14,7 +15,10 @@ import '../app_config/app_config_controller.dart';
 class VersionCheckerController extends ValueNotifier<SVersion> {
   final ProfileApiService profileApiService;
 
-  VersionCheckerController(this.profileApiService) : super(SVersion.empty());
+  VersionCheckerController(this.profileApiService)
+      : super(
+          SVersion.empty(),
+        );
 
   Future<SVersion> _check() async {
     final res = await vSafeApiCall<SVersion>(

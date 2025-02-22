@@ -1,9 +1,9 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import 'notifications_controller.dart';
 
@@ -61,7 +61,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Visibility(
-                            visible: loadingState == VChatLoadingState.loading,
+                            visible: loadingState == ChatLoadingState.loading,
                             child: const LinearProgressIndicator(),
                           ),
                           const SizedBox(height: 5),
@@ -81,7 +81,9 @@ class _NotificationsPageState extends State<NotificationsPage> {
                                   leading: value.data[index].imageUrl == null
                                       ? null
                                       : VCircleAvatar(
-                                          vFileSource: VPlatformFile.fromUrl(url: value.data[index].imageUrl!),
+                                          vFileSource: VPlatformFile.fromUrl(
+                                            networkUrl: value.data[index].imageUrl!,
+                                          ),
                                         ),
                                 );
                               },
@@ -95,8 +97,7 @@ class _NotificationsPageState extends State<NotificationsPage> {
                               itemCount: value.data.length,
                             ),
                           ),
-                          const SizedBox(height: 5),
-                          const SizedBox(height: 5),
+                          const SizedBox(height: 12),
                         ],
                       ),
                     ),

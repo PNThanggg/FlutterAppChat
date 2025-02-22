@@ -1,5 +1,7 @@
+import 'package:chat_config/chat_preferences.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
 import 'package:flutter/foundation.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 import '../api_service/api_service.dart';
 
@@ -14,7 +16,7 @@ class VAppConfigController {
         return _profileApiService.appConfig();
       },
       onSuccess: (response) async {
-        await VAppPref.setMap(
+        await ChatPreferences.setMap(
           SStorageKeys.appConfigModelData.name,
           response.toMap(),
         );
@@ -29,7 +31,7 @@ class VAppConfigController {
   }
 
   static AppConfigModel get appConfig {
-    final cachedConfig = VAppPref.getMap(SStorageKeys.appConfigModelData.name);
+    final cachedConfig = ChatPreferences.getMap(SStorageKeys.appConfigModelData.name);
     try {
       if (cachedConfig != null) {
         return AppConfigModel.fromMap(cachedConfig);

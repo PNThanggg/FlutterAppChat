@@ -1,15 +1,22 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 import '../../../../../../main.dart';
 import '../../admin.dart';
 
 class SettingsController extends SLoadingController<AppConfigModel> {
-  SettingsController() : super(SLoadingState(AppConfigModel.init()));
-  final _apiService = GetIt.I.get<SAdminApiService>();
+  SettingsController()
+      : super(
+          LoadingState(
+            AppConfigModel.init(),
+          ),
+        );
+
+  final SAdminApiService _apiService = GetIt.I.get<SAdminApiService>();
 
   @override
   void onClose() {}
@@ -166,9 +173,15 @@ class SettingsController extends SLoadingController<AppConfigModel> {
           prefixText: "Google Android",
         ),
         DialogTextField(
-            initialText: value.data.windowsStoreUrl, hintText: "Microsoft windows", keyboardType: TextInputType.url, prefixText: "Microsoft windows"),
+            initialText: value.data.windowsStoreUrl,
+            hintText: "Microsoft windows",
+            keyboardType: TextInputType.url,
+            prefixText: "Microsoft windows"),
         DialogTextField(
-            hintText: "Apple macStoreUrl", initialText: value.data.macStoreUrl, keyboardType: TextInputType.url, prefixText: "Apple MacOs"),
+            hintText: "Apple macStoreUrl",
+            initialText: value.data.macStoreUrl,
+            keyboardType: TextInputType.url,
+            prefixText: "Apple MacOs"),
         DialogTextField(
           hintText: "Web chat",
           initialText: value.data.webChatUrl,

@@ -1,12 +1,12 @@
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../../create_group/views/create_group_view.dart';
 
 class SheetForCreateGroupFromProfile extends StatelessWidget {
-  final SBaseUser peer;
+  final BaseUser peer;
 
   const SheetForCreateGroupFromProfile({
     super.key,

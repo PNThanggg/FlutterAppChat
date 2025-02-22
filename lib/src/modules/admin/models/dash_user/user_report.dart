@@ -1,11 +1,11 @@
-import 'package:super_up_core/super_up_core.dart';
+import 'package:chat_model/model.dart';
 
 class UserReport {
   final String id;
   final String content;
   final String type;
   final String createdAt;
-  final SBaseUser reporter;
+  final BaseUser reporter;
 
   const UserReport({
     required this.id,
@@ -20,7 +20,7 @@ class UserReport {
         content = "-----",
         type = "------",
         createdAt = DateTime.now().toIso8601String(),
-        reporter = SBaseUser.myUser;
+        reporter = BaseUser.myUser;
 
   @override
   String toString() {
@@ -32,7 +32,7 @@ class UserReport {
     String? content,
     String? type,
     String? createdAt,
-    SBaseUser? reporter,
+    BaseUser? reporter,
   }) {
     return UserReport(
       id: id ?? this.id,
@@ -59,7 +59,7 @@ class UserReport {
       content: map['content'] as String,
       type: map['type'] as String,
       createdAt: map['createdAt'] as String,
-      reporter: SBaseUser.fromMap(map['uId']),
+      reporter: BaseUser.fromMap(map['uId']),
     );
   }
 }

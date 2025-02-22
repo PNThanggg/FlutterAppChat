@@ -1,8 +1,9 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_shared_page/states.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 import '../../../core/api_service/api_service.dart';
 import '../../../core/dto/create_report_dto.dart';
@@ -13,7 +14,12 @@ class ReportController extends SLoadingController<ReportState> {
   final _profileApi = GetIt.I.get<ProfileApiService>();
   final String userId;
 
-  ReportController(this.userId) : super(SLoadingState(ReportState()));
+  ReportController(this.userId)
+      : super(
+          LoadingState(
+            ReportState(),
+          ),
+        );
 
   @override
   void onClose() {

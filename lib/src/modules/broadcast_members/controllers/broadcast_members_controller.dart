@@ -1,8 +1,9 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 import '../../peer_profile/views/peer_profile_view.dart';
 
@@ -15,7 +16,7 @@ class BroadcastMembersController extends SLoadingController<List<VBroadcastMembe
     this.roomId,
     this.context,
   ) : super(
-          SLoadingState(<VBroadcastMember>[]),
+          LoadingState(<VBroadcastMember>[]),
         );
 
   @override
@@ -54,7 +55,7 @@ class BroadcastMembersController extends SLoadingController<List<VBroadcastMembe
     txtController.dispose();
   }
 
-  Future onUserTab(BuildContext context, SBaseUser user) async {
+  Future onUserTab(BuildContext context, BaseUser user) async {
     if (user.isMe) {
       return;
     }
@@ -63,12 +64,12 @@ class BroadcastMembersController extends SLoadingController<List<VBroadcastMembe
     data.add(ModelSheetItem(
       title: S.of(context).deleteMember,
       id: 2,
-      iconData: const Icon(PhosphorIcons.trash),
+      iconData: const Icon(PhosphorIconsLight.trash),
     ));
     data.add(ModelSheetItem(
       title: S.of(context).profile,
       id: 5,
-      iconData: const Icon(PhosphorIcons.user),
+      iconData: const Icon(PhosphorIconsLight.user),
     ));
     final res = await VAppAlert.showModalSheetWithActions(
       content: data,

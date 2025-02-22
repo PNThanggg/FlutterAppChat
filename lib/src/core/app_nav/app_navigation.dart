@@ -1,6 +1,6 @@
+import 'package:chat_core/chat_core.dart' hide NoAnimationPageRoute;
 import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
-import 'package:super_up_core/super_up_core.dart' hide NoAnimationPageRoute;
 
 import '../../modules/home/home_wide_modules/wide_navigation/no_animation_page_route.dart';
 import '../../modules/home/home_wide_modules/wide_navigation/wide_chat_info_navigation.dart';

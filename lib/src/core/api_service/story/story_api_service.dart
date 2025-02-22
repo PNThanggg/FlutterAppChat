@@ -1,5 +1,5 @@
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_platform/v_platform.dart';
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_platform/v_platform.dart';
 
 import '../../models/story/create_story_dto.dart';
 import '../../models/story/story_model.dart';
@@ -55,7 +55,7 @@ class StoryApiService {
   }) {
     _storyApi ??= StoryApi.create(
       accessToken: accessToken,
-      baseUrl: baseUrl ?? SConstants.sApiBaseUrl,
+      baseUrl: baseUrl ?? ChatConstants.sApiBaseUrl,
     );
     return StoryApiService._();
   }

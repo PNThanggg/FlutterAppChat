@@ -1,11 +1,15 @@
+import 'package:chat_core/chat_core.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
+
 import '../states/privacy_policy_state.dart';
 
 class PrivacyPolicyController extends SLoadingController<PrivacyPolicyState?> {
   final txtController = TextEditingController();
 
-  PrivacyPolicyController() : super(SLoadingState(null));
+  PrivacyPolicyController()
+      : super(
+          LoadingState(null),
+        );
 
   @override
   void onClose() {
