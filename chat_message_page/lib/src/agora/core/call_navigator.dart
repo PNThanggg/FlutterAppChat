@@ -1,20 +1,23 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_message_page/chat_message_page.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_message_page/src/agora/pages/pick_up/pick_up.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
 
-import '../../../v_chat_message_page.dart';
 import '../pages/call/call_page.dart';
+import '../pages/pick_up/pick_up.dart';
 
 final vDefaultCallNavigator = VCallNavigator(
   toPickUp: (context, callModel) async {
     if (!VPlatforms.isMobile) return;
-    context.toPage(PickUp(
-      callModel: callModel,
-      localization: VCallLocalization.fromEnglish(),
-    ));
+
+    context.toPage(
+      PickUp(
+        callModel: callModel,
+        localization: VCallLocalization.fromEnglish(),
+      ),
+    );
   },
   toCall: (context, dto) async {
     if (!VPlatforms.isMobile) return;
