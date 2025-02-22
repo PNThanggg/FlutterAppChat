@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:developer';
 
-import 'package:chat_core/chat_core.dart';
+import 'package:chat_config/chat_preferences.dart';
 import 'package:chat_platform/v_platform.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:eraser/eraser.dart';
@@ -12,7 +12,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'package:http/http.dart';
 
-class VChatFcmProver extends VChatPushProviderBase {
+class ChatFcmProver extends VChatPushProviderBase {
   StreamSubscription? _onTokenRefresh;
   StreamSubscription? _onNewMessage;
   StreamSubscription? _onMsgClicked;
@@ -171,14 +171,14 @@ Future<void> vFirebaseMessagingBackgroundHandler(RemoteMessage message) async {
   if (await FlutterAppBadger.isAppBadgeSupported()) {
     FlutterAppBadger.updateBadgeCount(number);
   }
-  await VAppPref.init();
+  await ChatPreferences.init();
   final String? fromVChat = message.data['fromVChat'];
   final String? vMessage = message.data['vMessage'];
   if (fromVChat == null || vMessage == null) return Future<void>.value();
   final msg = MessageFactory.createBaseMessage(
     jsonDecode(vMessage) as Map<String, dynamic>,
   );
-  final token = VAppPref.getHashedString(key: "vAccessToken");
+  final token = ChatPreferences.getHashedString(key: "vAccessToken");
   if (token != null) {
     try {
       await setDeliverForThisRoom(msg.roomId, token);
@@ -198,7 +198,7 @@ Future<void> vFirebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
 @pragma('vm:entry-point')
 Future setDeliverForThisRoom(String roomId, String token) async {
-  final baseUrl = VAppPref.getStringOrNullKey("vBaseUrl");
+  final baseUrl = ChatPreferences.getStringOrNullKey("vBaseUrl");
   final res = await patch(
     Uri.parse(
       "$baseUrl/channel/$roomId/deliver",

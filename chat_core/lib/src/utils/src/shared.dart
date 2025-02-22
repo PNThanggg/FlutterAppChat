@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:chat_core/chat_core.dart';
 
 BoxDecoration sMessageBackground({
   required bool isDark,
