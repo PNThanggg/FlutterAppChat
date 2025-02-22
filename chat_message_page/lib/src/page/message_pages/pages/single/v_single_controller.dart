@@ -1,11 +1,13 @@
 import 'dart:async';
 
+import 'package:chat_config/chat_preferences.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_message_page/chat_message_page.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_message_page/src/page/message_pages/pages/single/single_app_bar_controller.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart' hide vSafeApiCall;
 
-import '../../../../../v_chat_message_page.dart';
+import 'single_app_bar_controller.dart';
 
 class VSingleController extends VBaseMessageController with StreamMix {
   final SingleAppBarController singleAppBarController;
@@ -80,7 +82,7 @@ class VSingleController extends VBaseMessageController with StreamMix {
         isVideoEnable: isVideo,
         roomId: vRoom.id,
         isCaller: true,
-        peerUser: SBaseUser(
+        peerUser: BaseUser(
           userImage: vRoom.thumbImage,
           fullName: vRoom.realTitle,
           id: vRoom.peerId!,
@@ -126,13 +128,13 @@ class VSingleController extends VBaseMessageController with StreamMix {
   }
 
   Future<void> _getFromCache() async {
-    final res = VAppPref.getMap("ban-${vRoom.id}");
+    final res = ChatPreferences.getMap("ban-${vRoom.id}");
     if (res == null) return;
     updateValue(VSingleBlockModel.fromMap(res));
   }
 
   Future<void> updateValue(VSingleBlockModel value) async {
-    await VAppPref.setMap("ban-${vRoom.id}", value.toMap());
+    await ChatPreferences.setMap("ban-${vRoom.id}", value.toMap());
     if (value.isThereBan) {
       inputStateController.closeChat();
     } else {
