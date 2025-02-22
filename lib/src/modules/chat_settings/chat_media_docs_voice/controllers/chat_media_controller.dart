@@ -1,6 +1,6 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:get_it/get_it.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 import '../../../../core/app_config/app_config_controller.dart';
 
@@ -19,7 +19,12 @@ class ChatMediaState {
 class ChatMediaController extends SLoadingController<ChatMediaState> {
   final String roomId;
 
-  ChatMediaController(this.roomId) : super(SLoadingState(ChatMediaState()));
+  ChatMediaController(this.roomId)
+      : super(
+          LoadingState(
+            ChatMediaState(),
+          ),
+        );
 
   final appConfigController = GetIt.I.get<VAppConfigController>();
 

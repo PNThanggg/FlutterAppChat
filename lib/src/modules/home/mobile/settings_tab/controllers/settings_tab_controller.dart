@@ -1,25 +1,27 @@
 import 'dart:async';
 
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_config/chat_preferences.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:s_translation/generated/l10n.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
-import 'package:super_up/src/modules/home/settings_modules/test_notification/test_notification_screen.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_firebase_fcm/v_chat_firebase_fcm.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../../../../../../main.dart';
 import '../../../../../core/app_config/app_config_controller.dart';
 import '../../../../../core/controllers/version_checker_controller.dart';
 import '../../../../app/controller/app_controller.dart';
 import '../../../../splash/views/splash_view.dart';
+import '../../../settings_modules/test_notification/test_notification_screen.dart';
 import '../states/setting_state.dart';
 import '../views/media_storage_settings.dart';
 import '../views/sheet_for_choose_language.dart';
@@ -27,17 +29,17 @@ import '../views/sheet_for_choose_language.dart';
 class SettingsTabController extends SLoadingController<SettingState> {
   SettingsTabController()
       : super(
-          SLoadingState(
+          LoadingState(
             SettingState(
-              isDarkMode: VAppPref.getStringOrNullKey(
+              isDarkMode: ChatPreferences.getStringOrNullKey(
                     SStorageKeys.appTheme.name,
                   ) ==
                   ThemeMode.dark.name,
-              language: VAppPref.getStringOrNullKey(
+              language: ChatPreferences.getStringOrNullKey(
                     SStorageKeys.appLanguageTitle.name,
                   ) ??
                   "English",
-              inAppAlerts: VAppPref.getBoolOrNull(
+              inAppAlerts: ChatPreferences.getBoolOrNull(
                     SStorageKeys.inAppAlerts.name,
                   ) ??
                   true,
@@ -67,7 +69,7 @@ class SettingsTabController extends SLoadingController<SettingState> {
         request: () async {
           await VChatController.I.profileApi.logout();
           AppAuth.setProfileNull();
-          await VAppPref.clear();
+          await ChatPreferences.clear();
         },
         onSuccess: (response) {
           context.toPage(
@@ -117,7 +119,7 @@ class SettingsTabController extends SLoadingController<SettingState> {
     }
     value.data = value.data.copyWith(language: res.title);
     await VLanguageListener.I.setLocal(Locale(res.id.toString()));
-    await VAppPref.setStringKey(
+    await ChatPreferences.setStringKey(
       SStorageKeys.appLanguageTitle.name,
       res.title,
     );
@@ -146,7 +148,7 @@ class SettingsTabController extends SLoadingController<SettingState> {
     if (res == null) return;
     value.data = value.data.copyWith(inAppAlerts: res.id);
     notifyListeners();
-    await VAppPref.setBool(
+    await ChatPreferences.setBool(
       SStorageKeys.inAppAlerts.name,
       res.id,
     );
@@ -156,7 +158,7 @@ class SettingsTabController extends SLoadingController<SettingState> {
     if (res.id) {
       ///enable
       final token = await pushService.getToken(
-        VPlatforms.isWeb ? SConstants.webVapidKey : null,
+        VPlatforms.isWeb ? ChatConstants.webVapidKey : null,
       );
       if (token == null) return;
       await VChatController.I.nativeApi.remote.profile.addFcm(token);
@@ -189,7 +191,7 @@ class SettingsTabController extends SLoadingController<SettingState> {
   FutureOr<void> tellAFriend(BuildContext context) async {
     await Share.share('''
     
-    Install ${SConstants.appName}
+    Install ${ChatConstants.appName}
     
     ANDROID
     ${appConfig.googlePayUrl}

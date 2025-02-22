@@ -1,8 +1,9 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../../../../chat_settings/chat_star_messages/views/chat_star_messages_page.dart';
 import '../../../home_controller/widgets/chat_un_read_counter.dart';
@@ -51,7 +52,7 @@ class _SettingsTabViewState extends State<SettingsTabView> {
           ],
           body: SingleChildScrollView(
             padding: EdgeInsets.symmetric(horizontal: VPlatforms.isMobile ? 15 : 0),
-            child: ValueListenableBuilder<SLoadingState<SettingState>>(
+            child: ValueListenableBuilder<LoadingState<SettingState>>(
               valueListenable: controller,
               builder: (_, value, ___) {
                 return Column(
@@ -74,12 +75,12 @@ class _SettingsTabViewState extends State<SettingsTabView> {
                           leading: AppAuth.myProfile.isPrime
                               ? VCircleVerifiedAvatar(
                                   vFileSource: VPlatformFile.fromUrl(
-                                    url: AppAuth.myProfile.baseUser.userImage,
+                                    networkUrl: AppAuth.myProfile.baseUser.userImage,
                                   ),
                                 )
                               : VCircleAvatar(
                                   vFileSource: VPlatformFile.fromUrl(
-                                    url: AppAuth.myProfile.baseUser.userImage,
+                                    networkUrl: AppAuth.myProfile.baseUser.userImage,
                                   ),
                                 ),
                           subtitle: AppAuth.myProfile.bio,
@@ -259,7 +260,7 @@ class _SettingsTabViewState extends State<SettingsTabView> {
                           color: Colors.red,
                           title: S.of(context).logOut,
                           onTap: () => controller.logout(context),
-                          icon: PhosphorIcons.arrowsOut,
+                          icon: PhosphorIconsLight.arrowsOut,
                           textColor: context.theme.textTheme.bodyMedium?.color,
                         ),
                       ],

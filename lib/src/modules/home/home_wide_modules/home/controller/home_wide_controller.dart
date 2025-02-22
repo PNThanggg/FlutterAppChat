@@ -1,8 +1,8 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_room_page/chat_room_page.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_room_page/v_chat_room_page.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 import '../../../../../core/api_service/auth/auth_api_service.dart';
 import '../../../../../core/api_service/profile/profile_api_service.dart';
@@ -13,7 +13,7 @@ import '../../../../create_group/mobile/sheet_for_create_group.dart';
 import '../../../mobile/settings_tab/views/settings_tab_view.dart';
 import '../../../mobile/users_tab/views/users_tab_view.dart';
 
-class HomeWideController implements SBaseController {
+class HomeWideController implements BaseController {
   final ProfileApiService profileApiService;
   final AuthApiService authApiService;
 

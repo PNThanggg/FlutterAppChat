@@ -1,10 +1,11 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../../../group_members/views/group_members_view.dart';
 import '../../chat_media_docs_voice/views/chat_media_view.dart';
@@ -17,7 +18,14 @@ class GroupRoomSettingsController extends SLoadingController<GroupRoomSettingSta
   final sizer = GetIt.I.get<AppSizeHelper>();
   final VToChatSettingsModel _settingsModel;
 
-  GroupRoomSettingsController(this._settingsModel) : super(SLoadingState(GroupRoomSettingState(_settingsModel)));
+  GroupRoomSettingsController(this._settingsModel)
+      : super(
+          LoadingState(
+            GroupRoomSettingState(
+              _settingsModel,
+            ),
+          ),
+        );
 
   VToChatSettingsModel get settingsModel => value.data.settingsModel;
 
@@ -73,7 +81,7 @@ class GroupRoomSettingsController extends SLoadingController<GroupRoomSettingSta
       builder: (context) => SheetForAddMembersToGroup(
         groupId: roomId,
       ),
-    ) as List<SBaseUser>?;
+    ) as List<BaseUser>?;
 
     if (users != null) {
       await _addGroupMembers(context, users.map((e) => e.id).toList());
@@ -223,7 +231,7 @@ class GroupRoomSettingsController extends SLoadingController<GroupRoomSettingSta
       VImageViewer(
         showDownload: true,
         platformFileSource: VPlatformFile.fromUrl(
-          url: settingsModel.image,
+          networkUrl: settingsModel.image,
         ),
         downloadingLabel: S.of(context).downloading,
         successfullyDownloadedInLabel: S.of(context).successfullyDownloadedIn,
@@ -259,7 +267,8 @@ class GroupRoomSettingsController extends SLoadingController<GroupRoomSettingSta
     if (newTitle != settingsModel.title) {
       await vSafeApiCall<String>(
         request: () async {
-          await VChatController.I.nativeApi.local.room.updateRoomName(VUpdateRoomNameEvent(roomId: roomId, name: newTitle));
+          await VChatController.I.nativeApi.local.room
+              .updateRoomName(VUpdateRoomNameEvent(roomId: roomId, name: newTitle));
           await VChatController.I.roomApi.updateGroupTitle(roomId: roomId, title: newTitle);
           return newTitle;
         },

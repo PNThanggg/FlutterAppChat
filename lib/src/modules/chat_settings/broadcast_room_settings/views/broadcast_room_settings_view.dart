@@ -1,10 +1,9 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-
-import 'package:v_platform/v_platform.dart';
 
 import '../../../home/mobile/settings_tab/widgets/settings_list_item_tile.dart';
 import '../../widgets/chat_settings_navigation_bar.dart';
@@ -59,7 +58,7 @@ class _BroadcastRoomSettingsViewState extends State<BroadcastRoomSettingsView> {
                   builder: (context, value, child) {
                     return VCircleAvatar(
                       vFileSource: VPlatformFile.fromUrl(
-                        url: controller.settingsModel.image,
+                        networkUrl: controller.settingsModel.image,
                       ),
                       radius: 90,
                     );
@@ -79,7 +78,7 @@ class _BroadcastRoomSettingsViewState extends State<BroadcastRoomSettingsView> {
               const SizedBox(
                 height: 15,
               ),
-              ValueListenableBuilder<SLoadingState<VMyBroadcastInfo>>(
+              ValueListenableBuilder<LoadingState<VMyBroadcastInfo>>(
                 valueListenable: controller,
                 builder: (_, value, __) {
                   return VAsyncWidgetsBuilder(

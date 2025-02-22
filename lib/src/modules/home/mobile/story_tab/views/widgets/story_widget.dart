@@ -1,9 +1,9 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:dashed_circle/dashed_circle.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_platform/v_platform.dart';
-import 'package:s_translation/generated/l10n.dart';
 
 import '../../../../../../core/models/story/story_model.dart';
 
@@ -50,7 +50,7 @@ class StoryWidget extends StatelessWidget {
                   : VCircleAvatar(
                       radius: 25,
                       vFileSource: VPlatformFile.fromUrl(
-                        url: storyModel.userData.userImage,
+                        networkUrl: storyModel.userData.userImage,
                       ),
                     ),
             ),

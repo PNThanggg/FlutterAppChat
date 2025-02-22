@@ -1,9 +1,10 @@
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../../../home/mobile/settings_tab/widgets/settings_list_item_tile.dart';
 import '../../widgets/chat_settings_list_section.dart';
@@ -48,7 +49,7 @@ class _SingleRoomSettingsViewState extends State<SingleRoomSettingsView> {
       ),
       child: SafeArea(
         child: SingleChildScrollView(
-          child: ValueListenableBuilder<SLoadingState<SingleRoomSettingState>>(
+          child: ValueListenableBuilder<LoadingState<SingleRoomSettingState>>(
             valueListenable: controller,
             builder: (context, value, child) {
               return Column(
@@ -60,7 +61,7 @@ class _SingleRoomSettingsViewState extends State<SingleRoomSettingsView> {
                     onTap: () => controller.openFullImage(context),
                     child: VCircleAvatar(
                       vFileSource: VPlatformFile.fromUrl(
-                        url: controller.data.settingsModel.image,
+                        networkUrl: controller.data.settingsModel.image,
                       ),
                       radius: 90,
                     ),
@@ -131,7 +132,7 @@ class _SingleRoomSettingsViewState extends State<SingleRoomSettingsView> {
 
                                 return CupertinoListTile.notched(
                                   title: (value.data.user!.searchUser.bio ??
-                                          "${S.of(context).hiIamUse} ${SConstants.appName}")
+                                          "${S.of(context).hiIamUse} ${ChatConstants.appName}")
                                       .h6
                                       .medium
                                       .color(context.textTheme.bodyLarge!.color!)
@@ -218,13 +219,13 @@ class _SingleRoomSettingsViewState extends State<SingleRoomSettingsView> {
                           children: [
                             SettingsListItemTile(
                               color: Colors.red,
-                              icon: PhosphorIcons.bugDroid,
+                              icon: PhosphorIconsLight.bugDroid,
                               isLoading: value.data.isUpdatingBlock,
                               onTap: () {
                                 controller.onBlockUser(context);
                               },
                               textColor: Colors.red,
-                              title: value.loadingState == VChatLoadingState.success
+                              title: value.loadingState == ChatLoadingState.success
                                   ? value.data.user!.isMeBanner
                                       ? S.of(context).unBlock
                                       : S.of(context).block
@@ -232,7 +233,7 @@ class _SingleRoomSettingsViewState extends State<SingleRoomSettingsView> {
                             ),
                             SettingsListItemTile(
                               color: Colors.red,
-                              icon: PhosphorIcons.bugBeetle,
+                              icon: PhosphorIconsLight.bugBeetle,
                               title: S.of(context).report,
                               textColor: Colors.red,
                               onTap: () {

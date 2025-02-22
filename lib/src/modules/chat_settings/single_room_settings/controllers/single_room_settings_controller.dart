@@ -1,9 +1,10 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../../../../core/api_service/profile/profile_api_service.dart';
 import '../../../../core/app_config/app_config_controller.dart';
@@ -17,7 +18,12 @@ class SingleRoomSettingsController extends SLoadingController<SingleRoomSettingS
   final VToChatSettingsModel _settingsModel;
   final sizer = GetIt.I.get<AppSizeHelper>();
 
-  SingleRoomSettingsController(this._settingsModel) : super(SLoadingState(SingleRoomSettingState(_settingsModel)));
+  SingleRoomSettingsController(this._settingsModel)
+      : super(
+          LoadingState(
+            SingleRoomSettingState(_settingsModel),
+          ),
+        );
   final _profileApiService = GetIt.I.get<ProfileApiService>();
 
   String get roomId => _settingsModel.roomId;
@@ -161,7 +167,9 @@ class SingleRoomSettingsController extends SLoadingController<SingleRoomSettingS
   void openFullImage(BuildContext context) {
     context.toPage(VImageViewer(
       showDownload: true,
-      platformFileSource: VPlatformFile.fromUrl(url: value.data.settingsModel.image),
+      platformFileSource: VPlatformFile.fromUrl(
+        networkUrl: value.data.settingsModel.image,
+      ),
       downloadingLabel: S.of(context).downloading,
       successfullyDownloadedInLabel: S.of(context).done,
     ));
@@ -253,7 +261,11 @@ class SingleRoomSettingsController extends SLoadingController<SingleRoomSettingS
         isVideoEnable: false,
         isCaller: true,
         roomId: roomId,
-        peerUser: SBaseUser(userImage: _settingsModel.room.thumbImage, fullName: _settingsModel.room.realTitle, id: _settingsModel.room.peerId!),
+        peerUser: BaseUser(
+          userImage: _settingsModel.room.thumbImage,
+          fullName: _settingsModel.room.realTitle,
+          id: _settingsModel.room.peerId!,
+        ),
       ),
     );
   }
@@ -265,7 +277,11 @@ class SingleRoomSettingsController extends SLoadingController<SingleRoomSettingS
         isVideoEnable: true,
         isCaller: true,
         roomId: roomId,
-        peerUser: SBaseUser(userImage: _settingsModel.room.thumbImage, fullName: _settingsModel.room.realTitle, id: _settingsModel.room.peerId!),
+        peerUser: BaseUser(
+          userImage: _settingsModel.room.thumbImage,
+          fullName: _settingsModel.room.realTitle,
+          id: _settingsModel.room.peerId!,
+        ),
       ),
     );
   }

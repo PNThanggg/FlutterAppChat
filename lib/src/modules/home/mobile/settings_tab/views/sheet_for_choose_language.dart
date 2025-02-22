@@ -1,8 +1,8 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 class SheetForChooseLanguage extends StatefulWidget {
   const SheetForChooseLanguage({super.key});
@@ -88,7 +88,11 @@ class _SheetForChooseLanguageState extends State<SheetForChooseLanguage> {
                           onTap: () {
                             Navigator.of(contextParent).pop(item);
                           },
-                          title: getFullLanguageName(item.title).text.regular.size(16).color(Theme.of(context).textTheme.bodyLarge!.color!),
+                          title: getFullLanguageName(item.title)
+                              .text
+                              .regular
+                              .size(16)
+                              .color(Theme.of(context).textTheme.bodyLarge!.color!),
                         );
                       },
                       itemCount: _languages.length,

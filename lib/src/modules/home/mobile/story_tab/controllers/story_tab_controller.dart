@@ -1,12 +1,14 @@
 import 'dart:async';
 
+import 'package:chat_config/chat_preferences.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_media_editor/chat_media_editor.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_media_editor/v_chat_media_editor.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../../../../../core/api_service/story/story_api_service.dart';
 import '../../../../../core/models/story/story_model.dart';
@@ -24,7 +26,13 @@ class StoryTabState {
 }
 
 class StoryTabController extends SLoadingController<StoryTabState> {
-  StoryTabController() : super(SLoadingState(StoryTabState()));
+  StoryTabController()
+      : super(
+          LoadingState(
+            StoryTabState(),
+          ),
+        );
+
   final _apiService = GetIt.I.get<StoryApiService>();
   Timer? _timer;
 
@@ -44,7 +52,7 @@ class StoryTabController extends SLoadingController<StoryTabState> {
 
   void getStories() async {
     try {
-      final oldStories = VAppPref.getMap("api/stories/all");
+      final oldStories = ChatPreferences.getMap("api/stories/all");
       if (oldStories != null) {
         final list = oldStories['data'] as List;
         data.allStories = list.map((e) => UserStoryModel.fromMap(e)).toList();
@@ -72,9 +80,9 @@ class StoryTabController extends SLoadingController<StoryTabState> {
         }
         if (response.isEmpty) {
           data.allStories.clear();
-          unawaited(VAppPref.removeKey("api/stories/all"));
+          unawaited(ChatPreferences.removeKey("api/stories/all"));
         } else {
-          unawaited(VAppPref.setMap("api/stories/all", {
+          unawaited(ChatPreferences.setMap("api/stories/all", {
             "data": response.map((e) => e.toMap()).toList(),
           }));
         }

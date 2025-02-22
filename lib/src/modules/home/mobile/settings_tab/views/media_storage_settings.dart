@@ -1,10 +1,10 @@
 import 'dart:io';
 
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:file_sizes/file_sizes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 import '../widgets/settings_list_item_tile.dart';
 
@@ -113,9 +113,7 @@ class _MediaStorageSettingsState extends State<MediaStorageSettings> {
                   ),
                   SettingsListItemTile(
                     color: Colors.red,
-                    //todo trans
                     title: "Clear all cache",
-                    //todo trans
                     subtitle:
                         "This option will clear app storage don't worry you can still any time download it if auto download enable the message will auto download"
                             .text,
@@ -164,7 +162,6 @@ class _MediaStorageSettingsState extends State<MediaStorageSettings> {
     final res = await VAppAlert.showAskYesNoDialog(
       context: context,
       title: S.of(context).areYouSure,
-      //todo trans
       content: "Delete app cache?",
     );
     if (res != 1) return;

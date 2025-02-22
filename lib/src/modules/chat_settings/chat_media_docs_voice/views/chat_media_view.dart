@@ -1,9 +1,9 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_message_page/chat_message_page.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:v_chat_message_page/v_chat_message_page.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 import '../controllers/chat_media_controller.dart';
 
@@ -33,18 +33,25 @@ class _ChatMediaViewState extends State<ChatMediaView> {
   }
 
   int sharedValue = 0;
+
   Map<int, Widget> logoWidgets(BuildContext context) => <int, Widget>{
         0: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: S.current.media.h6.semiBold.size(12).color(Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black),
+          child: S.current.media.h6.semiBold
+              .size(12)
+              .color(Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black),
         ),
         1: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: S.current.docs.h6.semiBold.size(12).color(Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black),
+          child: S.current.docs.h6.semiBold
+              .size(12)
+              .color(Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black),
         ),
         2: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 10),
-          child: S.current.links.h6.semiBold.size(12).color(Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black),
+          child: S.current.links.h6.semiBold
+              .size(12)
+              .color(Theme.of(context).brightness == Brightness.dark ? Colors.white : Colors.black),
         ),
       };
 
@@ -55,7 +62,9 @@ class _ChatMediaViewState extends State<ChatMediaView> {
       navigationBar: CupertinoNavigationBar(
         backgroundColor: context.theme.cardColor,
         middle: CupertinoSegmentedControl<int>(
-          unselectedColor: Theme.of(context).brightness == Brightness.dark ? context.theme.scaffoldBackgroundColor : Colors.grey.shade200,
+          unselectedColor: Theme.of(context).brightness == Brightness.dark
+              ? context.theme.scaffoldBackgroundColor
+              : Colors.grey.shade200,
           selectedColor: Theme.of(context).brightness == Brightness.dark ? Colors.blue.shade900 : Colors.blueAccent,
           borderColor: Theme.of(context).brightness == Brightness.dark ? Colors.transparent : Colors.transparent,
           children: logoWidgets(context),
@@ -111,7 +120,7 @@ class _ChatMediaViewState extends State<ChatMediaView> {
                           : context.vMessageTheme.receiverBubbleColor,
                     );
                   },
-                  separatorBuilder: (context, index) =>  Divider(color: Colors.grey.shade200),
+                  separatorBuilder: (context, index) => Divider(color: Colors.grey.shade200),
                   itemCount: controller.data.files.length,
                 );
               } else {

@@ -1,6 +1,6 @@
+import 'package:chat_core/chat_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 class ChatSettingsListSection extends StatelessWidget {
   const ChatSettingsListSection({
@@ -25,9 +25,7 @@ class ChatSettingsListSection extends StatelessWidget {
         topMargin: 0,
         margin: EdgeInsets.zero,
         decoration: BoxDecoration(
-          color: context.isDark
-              ? CupertinoColors.secondarySystemGroupedBackground.darkColor
-              : Colors.white,
+          color: context.isDark ? CupertinoColors.secondarySystemGroupedBackground.darkColor : Colors.white,
         ),
         dividerMargin: 0,
         children: [

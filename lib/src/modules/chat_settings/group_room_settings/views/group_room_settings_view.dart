@@ -1,9 +1,9 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../../../home/mobile/settings_tab/widgets/settings_list_item_tile.dart';
 import '../../widgets/chat_settings_navigation_bar.dart';
@@ -44,7 +44,7 @@ class _GroupRoomSettingsViewState extends State<GroupRoomSettingsView> {
         previousPageTitle: S.of(context).back,
       ),
       child: SafeArea(
-        child: ValueListenableBuilder<SLoadingState<GroupRoomSettingState>>(
+        child: ValueListenableBuilder<LoadingState<GroupRoomSettingState>>(
           valueListenable: controller,
           builder: (context, value, child) => SingleChildScrollView(
             child: Column(
@@ -54,13 +54,13 @@ class _GroupRoomSettingsViewState extends State<GroupRoomSettingsView> {
                 ),
                 GestureDetector(
                   onTap: () => controller.openFullImage(context),
-                  child: ValueListenableBuilder<SLoadingState<GroupRoomSettingState>>(
+                  child: ValueListenableBuilder<LoadingState<GroupRoomSettingState>>(
                     valueListenable: controller,
                     builder: (context, value, child) {
-                      if (value.loadingState != VChatLoadingState.success) {
+                      if (value.loadingState != ChatLoadingState.success) {
                         return VCircleAvatar(
                           vFileSource: VPlatformFile.fromUrl(
-                            url: controller.settingsModel.image,
+                            networkUrl: controller.settingsModel.image,
                           ),
                           radius: 90,
                         );
@@ -68,7 +68,7 @@ class _GroupRoomSettingsViewState extends State<GroupRoomSettingsView> {
                       if (controller.groupInfo!.isMeOut) {
                         return VCircleAvatar(
                           vFileSource: VPlatformFile.fromUrl(
-                            url: controller.settingsModel.image,
+                            networkUrl: controller.settingsModel.image,
                           ),
                           radius: 90,
                         );
@@ -77,7 +77,7 @@ class _GroupRoomSettingsViewState extends State<GroupRoomSettingsView> {
                         children: [
                           VCircleAvatar(
                             vFileSource: VPlatformFile.fromUrl(
-                              url: controller.settingsModel.image,
+                              networkUrl: controller.settingsModel.image,
                             ),
                             radius: 80,
                           ),
@@ -111,7 +111,7 @@ class _GroupRoomSettingsViewState extends State<GroupRoomSettingsView> {
                 ValueListenableBuilder(
                   valueListenable: controller,
                   builder: (context, value, child) {
-                    if (value.loadingState != VChatLoadingState.success) {
+                    if (value.loadingState != ChatLoadingState.success) {
                       return Text(
                         controller.settingsModel.room.title,
                         style: TextStyle(
@@ -156,7 +156,7 @@ class _GroupRoomSettingsViewState extends State<GroupRoomSettingsView> {
                 const SizedBox(
                   height: 15,
                 ),
-                ValueListenableBuilder<SLoadingState<GroupRoomSettingState>>(
+                ValueListenableBuilder<LoadingState<GroupRoomSettingState>>(
                   valueListenable: controller,
                   builder: (_, value, __) {
                     return VAsyncWidgetsBuilder(
@@ -298,7 +298,7 @@ class _GroupRoomSettingsViewState extends State<GroupRoomSettingsView> {
                                     textColor: Colors.red,
                                     onTap: () => controller.leaveGroup(context),
                                     title: S.of(context).exitGroup,
-                                    icon: PhosphorIcons.bug,
+                                    icon: PhosphorIconsLight.bug,
                                   ),
                                   // SettingsListItemTile(
                                   //   color: Colors.red,

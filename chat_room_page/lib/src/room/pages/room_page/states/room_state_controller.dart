@@ -4,7 +4,6 @@ import 'package:chat_core/chat_core.dart';
 import 'package:chat_platform/v_platform.dart';
 import 'package:chat_room_page/chat_room_page.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
-import 'package:collection/collection.dart';
 import 'package:flutter/foundation.dart';
 
 ///  RoomStateController is a ValueNotifier which holds a VPaginationModel of VRoom objects. */ class RoomStateController extends ValueNotifier<VPaginationModel > {

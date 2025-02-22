@@ -1,11 +1,10 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_message_page/chat_message_page.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_message_page/v_chat_message_page.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_chat_v2/v_chat_v2.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../controllers/chat_star_messages_controller.dart';
 
@@ -40,17 +39,11 @@ class _ChatStarMessagesPageState extends State<ChatStarMessagesPage> {
         navigationBar: CupertinoNavigationBar(
           border: Border.all(color: Colors.transparent),
           backgroundColor: context.theme.scaffoldBackgroundColor,
-          middle: S
-              .of(context)
-              .starMessage
-              .h6
-              .color(context.textTheme.bodyLarge!.color!)
-              .semiBold
-              .size(20),
+          middle: S.of(context).starMessage.h6.color(context.textTheme.bodyLarge!.color!).semiBold.size(20),
         ),
         child: SafeArea(
           bottom: false,
-          child: ValueListenableBuilder<SLoadingState<List<VBaseMessage>>>(
+          child: ValueListenableBuilder<LoadingState<List<VBaseMessage>>>(
             valueListenable: controller,
             builder: (_, data, ___) => VAsyncWidgetsBuilder(
               loadingState: data.loadingState,
@@ -101,9 +94,7 @@ class _ChatStarMessagesPageState extends State<ChatStarMessagesPage> {
                           bool isTopMessage = _isTopMessage(value.length, index);
                           DateTime? dividerDate = _getDateDiff(
                             bigDate: message.createdAtDate,
-                            smallDate: isTopMessage
-                                ? value[index].createdAtDate
-                                : value[index + 1].createdAtDate,
+                            smallDate: isTopMessage ? value[index].createdAtDate : value[index + 1].createdAtDate,
                           );
 
                           if (dividerDate != null || isTopMessage) {

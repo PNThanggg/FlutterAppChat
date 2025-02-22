@@ -1,12 +1,11 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get_it/get_it.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 import '../../../../../core/models/story/story_model.dart';
 import '../../../../story/view/story_view.dart';
 import '../controllers/story_tab_controller.dart';
-import 'package:s_translation/generated/l10n.dart';
-
 import 'widgets/story_widget.dart';
 
 class StoryTabView extends StatefulWidget {
@@ -43,7 +42,7 @@ class _StoryTabViewState extends State<StoryTabView> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               /// MyStory
-              ValueListenableBuilder<SLoadingState<StoryTabState>>(
+              ValueListenableBuilder<LoadingState<StoryTabState>>(
                 valueListenable: controller,
                 builder: (_, value, __) {
                   return StoryWidget(
@@ -70,7 +69,7 @@ class _StoryTabViewState extends State<StoryTabView> {
               S.of(context).recentUpdate.cap,
 
               Expanded(
-                child: ValueListenableBuilder<SLoadingState<StoryTabState>>(
+                child: ValueListenableBuilder<LoadingState<StoryTabState>>(
                   valueListenable: controller,
                   builder: (_, value, __) {
                     return VAsyncWidgetsBuilder(

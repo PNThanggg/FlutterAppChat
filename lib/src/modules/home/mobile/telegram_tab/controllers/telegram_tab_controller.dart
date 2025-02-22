@@ -1,15 +1,16 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_media_editor/chat_media_editor.dart';
+import 'package:chat_room_page/chat_room_page.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_media_editor/v_chat_media_editor.dart';
-import 'package:v_chat_room_page/v_chat_room_page.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
+
 import '../../../../chats_search/views/chats_search_view.dart';
 import '../../../../create_broadcast/mobile/sheet_for_create_broadcast.dart';
 import '../../../../create_group/mobile/sheet_for_create_group.dart';
 
-class TelegramTabController extends ValueNotifier implements SBaseController {
+class TelegramTabController extends ValueNotifier implements BaseController {
   final vRoomController = VRoomController();
 
   TelegramTabController() : super(null);

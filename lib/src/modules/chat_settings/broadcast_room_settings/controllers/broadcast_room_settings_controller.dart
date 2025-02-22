@@ -1,8 +1,9 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 import '../../../broadcast_members/views/broadcast_members_view.dart';
 import '../mobile/sheet_for_add_members_to_broadcast.dart';
@@ -15,7 +16,11 @@ class BroadcastRoomSettingsController extends SLoadingController<VMyBroadcastInf
 
   BroadcastRoomSettingsController(
     this.settingsModel,
-  ) : super(SLoadingState(VMyBroadcastInfo.empty()));
+  ) : super(
+          LoadingState(
+            VMyBroadcastInfo.empty(),
+          ),
+        );
 
   @override
   void onInit() {
@@ -84,7 +89,8 @@ class BroadcastRoomSettingsController extends SLoadingController<VMyBroadcastInf
           // VAppAlert.showLoading(context: context);
         },
         request: () async {
-          await VChatController.I.nativeApi.local.room.updateRoomName(VUpdateRoomNameEvent(roomId: roomId, name: newTitle));
+          await VChatController.I.nativeApi.local.room
+              .updateRoomName(VUpdateRoomNameEvent(roomId: roomId, name: newTitle));
           await VChatController.I.roomApi.updateBroadcastTitle(roomId: roomId, title: newTitle);
           return newTitle;
         },
@@ -116,7 +122,7 @@ class BroadcastRoomSettingsController extends SLoadingController<VMyBroadcastInf
       builder: (context) => SheetForAddMembersToBroadcast(
         broadcastId: roomId,
       ),
-    ) as List<SBaseUser>?;
+    ) as List<BaseUser>?;
     // final users = await context.toPage(
     //   const ChooseMembersView(),
     // ) as List<SBaseUser>?;

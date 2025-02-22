@@ -1,8 +1,8 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_message_page/chat_message_page.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_message_page/v_chat_message_page.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 class ChatStarMessagesController extends SLoadingController<List<VBaseMessage>> {
   final String? roomId;
@@ -10,7 +10,7 @@ class ChatStarMessagesController extends SLoadingController<List<VBaseMessage>> 
   ChatStarMessagesController(
     this.roomId,
   ) : super(
-          SLoadingState(
+          LoadingState(
             <VBaseMessage>[],
           ),
         );
