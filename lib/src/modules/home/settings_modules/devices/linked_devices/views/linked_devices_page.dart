@@ -1,7 +1,8 @@
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:s_translation/generated/l10n.dart';
 
 import '../../../../../../core/models/user_device_model.dart';
 import '../../../../mobile/settings_tab/widgets/settings_list_item_tile.dart';
@@ -56,7 +57,7 @@ class _LinkedDevicesPageState extends State<LinkedDevicesPage> {
                             const SizedBox(
                               height: 20,
                             ),
-                            const Text("User ${SConstants.appName} on Web,", style: TextStyle(fontSize: 13, color: Colors.grey)),
+                            const Text("User ${ChatConstants.appName} on Web,", style: TextStyle(fontSize: 13, color: Colors.grey)),
                             Text(
                               S.of(context).desktopAndOtherDevices,
                               style: const TextStyle(fontSize: 13, color: Colors.grey),
@@ -71,7 +72,7 @@ class _LinkedDevicesPageState extends State<LinkedDevicesPage> {
                     ),
                   ],
                 ),
-                ValueListenableBuilder<SLoadingState<List<UserDeviceModel>>>(
+                ValueListenableBuilder<LoadingState<List<UserDeviceModel>>>(
                   valueListenable: controller,
                   builder: (_, value, ___) => VAsyncWidgetsBuilder(
                     loadingState: value.loadingState,
@@ -137,13 +138,13 @@ class _LinkedDevicesPageState extends State<LinkedDevicesPage> {
 
   IconData _getIcon(String platform) {
     if (platform == "android" || platform == "ios") {
-      return PhosphorIcons.deviceMobile;
+      return PhosphorIconsLight.deviceMobile;
     }
     if (platform == "web") {
-      return PhosphorIcons.googleChromeLogo;
+      return PhosphorIconsLight.googleChromeLogo;
     }
     if (platform == "macOs" || platform == "windows") {
-      return PhosphorIcons.computerTower;
+      return PhosphorIconsLight.computerTower;
     }
     return Icons.question_mark;
   }

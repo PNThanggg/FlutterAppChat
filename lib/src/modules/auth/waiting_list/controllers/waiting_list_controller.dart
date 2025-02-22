@@ -1,8 +1,10 @@
+import 'package:chat_config/chat_preferences.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 import '../../../../core/api_service/api_service.dart';
 import '../../../home/home_controller/views/home_view.dart';
@@ -12,7 +14,11 @@ import '../states/waiting_list_state.dart';
 class WaitingListController extends SLoadingController<WaitingListState?> {
   final txtController = TextEditingController();
 
-  WaitingListController() : super(SLoadingState(null));
+  WaitingListController()
+      : super(
+          LoadingState(null),
+        );
+
   final _profileApi = GetIt.I.get<ProfileApiService>();
 
   @override
@@ -24,7 +30,7 @@ class WaitingListController extends SLoadingController<WaitingListState?> {
   void onInit() {}
 
   Future<void> refreshProfile(BuildContext context) async {
-    await vSafeApiCall<SMyProfile>(
+    await vSafeApiCall<MyProfile>(
       onError: (exception, trace) {
         VAppAlert.showErrorSnackBar(
           message: exception.toString(),
@@ -34,13 +40,16 @@ class WaitingListController extends SLoadingController<WaitingListState?> {
       request: () async {
         return _profileApi.getMyProfile();
       },
-      onSuccess: (SMyProfile response) async {
+      onSuccess: (MyProfile response) async {
         if (response.registerStatus == RegisterStatus.accepted) {
           VAppAlert.showSuccessSnackBar(
             message: S.of(context).congregationsYourAccountHasBeenAccepted,
             context: context,
           );
-          await VAppPref.setMap(SStorageKeys.myProfile.name, response.toMap());
+          await ChatPreferences.setMap(
+            SStorageKeys.myProfile.name,
+            response.toMap(),
+          );
           await Future.delayed(const Duration(seconds: 2));
           context.toPage(
             const HomeView(),
@@ -66,7 +75,7 @@ class WaitingListController extends SLoadingController<WaitingListState?> {
       request: () async {
         await VChatController.I.profileApi.logout();
         AppAuth.setProfileNull();
-        await VAppPref.clear();
+        await ChatPreferences.clear();
       },
       onSuccess: (response) {
         VChatController.I.navigatorKey.currentContext!.toPage(

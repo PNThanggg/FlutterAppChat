@@ -1,6 +1,7 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:s_translation/generated/l10n.dart';
+
 import '../controllers/link_by_qr_code_controller.dart';
 import '../states/link_by_qr_code_state.dart';
 
@@ -26,7 +27,7 @@ class _LinkByQrCodePageState extends State<LinkByQrCodePage> {
           padding: const EdgeInsets.all(10),
           child: Column(
             children: [
-              ValueListenableBuilder<SLoadingState<LinkByQrCodeState?>>(
+              ValueListenableBuilder<LoadingState<LinkByQrCodeState?>>(
                 valueListenable: controller,
                 builder: (_, value, ___) => VAsyncWidgetsBuilder(
                   loadingState: value.loadingState,

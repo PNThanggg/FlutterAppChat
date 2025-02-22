@@ -1,10 +1,10 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-
-import 'package:v_platform/v_platform.dart';
 
 import '../controllers/create_group_controller.dart';
 
@@ -17,7 +17,7 @@ class CreateGroupView extends StatefulWidget {
     required this.onDone,
   });
 
-  final List<SBaseUser> users;
+  final List<BaseUser> users;
 
   @override
   State<CreateGroupView> createState() => _CreateGroupViewState();

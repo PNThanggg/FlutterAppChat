@@ -1,9 +1,9 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loadmore/loadmore.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 import '../controllers/group_members_controller.dart';
 
@@ -53,7 +53,7 @@ class _GroupMembersViewState extends State<GroupMembersView> {
       child: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(5),
-          child: ValueListenableBuilder<SLoadingState<List<VGroupMember>>>(
+          child: ValueListenableBuilder<LoadingState<List<VGroupMember>>>(
             valueListenable: controller,
             builder: (_, value, __) {
               return VAsyncWidgetsBuilder(
@@ -82,15 +82,9 @@ class _GroupMembersViewState extends State<GroupMembersView> {
                               trailing: Row(
                                 mainAxisSize: MainAxisSize.min,
                                 children: [
-                                  _getTr(value.data[index].role)
-                                      .h6
-                                      .color(Colors.red)
-                                      .semiBold
-                                      .size(15),
+                                  _getTr(value.data[index].role).h6.color(Colors.red).semiBold.size(15),
                                   Icon(
-                                    context.isRtl
-                                        ? CupertinoIcons.chevron_back
-                                        : CupertinoIcons.chevron_forward,
+                                    context.isRtl ? CupertinoIcons.chevron_back : CupertinoIcons.chevron_forward,
                                   ),
                                 ],
                               ),

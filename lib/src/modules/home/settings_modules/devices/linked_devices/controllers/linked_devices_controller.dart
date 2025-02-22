@@ -1,7 +1,7 @@
+import 'package:chat_core/chat_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 import '../../../../../../core/api_service/api_service.dart';
 import '../../../../../../core/models/user_device_model.dart';
@@ -10,7 +10,12 @@ import '../views/sheet_for_device_status.dart';
 class LinkedDevicesController extends SLoadingController<List<UserDeviceModel>> {
   final _profileApi = GetIt.I.get<ProfileApiService>();
 
-  LinkedDevicesController() : super(SLoadingState([]));
+  LinkedDevicesController()
+      : super(
+          LoadingState(
+            [],
+          ),
+        );
 
   @override
   void onClose() {}

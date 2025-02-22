@@ -1,5 +1,4 @@
 export 'src/api_constants.dart';
-export 'src/device_info.dart';
 export 'src/enums.dart' hide VLoadMoreStatus;
 export 'src/regex.dart';
 export 'src/stream_utils.dart';

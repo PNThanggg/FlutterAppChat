@@ -1,9 +1,10 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 import '../../../../../../core/api_service/api_service.dart';
 import '../../../../../../core/models/user_device_model.dart';
@@ -56,7 +57,12 @@ class _DeviceStatusSheetState extends State<_DeviceStatusSheet> {
     return CupertinoPageScaffold(
       backgroundColor: context.isDark ? null : CupertinoColors.systemGrey6,
       navigationBar: CupertinoNavigationBar(
-        middle: Text(S.of(context).deviceStatus, style: context.textTheme.bodyMedium?.copyWith(fontWeight: FontWeight.w700)),
+        middle: Text(
+          S.of(context).deviceStatus,
+          style: context.textTheme.bodyMedium?.copyWith(
+            fontWeight: FontWeight.w700,
+          ),
+        ),
         leading: TextButton(
           onPressed: widget.onCloseSheet,
           child: Text(S.of(context).close),
@@ -117,7 +123,8 @@ class _DeviceStatusSheetState extends State<_DeviceStatusSheet> {
                         child: isLoading
                             ? const CupertinoActivityIndicator()
                             : isMyDevice
-                                ? Text(S.of(context).currentDevice, style: context.textTheme.bodyMedium?.copyWith(color: Colors.grey))
+                                ? Text(S.of(context).currentDevice,
+                                    style: context.textTheme.bodyMedium?.copyWith(color: Colors.grey))
                                 : Text(
                                     S.of(context).logOut,
                                     style: context.textTheme.bodyMedium,
@@ -136,13 +143,13 @@ class _DeviceStatusSheetState extends State<_DeviceStatusSheet> {
 
   IconData _getIcon(String platform) {
     if (platform == "android" || platform == "ios") {
-      return PhosphorIcons.deviceMobile;
+      return PhosphorIconsLight.deviceMobile;
     }
     if (platform == "web") {
-      return PhosphorIcons.googleChromeLogo;
+      return PhosphorIconsLight.googleChromeLogo;
     }
     if (platform == "macOs" || platform == "windows") {
-      return PhosphorIcons.computerTower;
+      return PhosphorIconsLight.computerTower;
     }
     return Icons.question_mark;
   }

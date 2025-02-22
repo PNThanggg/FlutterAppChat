@@ -16,7 +16,6 @@ class NoAnimationPageRoute<T> extends MaterialPageRoute<T> {
     Animation<double> secondaryAnimation,
     Widget child,
   ) {
-    // Don't apply any transition.
     return child;
   }
 }

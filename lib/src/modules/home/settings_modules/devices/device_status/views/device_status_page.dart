@@ -1,6 +1,7 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:s_translation/generated/l10n.dart';
+
 import '../controllers/device_status_controller.dart';
 import '../states/device_status_state.dart';
 
@@ -26,7 +27,7 @@ class _DeviceStatusPageState extends State<DeviceStatusPage> {
           padding: const EdgeInsets.all(10),
           child: Column(
             children: [
-              ValueListenableBuilder<SLoadingState<DeviceStatusState?>>(
+              ValueListenableBuilder<LoadingState<DeviceStatusState?>>(
                 valueListenable: controller,
                 builder: (_, value, ___) => VAsyncWidgetsBuilder(
                   loadingState: value.loadingState,

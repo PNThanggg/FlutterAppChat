@@ -1,13 +1,14 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../controllers/waiting_list_controller.dart';
 
 class WaitingListPage extends StatefulWidget {
-  final SMyProfile profile;
+  final MyProfile profile;
 
   const WaitingListPage({super.key, required this.profile});
 
@@ -36,7 +37,9 @@ class _WaitingListPageState extends State<WaitingListPage> {
                   height: 20,
                 ),
                 VCircleAvatar(
-                  vFileSource: VPlatformFile.fromUrl(url: widget.profile.baseUser.userImage),
+                  vFileSource: VPlatformFile.fromUrl(
+                    networkUrl: widget.profile.baseUser.userImage,
+                  ),
                   radius: 50,
                 ),
                 const SizedBox(

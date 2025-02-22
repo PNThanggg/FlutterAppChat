@@ -1,3 +1,4 @@
+import 'package:chat_config/chat_constants.dart';
 import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +48,7 @@ class _HelpPageState extends State<HelpPage> {
                     dividerMargin: 0,
                     topMargin: 0,
                     footer: Text(
-                      "@ ${DateTime.now().year} ${SConstants.appName} LLC  V ${value.data.version}",
+                      "@ ${DateTime.now().year} ${ChatConstants.appName} LLC  V ${value.data.version}",
                       style: const TextStyle(color: Colors.grey, fontSize: 15),
                     ),
                     children: [

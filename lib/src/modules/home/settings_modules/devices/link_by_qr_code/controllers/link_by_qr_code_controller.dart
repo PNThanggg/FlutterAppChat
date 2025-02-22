@@ -1,12 +1,12 @@
+import 'package:chat_core/chat_core.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 import '../states/link_by_qr_code_state.dart';
 
 class LinkByQrCodeController extends SLoadingController<LinkByQrCodeState?> {
   final txtController = TextEditingController();
 
-  LinkByQrCodeController() : super(SLoadingState(null));
+  LinkByQrCodeController() : super(LoadingState(null));
 
   @override
   void onClose() {

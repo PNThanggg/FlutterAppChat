@@ -1,11 +1,15 @@
+import 'package:chat_core/chat_core.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
+
 import '../states/device_status_state.dart';
 
 class DeviceStatusController extends SLoadingController<DeviceStatusState?> {
   final txtController = TextEditingController();
 
-  DeviceStatusController() : super(SLoadingState(null));
+  DeviceStatusController()
+      : super(
+          LoadingState(null),
+        );
 
   @override
   void onClose() {

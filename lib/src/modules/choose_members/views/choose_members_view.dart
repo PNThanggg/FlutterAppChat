@@ -200,7 +200,7 @@ class _ChooseMembersViewState extends State<ChooseMembersView> {
                                 children: [
                                   VCircleAvatar(
                                     vFileSource: VPlatformFile.fromUrl(
-                                      url: item.searchUser.baseUser.userImage,
+                                      networkUrl: item.searchUser.baseUser.userImage,
                                     ),
                                     radius: 20,
                                   ),

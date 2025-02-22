@@ -1,8 +1,8 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 import '../../peer_profile/views/peer_profile_view.dart';
 
@@ -11,7 +11,13 @@ class GroupMembersController extends SLoadingController<List<VGroupMember>> {
   final String roomId;
   final VMyGroupInfo myGroupInfo;
 
-  GroupMembersController(this.roomId, this.myGroupInfo) : super(SLoadingState(<VGroupMember>[]));
+  GroupMembersController(this.roomId, this.myGroupInfo)
+      : super(
+          LoadingState(
+            <VGroupMember>[],
+          ),
+        );
+
   bool _isLoadMoreActive = false;
   bool isFinishLoadMore = false;
   final _filterDto = VBaseFilter(
@@ -94,30 +100,34 @@ class GroupMembersController extends SLoadingController<List<VGroupMember>> {
       return;
     }
     final data = <ModelSheetItem<int>>[];
-    data.add(ModelSheetItem(
-      title: S.of(context).profile,
-      id: 5,
-      iconData: const Icon(PhosphorIcons.user),
-    ));
+    data.add(
+      ModelSheetItem(
+        title: S.of(context).profile,
+        id: 5,
+        iconData: const Icon(PhosphorIconsLight.user),
+      ),
+    );
     if (myGroupInfo.isMeAdminOrSuperAdmin && !user.userData.isMe && user.role != VGroupMemberRole.superAdmin) {
       if (user.role == VGroupMemberRole.admin) {
         data.add(ModelSheetItem(
           title: S.of(context).dismissesToMember,
           id: 2,
-          iconData: const Icon(PhosphorIcons.arrowDown),
+          iconData: const Icon(PhosphorIconsLight.arrowDown),
         ));
       } else {
         data.add(ModelSheetItem(
           title: S.of(context).upgradeToAdmin,
           id: 3,
-          iconData: const Icon(PhosphorIcons.arrowUp),
+          iconData: const Icon(PhosphorIconsLight.arrowUp),
         ));
       }
-      data.add(ModelSheetItem(
-        title: S.of(context).kickMember,
-        id: 4,
-        iconData: const Icon(PhosphorIcons.trash),
-      ));
+      data.add(
+        ModelSheetItem(
+          title: S.of(context).kickMember,
+          id: 4,
+          iconData: const Icon(PhosphorIconsLight.trash),
+        ),
+      );
     }
 
     final res = await VAppAlert.showModalSheetWithActions(

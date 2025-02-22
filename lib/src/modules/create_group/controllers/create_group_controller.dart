@@ -1,15 +1,16 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
 
-class CreateGroupController extends ValueNotifier implements SBaseController {
-  final List<SBaseUser> users;
+class CreateGroupController extends ValueNotifier implements BaseController {
+  final List<BaseUser> users;
   final Function(VRoom) onDone;
   final txtController = TextEditingController();
   final focusNode = FocusNode();
-  VChatLoadingState loadingState = VChatLoadingState.ideal;
+  ChatLoadingState loadingState = ChatLoadingState.ideal;
 
   CreateGroupController(this.users, this.onDone) : super(null);
 
