@@ -17,8 +17,6 @@ dependencies:
     path: ../chat_platform
   chat_translate:
     path: ../chat_translate
-  chat_sdk_core:
-    path: ../chat_sdk_core
   chat_config:
     path: ../chat_config
   chat_model:

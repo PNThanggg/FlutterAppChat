@@ -15,7 +15,6 @@ export 'src/v_image_picker.dart';
 export 'src/v_image_viewer.dart';
 export 'src/v_safe_api_call.dart';
 export 'src/v_search_app_bare.dart';
-export 'src/v_socket_status_widget.dart';
 export 'src/v_update/language/v_language_listener.dart';
 export 'src/v_update/theme/v_theme_listener.dart';
 export 'src/v_update/v_utils_wrapper.dart';
