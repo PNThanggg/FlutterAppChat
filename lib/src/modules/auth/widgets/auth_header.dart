@@ -1,5 +1,6 @@
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_core/chat_core.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 class AuthHeader extends StatelessWidget {
   const AuthHeader({super.key});
@@ -20,7 +21,7 @@ class AuthHeader extends StatelessWidget {
           const SizedBox(
             height: 8,
           ),
-          SConstants.appName.h4.bold.color(Theme.of(context).primaryColor),
+          ChatConstants.appName.h4.bold.color(Theme.of(context).primaryColor),
         ],
       ),
     );
