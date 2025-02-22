@@ -1,8 +1,8 @@
+import 'package:chat_message_page/chat_message_page.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/material.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
 
-import '../../../../v_chat_message_page.dart';
 import '../../../models/input_state_model.dart';
 import '../../../widgets/input_widgets/ban_widget.dart';
 import '../../../widgets/input_widgets/reply_msg_widget.dart';
