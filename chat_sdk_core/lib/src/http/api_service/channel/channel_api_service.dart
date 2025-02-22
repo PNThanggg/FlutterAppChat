@@ -1,6 +1,6 @@
-import 'package:chat_core/chat_core.dart';
-import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_model/model.dart';
 import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 
 class VChannelApiService {
   static ChannelApi? _channelApiService;
@@ -226,7 +226,7 @@ class VChannelApiService {
         .toList();
   }
 
-  Future<List<SSearchUser>> getAvailableBroadcastMembersToAdded({
+  Future<List<SearchUser>> getAvailableBroadcastMembersToAdded({
     required String roomId,
     UserFilterDto? filter,
   }) async {
@@ -236,11 +236,11 @@ class VChannelApiService {
     );
     throwIfNotSuccess(res);
     return (extractDataFromResponse(res)['docs'] as List)
-        .map((e) => SSearchUser.fromMap(e as Map<String, dynamic>))
+        .map((e) => SearchUser.fromMap(e as Map<String, dynamic>))
         .toList();
   }
 
-  Future<List<SSearchUser>> getAvailableGroupMembersToAdded({
+  Future<List<SearchUser>> getAvailableGroupMembersToAdded({
     required String roomId,
     UserFilterDto? filter,
   }) async {
@@ -250,7 +250,7 @@ class VChannelApiService {
     );
     throwIfNotSuccess(res);
     return (extractDataFromResponse(res)['docs'] as List)
-        .map((e) => SSearchUser.fromMap(e as Map<String, dynamic>))
+        .map((e) => SearchUser.fromMap(e as Map<String, dynamic>))
         .toList();
   }
 
@@ -314,7 +314,7 @@ class VChannelApiService {
     final list = extractDataFromResponse(res)['docs'] as List;
     final users = list
         .map(
-          (e) => SBaseUser.fromMap(
+          (e) => BaseUser.fromMap(
             (e as Map<String, dynamic>)['userData'] as Map<String, dynamic>,
           ),
         )

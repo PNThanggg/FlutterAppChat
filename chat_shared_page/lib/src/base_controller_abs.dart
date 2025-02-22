@@ -1,6 +1,6 @@
-import '../states.dart';
+import 'base_controller.dart';
 
-abstract class BaseControllerAbs implements SBaseController {
+abstract class BaseControllerAbs implements BaseController {
   void setStateLoading();
 
   void update();

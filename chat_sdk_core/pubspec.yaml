@@ -15,6 +15,10 @@ dependencies:
     path: ../chat_platform
   chat_core:
     path: ../chat_core
+  chat_model:
+    path: ../chat_model
+  chat_config:
+    path: ../chat_config
 
   event_bus_plus: ^0.6.2
   chopper: ^8.1.0

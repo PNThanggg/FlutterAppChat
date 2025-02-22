@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:chat_core/chat_core.dart';
 
-abstract class SLoadingController<T extends Object?> extends ValueNotifier<SLoadingState<T>>
+import '../states.dart';
+
+abstract class SLoadingController<T extends Object?> extends ValueNotifier<LoadingState<T>>
     implements BaseControllerAbs {
   SLoadingController(super.value);
 
-  VChatLoadingState get loadingState => value.loadingState;
+  ChatLoadingState get loadingState => value.loadingState;
 
   T get data => value.data!;
 
@@ -13,7 +14,7 @@ abstract class SLoadingController<T extends Object?> extends ValueNotifier<SLoad
 
   @override
   void setStateLoading() {
-    value.loadingState = VChatLoadingState.loading;
+    value.loadingState = ChatLoadingState.loading;
     notifyListeners();
   }
 
@@ -24,20 +25,20 @@ abstract class SLoadingController<T extends Object?> extends ValueNotifier<SLoad
 
   @override
   void setStateSuccess() {
-    value.loadingState = VChatLoadingState.success;
+    value.loadingState = ChatLoadingState.success;
     notifyListeners();
   }
 
   @override
   void setStateError([String? err]) {
     value.stateError = err ?? '';
-    value.loadingState = VChatLoadingState.error;
+    value.loadingState = ChatLoadingState.error;
     notifyListeners();
   }
 
   @override
   void setStateEmpty() {
-    value.loadingState = VChatLoadingState.empty;
+    value.loadingState = ChatLoadingState.empty;
     notifyListeners();
   }
 }

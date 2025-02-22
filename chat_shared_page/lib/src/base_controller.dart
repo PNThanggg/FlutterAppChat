@@ -1,4 +1,4 @@
-abstract class SBaseController {
+abstract class BaseController {
   void onInit();
 
   void onClose();
