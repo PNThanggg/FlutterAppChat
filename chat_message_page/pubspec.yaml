@@ -35,7 +35,7 @@ dependencies:
   flutter_blurhash: ^0.8.2
   cached_network_image: ^3.4.1
   url_launcher: ^6.3.1
-  intl: ^0.20.2
+  intl: ^0.19.0
   flutter_parsed_text: ^2.2.1
   flutter_link_previewer: ^3.2.2
   background_downloader: ^8.9.4

@@ -23,7 +23,7 @@ dependencies:
     path: ../chat_mention_controller
 
   permission_handler: ^11.4.0
-  intl: ^0.20.2
+  intl: ^0.19.0
   adaptive_dialog: ^2.4.0
   file_picker: ^9.0.0
   image_cropper: ^9.0.0
