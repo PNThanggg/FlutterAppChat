@@ -1,13 +1,13 @@
 import 'dart:math';
 
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_message_page/chat_message_page.dart';
+import 'package:chat_message_page/src/page/message_pages/pages/group/group_controller.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:super_up_core/super_up_core.dart' hide VSocketStatusWidget;
-import 'package:v_chat_message_page/src/page/message_pages/pages/group/group_controller.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
-import '../../../../../v_chat_message_page.dart';
 import '../../../../v_chat/v_socket_status_widget.dart';
 import '../../../../widgets/app_bare/v_message_app_bare.dart';
 import '../../controllers/v_message_item_controller.dart';
