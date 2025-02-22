@@ -1,7 +1,7 @@
 import 'dart:async';
 
+import 'package:chat_platform/v_platform.dart';
 import 'package:universal_html/html.dart';
-import 'package:v_platform/v_platform.dart';
 
 import 'file_convertor.dart';
 
@@ -41,8 +41,7 @@ class Pasteboard implements IPasteboard {
       for (var i = 0; i < clipboardItems!.length!; i++) {
         clipboardFiles.add(clipboardItems[i].getAsFile()!);
       }
-      final data = await Future.wait(
-          clipboardFiles.map((e) => _getVPlatformFileFromHtmlFile(e)).toList());
+      final data = await Future.wait(clipboardFiles.map((e) => _getVPlatformFileFromHtmlFile(e)).toList());
       return data;
     } catch (e) {
       rethrow;
