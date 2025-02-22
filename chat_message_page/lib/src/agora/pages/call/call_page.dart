@@ -3,16 +3,17 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:agora_rtc_engine/agora_rtc_engine.dart'; // Updated import
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_message_page/chat_message_page.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 
-import '../../../../v_chat_message_page.dart';
 import '../../core/agora_user.dart';
 import '../../core/call_state.dart';
 import '../widgets/agora_video_layout.dart';
@@ -76,7 +77,7 @@ class _VCallPageState extends State<VCallPage> {
             children: [
               VCircleAvatar(
                 vFileSource: VPlatformFile.fromUrl(
-                  url: widget.dto.peerUser.userImage,
+                  networkUrl: widget.dto.peerUser.userImage,
                 ),
                 radius: 20,
               ),
@@ -138,9 +139,7 @@ class _VCallPageState extends State<VCallPage> {
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       CallActionButton(
-                        icon: value.isVideoEnabled
-                            ? Icons.videocam_off_rounded
-                            : Icons.videocam_rounded,
+                        icon: value.isVideoEnabled ? Icons.videocam_off_rounded : Icons.videocam_rounded,
                         isEnabled: widget.dto.isVideoEnable,
                         onTap: widget.dto.isVideoEnable ? _onToggleCamera : null,
                       ),
@@ -155,9 +154,7 @@ class _VCallPageState extends State<VCallPage> {
                         onTap: _onToggleMicrophone,
                       ),
                       CallActionButton(
-                        icon: value.isSpeakerEnabled
-                            ? CupertinoIcons.speaker_3
-                            : CupertinoIcons.speaker_1,
+                        icon: value.isSpeakerEnabled ? CupertinoIcons.speaker_3 : CupertinoIcons.speaker_1,
                         onTap: _onToggleSpeaker,
                       ),
                       CallActionButton(
@@ -231,7 +228,7 @@ class _VCallPageState extends State<VCallPage> {
     _agoraEngine = createAgoraRtcEngine(); // Updated engine creation
     await _agoraEngine.initialize(
       const RtcEngineContext(
-        appId: SConstants.agoraAppId,
+        appId: ChatConstants.agoraAppId,
         channelProfile: ChannelProfileType.channelProfileLiveBroadcasting,
       ),
     );
@@ -399,9 +396,8 @@ class _VCallPageState extends State<VCallPage> {
           debugPrint(info);
           for (AgoraUser user in _users) {
             if (user.uid == remoteUid) {
-              setState(() => user.isVideoEnabled =
-                  state != RemoteVideoState.remoteVideoStateStopped &&
-                      state != RemoteVideoState.remoteVideoStateFailed);
+              setState(() => user.isVideoEnabled = state != RemoteVideoState.remoteVideoStateStopped &&
+                  state != RemoteVideoState.remoteVideoStateFailed);
             }
           }
         },
@@ -416,9 +412,8 @@ class _VCallPageState extends State<VCallPage> {
           debugPrint(info);
           for (AgoraUser user in _users) {
             if (user.uid == remoteUid) {
-              setState(() => user.isAudioEnabled =
-                  state != RemoteAudioState.remoteAudioStateStopped &&
-                      state != RemoteAudioState.remoteAudioStateFailed);
+              setState(() => user.isAudioEnabled = state != RemoteAudioState.remoteAudioStateStopped &&
+                  state != RemoteAudioState.remoteAudioStateFailed);
             }
           }
         },
