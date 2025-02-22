@@ -1,11 +1,10 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_message_page/chat_message_page.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
 
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
-
-import '../../../../v_chat_message_page.dart';
 import 'message_group_status_controller.dart';
 
 class VMessageGroupStatusPage extends StatefulWidget {
@@ -112,7 +111,7 @@ class _VMessageGroupStatusPageState extends State<VMessageGroupStatusPage> {
                               leading: VCircleAvatar(
                                 radius: 20,
                                 vFileSource: VPlatformFile.fromUrl(
-                                  url: value.seen[index].peerUser.userImage,
+                                  networkUrl: value.seen[index].peerUser.userImage,
                                 ),
                               ),
                               subtitle: Column(
@@ -195,12 +194,11 @@ class _VMessageGroupStatusPageState extends State<VMessageGroupStatusPage> {
                                 );
                               },
                               leadingSize: 40,
-                              subtitle:
-                                  format(value.deliver[index].delivered).text.color(Colors.grey),
+                              subtitle: format(value.deliver[index].delivered).text.color(Colors.grey),
                               leading: VCircleAvatar(
                                 radius: 20,
                                 vFileSource: VPlatformFile.fromUrl(
-                                  url: value.deliver[index].peerUser.userImage,
+                                  networkUrl: value.deliver[index].peerUser.userImage,
                                 ),
                               ),
                               title: value.deliver[index].peerUser.fullName.text,
