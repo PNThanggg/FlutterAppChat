@@ -105,7 +105,7 @@ class VMessageLocalization {
   final String areYouWantToMakeVoiceCall;
   final String ok;
   final String connecting;
-  final MessageInfoTrans vMessagesInfoTrans;
+  final MessagesInfoTrans vMessagesInfoTrans;
 
   String transCallStatus(VMessageCallStatus status) {
     switch (status) {
@@ -213,7 +213,7 @@ class VMessageLocalization {
       areYouWantToMakeVoiceCall: 'Are you want to make a voice call?',
       ok: 'OK',
       connecting: 'Connecting...',
-      vMessagesInfoTrans: MessageInfoTrans.fromEnglish(),
+      vMessagesInfoTrans: MessagesInfoTrans.fromEnglish(),
     );
   }
 }

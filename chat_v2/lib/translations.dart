@@ -1,10 +1,11 @@
+import 'package:chat_message_page/chat_message_page.dart' as cmp;
 import 'package:chat_message_page/chat_message_page.dart';
-import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart' as csc;
 import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 
-VMessageLocalization vMessageLocalizationPageModel(BuildContext context) {
-  return VMessageLocalization(
+cmp.VMessageLocalization vMessageLocalizationPageModel(BuildContext context) {
+  return cmp.VMessageLocalization(
     youDontHaveAccess: S.of(context).youDontHaveAccess,
     star: S.of(context).star,
     unStar: S.of(context).unStar,
@@ -43,7 +44,7 @@ VMessageLocalization vMessageLocalizationPageModel(BuildContext context) {
     timeout: S.of(context).timeout,
     typing: S.of(context).typing,
     unBlock: S.of(context).unBlock,
-    vInputLanguage: VInputLanguage(
+    vInputLanguage: cmp.VInputLanguage(
       cancel: S.of(context).cancel,
       files: S.of(context).files,
       shareMediaAndLocation: S.of(context).shareMediaAndLocation,
@@ -55,7 +56,7 @@ VMessageLocalization vMessageLocalizationPageModel(BuildContext context) {
     ),
     recording: S.of(context).recording,
     rejected: S.of(context).rejected,
-    vMessagesInfoTrans: VMessagesInfoTrans(
+    vMessagesInfoTrans: MessagesInfoTrans(
       updateTitleTo: S.of(context).updateTitleTo,
       updateImage: S.of(context).updateImage,
       promotedToAdminBy: S.of(context).promotedToAdminBy,
@@ -70,8 +71,8 @@ VMessageLocalization vMessageLocalizationPageModel(BuildContext context) {
   );
 }
 
-VRoomLanguage vRoomLanguageModel(BuildContext context) {
-  return VRoomLanguage(
+csc.VRoomLanguage vRoomLanguageModel(BuildContext context) {
+  return csc.VRoomLanguage(
     cancel: S.of(context).cancel,
     ok: S.of(context).ok,
     areYouSureToLeaveThisGroupThisActionCantUndo: S.of(context).areYouSureToLeaveThisGroupThisActionCantUndo,
@@ -87,7 +88,7 @@ VRoomLanguage vRoomLanguageModel(BuildContext context) {
     report: S.of(context).report,
     typing: S.of(context).typing,
     unMute: S.of(context).unMute,
-    vMessageInfoTrans: VMessageInfoTrans(
+    vMessageInfoTrans: csc.MessageInfoTrans(
       addedYouToNewBroadcast: S.of(context).addedYouToNewBroadcast,
       dismissedToMemberBy: S.of(context).dismissedToMemberBy,
       groupCreatedBy: S.of(context).groupCreatedBy,
