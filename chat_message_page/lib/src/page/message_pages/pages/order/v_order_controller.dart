@@ -1,12 +1,12 @@
 import 'dart:async';
 
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_message_page/chat_message_page.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_input_ui/v_chat_input_ui.dart';
-import 'package:v_chat_message_page/src/core/core.dart';
-import 'package:v_chat_message_page/src/page/message_pages/controllers/v_base_message_controller.dart';
-import 'package:v_chat_message_page/src/page/message_pages/pages/order/order_app_bar_controller.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
+
+import 'order_app_bar_controller.dart';
 
 class VOrderController extends VBaseMessageController {
   final OrderAppBarController orderAppBarController;
@@ -43,8 +43,7 @@ class VOrderController extends VBaseMessageController {
 
   @override
   void onTitlePress(BuildContext context) {
-    final toSingleSettings =
-        VChatController.I.vNavigator.messageNavigator.toSingleSettings;
+    final toSingleSettings = VChatController.I.vNavigator.messageNavigator.toSingleSettings;
     if (toSingleSettings == null) return;
     toSingleSettings(
       context,
@@ -62,9 +61,7 @@ class VOrderController extends VBaseMessageController {
     final res = await VAppAlert.showAskYesNoDialog(
       context: context,
       title: language.makeCall,
-      content: isVideo
-          ? language.areYouWantToMakeVideoCall
-          : language.areYouWantToMakeVoiceCall,
+      content: isVideo ? language.areYouWantToMakeVideoCall : language.areYouWantToMakeVoiceCall,
     );
     if (res != 1) return;
     VChatController.I.vNavigator.callNavigator.toCall(
@@ -73,7 +70,7 @@ class VOrderController extends VBaseMessageController {
         isVideoEnable: isVideo,
         roomId: vRoom.id,
         isCaller: true,
-        peerUser: SBaseUser(
+        peerUser: BaseUser(
           userImage: vRoom.thumbImage,
           fullName: vRoom.realTitle,
           id: vRoom.peerId!,
@@ -96,8 +93,7 @@ class VOrderController extends VBaseMessageController {
   }
 
   @override
-  Future<List<MentionModel>> onMentionRequireSearch(
-      BuildContext context, String query) {
+  Future<List<MentionModel>> onMentionRequireSearch(BuildContext context, String query) {
     return Future(() => []);
   }
 }
