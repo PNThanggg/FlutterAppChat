@@ -1,0 +1,37 @@
+name: chat_media_editor
+description: "A new Flutter package project."
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  chat_platform:
+    path: ../chat_platform
+  chat_core:
+    path: ../chat_core
+  cached_network_image: ^3.4.1
+  blurhash: ^1.1.1
+  flutter_native_image: ^0.0.6+1
+  video_player: ^2.9.3
+  video_thumbnail: ^0.5.3
+  video_player_win: ^3.1.1
+  phosphor_flutter: ^2.1.0
+  path: ^1.9.0
+  path_provider: ^2.1.5
+  pro_image_editor: ^8.2.0
+  chewie: ^1.10.0
+  flutter_cache_manager: ^3.4.1
+  flutter_painter_v2: ^2.1.0+1
+  file_picker: ^9.0.0
+  image_cropper: ^9.0.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
