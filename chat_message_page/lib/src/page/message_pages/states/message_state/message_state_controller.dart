@@ -1,12 +1,12 @@
 import 'dart:async';
 
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_message_page/chat_message_page.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
-import '../../../../../v_chat_message_page.dart';
 import '../../providers/message_provider.dart';
 
 class MessageState {
