@@ -1,13 +1,14 @@
 import 'dart:async';
 
+import 'package:chat_config/chat_preferences.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_message_page/chat_message_page.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_input_ui/v_chat_input_ui.dart';
-import 'package:v_chat_message_page/src/core/stream_mixin.dart';
-import 'package:v_chat_message_page/src/page/message_pages/controllers/v_base_message_controller.dart';
-import 'package:v_chat_message_page/src/page/message_pages/pages/group/group_app_bar_controller.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
+
+import 'group_app_bar_controller.dart';
 
 class VGroupController extends VBaseMessageController with StreamMix {
   final GroupAppBarController groupAppBarController;
@@ -46,7 +47,7 @@ class VGroupController extends VBaseMessageController with StreamMix {
   }
 
   Future<void> _getFromCache() async {
-    final res = VAppPref.getMap("$_cacheKey${vRoom.id}");
+    final res = ChatPreferences.getMap("$_cacheKey${vRoom.id}");
     if (res == null) return;
     final info = VMyGroupInfo.fromMap(res);
     _updateInputState(info);
@@ -61,7 +62,7 @@ class VGroupController extends VBaseMessageController with StreamMix {
       onSuccess: (response) async {
         groupAppBarController.updateValue(response);
         _updateInputState(response);
-        await VAppPref.setMap("$_cacheKey${vRoom.id}", response.toMap());
+        await ChatPreferences.setMap("$_cacheKey${vRoom.id}", response.toMap());
       },
     );
   }
@@ -70,9 +71,7 @@ class VGroupController extends VBaseMessageController with StreamMix {
     final res = await VAppAlert.showAskYesNoDialog(
       context: context,
       title: S.of(context).makeCall,
-      content: isVideo
-          ? S.of(context).areYouWantToMakeVideoCall
-          : S.of(context).areYouWantToMakeVoiceCall,
+      content: isVideo ? S.of(context).areYouWantToMakeVideoCall : S.of(context).areYouWantToMakeVoiceCall,
     );
     if (res != 1) return;
 
@@ -82,7 +81,7 @@ class VGroupController extends VBaseMessageController with StreamMix {
         isVideoEnable: isVideo,
         roomId: vRoom.id,
         isCaller: true,
-        peerUser: SBaseUser(
+        peerUser: BaseUser(
           userImage: vRoom.thumbImage,
           fullName: vRoom.realTitle,
           id: vRoom.id,
@@ -141,10 +140,7 @@ class VGroupController extends VBaseMessageController with StreamMix {
 
   void _initStreams() {
     streamsMix.add(
-      VEventBusSingleton.vEventBus
-          .on<VOnGroupKicked>()
-          .where((e) => e.roomId == vRoom.id)
-          .listen(_onGroupKick),
+      VEventBusSingleton.vEventBus.on<VOnGroupKicked>().where((e) => e.roomId == vRoom.id).listen(_onGroupKick),
     );
   }
 
