@@ -1,4 +1,4 @@
-import '../../../v_chat_message_page.dart';
+import 'package:chat_message_page/chat_message_page.dart';
 
 class CallState {
   CallStatus status = CallStatus.connecting;
