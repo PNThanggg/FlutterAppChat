@@ -1,3 +1,5 @@
+import 'package:chat_config/chat_preferences.dart';
+
 import '../model.dart';
 
 abstract class AppAuth {

@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:chat_core/chat_core.dart';
+import 'package:chat_config/chat_preferences.dart';
 import 'package:chat_platform/v_platform.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:file_saver/file_saver.dart';
@@ -20,11 +20,11 @@ abstract class VFileUtils {
   }
 
   static String downloadPath() {
-    return VAppPref.getStringOrNullKey(SStorageKeys.appRootPath.name)!;
+    return ChatPreferences.getStringOrNullKey(SStorageKeys.appRootPath.name)!;
   }
 
   static bool isFileExists(String filePath) {
-    final rootPath = VAppPref.getStringOrNullKey(SStorageKeys.appRootPath.name);
+    final rootPath = ChatPreferences.getStringOrNullKey(SStorageKeys.appRootPath.name);
     if (rootPath == null) {
       if (kDebugMode) {
         print(
@@ -37,7 +37,7 @@ abstract class VFileUtils {
   }
 
   static String getLocalPath(String hashIdWithExt) {
-    final rootPath = VAppPref.getStringOrNullKey(SStorageKeys.appRootPath.name);
+    final rootPath = ChatPreferences.getStringOrNullKey(SStorageKeys.appRootPath.name);
     return p.join(rootPath!, hashIdWithExt);
   }
 
@@ -55,7 +55,7 @@ abstract class VFileUtils {
     if (!await Directory(rootPath).exists()) {
       await Directory(rootPath).create(recursive: true);
     }
-    await VAppPref.setStringKey(SStorageKeys.appRootPath.name, rootPath);
+    await ChatPreferences.setStringKey(SStorageKeys.appRootPath.name, rootPath);
   }
 
   static Future<ImageInfo> getImageInfo({

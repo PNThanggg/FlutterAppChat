@@ -1,7 +1,7 @@
 import 'dart:async';
 
+import 'package:chat_config/chat_preferences.dart';
 import 'package:flutter/material.dart';
-import 'package:chat_core/chat_core.dart';
 
 class VThemeListener extends ValueNotifier<ThemeMode> {
   VThemeListener._() : super(ThemeMode.system);
@@ -13,7 +13,7 @@ class VThemeListener extends ValueNotifier<ThemeMode> {
   }
 
   Future setTheme(ThemeMode themeMode) async {
-    await VAppPref.setStringKey(
+    await ChatPreferences.setStringKey(
       SStorageKeys.appTheme.name,
       themeMode.name,
     );
@@ -21,7 +21,7 @@ class VThemeListener extends ValueNotifier<ThemeMode> {
   }
 
   ThemeMode get appTheme {
-    final prefTheme = VAppPref.getStringOrNullKey(
+    final prefTheme = ChatPreferences.getStringOrNullKey(
       SStorageKeys.appTheme.name,
     );
     if (prefTheme == null) {

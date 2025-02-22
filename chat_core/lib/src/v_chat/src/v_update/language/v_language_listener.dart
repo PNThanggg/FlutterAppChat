@@ -1,8 +1,9 @@
 import 'dart:async';
 import 'dart:ui' as ui;
 
-import 'package:flutter/cupertino.dart';
+import 'package:chat_config/chat_preferences.dart';
 import 'package:chat_core/chat_core.dart';
+import 'package:flutter/cupertino.dart';
 
 class VLanguageListener extends ValueNotifier<Locale> {
   VLanguageListener._() : super(const Locale("en"));
@@ -14,7 +15,7 @@ class VLanguageListener extends ValueNotifier<Locale> {
   }
 
   Future setLocal(Locale locale) async {
-    await VAppPref.setStringKey(
+    await ChatPreferences.setStringKey(
       SStorageKeys.appLanguageCode.name,
       locale.languageCode,
     );
@@ -23,12 +24,12 @@ class VLanguageListener extends ValueNotifier<Locale> {
   }
 
   Locale get appLocal {
-    final prefLang = VAppPref.getStringOrNullKey(
+    final prefLang = ChatPreferences.getStringOrNullKey(
       SStorageKeys.appLanguageCode.name,
     );
     if (prefLang == null) {
       unawaited(
-        VAppPref.setStringKey(
+        ChatPreferences.setStringKey(
           SStorageKeys.appLanguageTitle.name,
           deviceLocal.languageCode,
         ),
