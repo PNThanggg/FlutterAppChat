@@ -1,3 +1,4 @@
+import 'package:chat_config/theme/colors.dart';
 import 'package:chat_core/chat_core.dart';
 import 'package:chat_platform/v_platform.dart';
 import 'package:flutter/cupertino.dart';

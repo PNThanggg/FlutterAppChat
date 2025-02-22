@@ -1,4 +1,4 @@
-import 'package:chat_core/chat_core.dart';
+import 'package:chat_config/chat_constants.dart';
 
 class MentionModel {
   final String peerId;
@@ -11,7 +11,8 @@ class MentionModel {
     required this.image,
   });
 
-  String get imageS3 => SConstants.baseMediaUrl + image;
+  String get imageS3 => ChatConstants.baseMediaUrl + image;
+
   Map<String, dynamic> toMap() {
     return {
       'peerId': peerId,

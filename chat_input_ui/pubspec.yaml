@@ -17,6 +17,8 @@ dependencies:
     path: ../chat_platform
   chat_core:
     path: ../chat_core
+  chat_config:
+    path: ../chat_config
   chat_mention_controller:
     path: ../chat_mention_controller
 
