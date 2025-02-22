@@ -1,5 +1,5 @@
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_chat_voice_player/v_chat_voice_player.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_voice_player/chat_voice_player.dart';
 
 class MessageSingleStatusController {
   VVoiceMessageController? voiceMessageController;
