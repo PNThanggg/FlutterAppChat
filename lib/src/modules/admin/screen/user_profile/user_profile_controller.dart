@@ -1,8 +1,8 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 import '../../../../../../main.dart';
 import '../../admin.dart';
@@ -20,7 +20,7 @@ class UserProfileController extends SLoadingController<PeerUserInfo> {
 
   UserProfileController(this.userID)
       : super(
-          SLoadingState(
+          LoadingState(
             PeerUserInfo.init(),
           ),
         );

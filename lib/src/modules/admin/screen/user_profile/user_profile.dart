@@ -1,9 +1,10 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:intl/intl.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../../color_schemes.g.dart';
 import 'user_profile_controller.dart';
@@ -51,7 +52,7 @@ class _UserProfileState extends State<UserProfile> {
         builder: (_, __, ___) {
           final loadingState = controller.loadingState;
 
-          if (loadingState == VChatLoadingState.loading) {
+          if (loadingState == ChatLoadingState.loading) {
             return const Center(
               child: SizedBox(
                 width: 40,
@@ -83,14 +84,17 @@ class _UserProfileState extends State<UserProfile> {
                       SizedBox(height: MediaQuery.of(context).padding.top + 12),
                       VCircleAvatar(
                         vFileSource: VPlatformFile.fromUrl(
-                          url: controller.data.user.userImage,
+                          networkUrl: controller.data.user.userImage,
                         ),
                         radius: 100,
                       ),
                       const SizedBox(height: 5),
                       controller.data.user.fullName.h4.color(Colors.black),
                       const SizedBox(height: 5),
-                      (controller.data.user.isOnline ? S.of(context).online : S.of(context).offline,).toString().b1.color(Colors.black),
+                      (controller.data.user.isOnline ? S.of(context).online : S.of(context).offline,)
+                          .toString()
+                          .b1
+                          .color(Colors.black),
                       const SizedBox(height: 5),
                       ExpansionTile(
                         title: S.of(context).userInfo.text.color(Colors.black),
@@ -115,7 +119,9 @@ class _UserProfileState extends State<UserProfile> {
                           ListTile(
                             title: S.of(context).registerStatus.b1.color(Colors.black),
                             subtitle: controller.data.user.registerStatus.b2.color(Colors.black),
-                            onTap: controller.data.user.registerStatus == RegisterStatus.pending.name ? () => controller.acceptUser(context) : null,
+                            onTap: controller.data.user.registerStatus == RegisterStatus.pending.name
+                                ? () => controller.acceptUser(context)
+                                : null,
                             trailing: controller.data.user.registerStatus == RegisterStatus.pending.name
                                 ? const Icon(
                                     Icons.edit,
@@ -141,7 +147,6 @@ class _UserProfileState extends State<UserProfile> {
                           ),
                           ListTile(
                             onTap: () => controller.primeUser(context),
-                            //todo trans
                             title: "Is prime".b1.color(Colors.black),
                             subtitle: controller.data.user.isPrime.toString().b2.color(Colors.black),
                             trailing: const Icon(Icons.edit),
@@ -227,7 +232,7 @@ class _UserProfileState extends State<UserProfile> {
                                 dense: false,
                                 leading: VCircleAvatar(
                                   vFileSource: VPlatformFile.fromUrl(
-                                    url: e.reporter.userImage,
+                                    networkUrl: e.reporter.userImage,
                                   ),
                                   radius: 20,
                                 ),
