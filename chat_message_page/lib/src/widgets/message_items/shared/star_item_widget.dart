@@ -1,4 +1,4 @@
-import 'package:chat_core/chat_core.dart';
+import 'package:chat_config/theme/colors.dart';
 import 'package:flutter/cupertino.dart';
 
 class StarItemWidget extends StatelessWidget {

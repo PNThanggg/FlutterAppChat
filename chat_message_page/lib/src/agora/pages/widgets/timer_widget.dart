@@ -1,6 +1,6 @@
+import 'package:chat_core/chat_core.dart';
 import 'package:flutter/material.dart';
 import 'package:stop_watch_timer/stop_watch_timer.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 class TimerWidget extends StatelessWidget {
   final StopWatchTimer stopWatchTimer;

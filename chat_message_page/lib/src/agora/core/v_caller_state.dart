@@ -1,6 +1,5 @@
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-
-import '../../../v_chat_message_page.dart';
+import 'package:chat_message_page/chat_message_page.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 
 class VRtcState {
   Duration time;

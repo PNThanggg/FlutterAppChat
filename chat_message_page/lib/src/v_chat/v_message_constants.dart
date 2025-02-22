@@ -1,7 +1,7 @@
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 
 abstract class VMessageConstants {
-  static String getMessageBody(VBaseMessage m, VMessagesInfoTrans language) {
+  static String getMessageBody(VBaseMessage m, MessageInfoTrans language) {
     if (m is VInfoMessage) {
       final infoAtt = m.data;
       final messages = {

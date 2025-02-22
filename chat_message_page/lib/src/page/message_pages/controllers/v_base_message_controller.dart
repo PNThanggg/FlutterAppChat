@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:chat_core/chat_core.dart';
+import 'package:chat_media_editor/chat_media_editor.dart';
 import 'package:chat_message_page/src/page/message_pages/controllers/v_message_item_controller.dart';
 import 'package:chat_platform/v_platform.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';

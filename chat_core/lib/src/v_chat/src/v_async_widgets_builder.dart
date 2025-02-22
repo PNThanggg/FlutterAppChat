@@ -43,13 +43,15 @@ class VAsyncWidgetsBuilder extends StatelessWidget {
       }
     } else if (loadingState == ChatLoadingState.loading) {
       if (loadingWidget == null) {
-        return const Center(child: CupertinoActivityIndicator());
+        return const Center(
+          child: CupertinoActivityIndicator(),
+        );
       } else {
         return loadingWidget!();
       }
     } else if (loadingState == ChatLoadingState.empty) {
       if (emptyWidget == null) {
-        return const SizedBox();
+        return const SizedBox.shrink();
       } else {
         return emptyWidget!();
       }

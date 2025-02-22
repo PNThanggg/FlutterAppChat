@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:chat_config/chat_preferences.dart';
 import 'package:logging/logging.dart';
-import 'package:chat_core/chat_core.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 
 class SocketService {

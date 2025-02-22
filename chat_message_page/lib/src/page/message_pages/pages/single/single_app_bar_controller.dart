@@ -1,8 +1,8 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_message_page/chat_message_page.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart' hide vSafeApiCall;
 
-import '../../../../../v_chat_message_page.dart';
 import '../../providers/message_provider.dart';
 
 class SingleAppBarController extends ValueNotifier<SingleAppBarStateModel> with StreamMix {

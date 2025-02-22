@@ -1,6 +1,6 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_platform/v_platform.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 class UserIconWidget extends StatelessWidget {
   final String url;
@@ -23,7 +23,9 @@ class UserIconWidget extends StatelessWidget {
       child: Column(
         children: [
           VCircleAvatar(
-            vFileSource: VPlatformFile.fromUrl(url: url),
+            vFileSource: VPlatformFile.fromUrl(
+              networkUrl: url,
+            ),
             radius: 60,
           ),
           const SizedBox(
