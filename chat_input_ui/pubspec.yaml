@@ -11,6 +11,33 @@ dependencies:
   flutter:
     sdk: flutter
 
+  chat_sdk_core:
+    path: ../chat_sdk_core
+  chat_platform:
+    path: ../chat_platform
+  chat_core:
+    path: ../chat_core
+  chat_mention_controller:
+    path: ../chat_mention_controller
+
+  permission_handler: ^11.4.0
+  intl: ^0.20.2
+  adaptive_dialog: ^2.4.0
+  file_picker: ^9.0.0
+  image_cropper: ^9.0.0
+  wechat_camera_picker: ^4.3.7
+  audio_waveforms: ^1.2.0
+  cross_file: ^0.3.4+2
+  uuid: ^4.5.1
+  path_provider: ^2.1.5
+  stop_watch_timer: ^3.1.1
+  record: ^5.2.1
+  latlong2: ^0.9.1
+  pasteboard: ^0.3.0
+  emoji_picker_flutter: ^4.3.0
+  cached_network_image: ^3.4.1
+  place_picker_v2: ^0.0.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
