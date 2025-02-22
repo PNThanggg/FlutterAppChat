@@ -8,7 +8,6 @@ class PaginateModel<T> {
   bool hasPrevPage;
   bool hasNextPage;
 
-//<editor-fold desc="Data Methods">
   PaginateModel({
     required this.totalDocs,
     required this.values,
@@ -85,6 +84,4 @@ class PaginateModel<T> {
       hasNextPage: map['hasNextPage'] as bool,
     );
   }
-
-//</editor-fold>
 }

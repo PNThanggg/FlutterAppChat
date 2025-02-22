@@ -2,9 +2,30 @@ import 'dart:convert';
 
 import 'package:encrypt/encrypt.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:chat_core/chat_core.dart';
 
-abstract class VAppPref {
+enum SStorageKeys {
+  myProfile,
+  vAccessToken,
+  isLogin,
+  appTheme,
+  clintVersion,
+  adminAccessPassword,
+  isViewer,
+  isFirstRun,
+  appRootPath,
+  appMetaData,
+  appLanguageTitle,
+  inAppAlerts,
+  appLanguageCode,
+  lastAppliedUpdate,
+  lastSuccessFetchRoomsTime,
+  vBaseUrl,
+  appConfigModelData,
+  mobileDataMediaDownloadOptions,
+  wifiMediaDownloadOptions,
+}
+
+abstract class ChatPreferences {
   static SharedPreferences? _instance;
 
   static SharedPreferences get instance => _instance!;

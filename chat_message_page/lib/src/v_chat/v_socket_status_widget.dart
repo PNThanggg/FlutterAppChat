@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 
 class VSocketStatusWidget extends StatefulWidget {
   final BoxDecoration decoration;

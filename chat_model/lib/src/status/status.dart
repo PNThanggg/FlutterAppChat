@@ -1,8 +1,8 @@
-import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
 
 class Status {
   final String id;
-  final SBaseUser user;
+  final BaseUser user;
   final String createdAt;
 
   final int seenIndex;
@@ -19,7 +19,7 @@ class Status {
   static final dummyStatus = <Status>[
     const Status(
       id: '2022-04-13T22:55:05.900+00:00',
-      user: SBaseUser.myUser,
+      user: BaseUser.myUser,
       createdAt: '2022-04-13T22:55:05.900+00:00',
       seenIndex: 0,
       statusList: [
@@ -28,7 +28,7 @@ class Status {
     ),
     const Status(
       id: '2022-04-13T22:55:05.900+00:00',
-      user: SBaseUser.myUser,
+      user: BaseUser.myUser,
       createdAt: '2022-04-13T22:55:05.900+00:00',
       seenIndex: 0,
       statusList: [
@@ -38,7 +38,7 @@ class Status {
     ),
     const Status(
       id: '2022-04-13T22:55:05.900+00:00',
-      user: SBaseUser.myUser,
+      user: BaseUser.myUser,
       createdAt: '2022-04-13T22:55:05.900+00:00',
       seenIndex: 0,
       statusList: [
@@ -55,7 +55,7 @@ class Status {
     ),
     const Status(
       id: '2022-04-13T22:55:05.900+00:00',
-      user: SBaseUser.myUser,
+      user: BaseUser.myUser,
       createdAt: '2022-04-13T22:55:05.900+00:00',
       seenIndex: 0,
       statusList: [
@@ -64,7 +64,7 @@ class Status {
     ),
     const Status(
       id: '2022-04-13T22:55:05.900+00:00',
-      user: SBaseUser.myUser,
+      user: BaseUser.myUser,
       createdAt: '2022-04-13T22:55:05.900+00:00',
       seenIndex: 0,
       statusList: [
@@ -95,7 +95,7 @@ class Status {
 
   Status copyWith({
     String? id,
-    SBaseUser? user,
+    BaseUser? user,
     String? createdAt,
     int? seenIndex,
     List<StatusModelItem>? statusList,
@@ -122,7 +122,7 @@ class Status {
   factory Status.fromMap(Map<String, dynamic> map) {
     return Status(
       id: map['id'] as String,
-      user: map['user'] as SBaseUser,
+      user: map['user'] as BaseUser,
       createdAt: map['createdAt'] as String,
       seenIndex: map['seenIndex'] as int,
       statusList: map['statusList'] as List<StatusModelItem>,

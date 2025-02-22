@@ -1,7 +1,7 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_platform/v_platform.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_advanced_avatar/flutter_advanced_avatar.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 class VChatAvatarImage extends StatelessWidget {
   final String imageUrl;
@@ -23,11 +23,10 @@ class VChatAvatarImage extends StatelessWidget {
       size: size.toDouble(),
       statusColor: isOnline ? CupertinoColors.systemGreen : null,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(100)),
-      foregroundDecoration:
-          BoxDecoration(borderRadius: BorderRadius.circular(100)),
+      foregroundDecoration: BoxDecoration(borderRadius: BorderRadius.circular(100)),
       name: chatTitle,
       child: VCircleAvatar(
-        vFileSource: VPlatformFile.fromUrl(url: imageUrl),
+        vFileSource: VPlatformFile.fromUrl(networkUrl: imageUrl),
       ),
     );
   }

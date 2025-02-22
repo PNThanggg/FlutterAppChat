@@ -1,6 +1,5 @@
-abstract class SConstants {
+abstract class ChatConstants {
   ///your super up base domain url
-  ///like this (example.com) not start https// or any sub domains example [superupdev.com]
   static const _productionBaseUrl = "sworkdevapi.zumchat.me";
 
   ///your app name

@@ -1,30 +1,31 @@
-import 'package:enum_to_string/enum_to_string.dart';
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_model/model.dart';
 import 'package:chat_translation/generated/l10n.dart';
-import 'package:chat_core/chat_core.dart';
+import 'package:enum_to_string/enum_to_string.dart';
 
-class SSearchUser {
-  final SBaseUser baseUser;
+class SearchUser {
+  final BaseUser baseUser;
   final String? bio;
   final String createdAt;
-  final List<SUserRole> roles;
+  final List<UserRole> roles;
 
-  const SSearchUser({
+  const SearchUser({
     required this.baseUser,
     required this.bio,
     required this.roles,
     required this.createdAt,
   });
 
-  bool get isPrime => roles.contains(SUserRole.prime);
+  bool get isPrime => roles.contains(UserRole.prime);
 
-  bool get isStaff => roles.contains(SUserRole.staff);
+  bool get isStaff => roles.contains(UserRole.staff);
 
-  bool get hasBadge => roles.contains(SUserRole.hasBadge);
+  bool get hasBadge => roles.contains(UserRole.hasBadge);
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is SSearchUser &&
+      (other is SearchUser &&
           runtimeType == other.runtimeType &&
           baseUser == other.baseUser &&
           bio == other.bio &&
@@ -39,7 +40,7 @@ class SSearchUser {
   }
 
   String get getUserBio {
-    if (bio == null) return "${S.current.hiIamUse} ${SConstants.appName}";
+    if (bio == null) return "${S.current.hiIamUse} ${ChatConstants.appName}";
     return bio!;
   }
 
@@ -52,15 +53,15 @@ class SSearchUser {
     };
   }
 
-  factory SSearchUser.fromMap(Map<String, dynamic> map) {
-    return SSearchUser(
-      baseUser: SBaseUser.fromMap(map),
+  factory SearchUser.fromMap(Map<String, dynamic> map) {
+    return SearchUser(
+      baseUser: BaseUser.fromMap(map),
       bio: map['bio'] as String?,
       roles: map['roles'] == null
           ? []
           : (map['roles'] as List)
               .map(
-                (e) => EnumToString.fromString(SUserRole.values, e) ?? SUserRole.bug,
+                (e) => EnumToString.fromString(UserRole.values, e) ?? UserRole.bug,
               )
               .toList(),
       createdAt: map['createdAt'] as String,

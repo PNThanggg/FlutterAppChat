@@ -9,15 +9,15 @@ class AdminNotificationsModel {
     required this.id,
     required this.content,
     required this.title,
-    this.imageUrl,
     required this.createdAt,
+    this.imageUrl,
   });
 
   DateTime get startAtDate => DateTime.parse(createdAt).toLocal();
 
   @override
   String toString() {
-    return 'AdminNotificationsModel{ id: $id, content: $content, title: $title, imageUrl: $imageUrl, createdAt: $createdAt,}';
+    return 'AdminNotificationsModel{id: $id, content: $content, title: $title, imageUrl: $imageUrl, createdAt: $createdAt}';
   }
 
   AdminNotificationsModel copyWith({

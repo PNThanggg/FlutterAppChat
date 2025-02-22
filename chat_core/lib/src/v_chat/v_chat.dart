@@ -1,5 +1,5 @@
 export 'src/app_pick.dart';
-export 'src/app_pref.dart';
+export '../../../../chat_config/lib/app_pref.dart';
 export 'src/auto_direction.dart';
 export 'src/conditional_builder.dart';
 export 'src/device_info_helper.dart';

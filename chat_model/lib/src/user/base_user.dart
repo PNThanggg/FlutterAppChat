@@ -1,11 +1,12 @@
-import 'package:chat_core/chat_core.dart';
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_model/model.dart';
 
-class SBaseUser {
+class BaseUser {
   final String id;
   final String userImage;
   final String fullName;
 
-  const SBaseUser({
+  const BaseUser({
     required this.id,
     required this.fullName,
     required this.userImage,
@@ -13,12 +14,11 @@ class SBaseUser {
 
   bool get isMe => id == AppAuth.myId;
 
-  String get userImageS3 => SConstants.baseMediaUrl + userImage;
+  String get userImageS3 => ChatConstants.baseMediaUrl + userImage;
 
   @override
   bool operator ==(Object other) =>
-      identical(this, other) ||
-      other is SBaseUser && runtimeType == other.runtimeType && id == other.id;
+      identical(this, other) || other is BaseUser && runtimeType == other.runtimeType && id == other.id;
 
   @override
   int get hashCode => id.hashCode;
@@ -32,20 +32,19 @@ class SBaseUser {
         '}';
   }
 
-  static const myUser = SBaseUser(
+  static const myUser = BaseUser(
     id: "1",
     fullName: "user 1",
-    userImage:
-        "https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png",
+    userImage: "https://www.kindpng.com/picc/m/24-248253_user-profile-default-image-png-clipart-png-download.png",
   );
 
-  SBaseUser copyWith({
+  BaseUser copyWith({
     String? id,
     String? email,
     String? fullName,
     String? userImage,
   }) {
-    return SBaseUser(
+    return BaseUser(
       id: id ?? this.id,
       fullName: fullName ?? this.fullName,
       userImage: userImage ?? this.userImage,
@@ -60,8 +59,8 @@ class SBaseUser {
     };
   }
 
-  factory SBaseUser.fromMap(Map<String, dynamic> map) {
-    return SBaseUser(
+  factory BaseUser.fromMap(Map<String, dynamic> map) {
+    return BaseUser(
       id: map['_id'] as String,
       fullName: map['fullName'] as String,
       userImage: map['userImage'] as String,

@@ -1,4 +1,4 @@
-import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 
 class UserPrivacy {

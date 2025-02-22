@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
 import 'package:chat_platform/v_platform.dart';
 import 'package:chopper/chopper.dart';
 

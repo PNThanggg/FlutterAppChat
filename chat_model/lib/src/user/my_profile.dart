@@ -1,17 +1,18 @@
 import 'dart:ui';
 
-import 'package:chat_core/chat_core.dart';
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_model/model.dart';
 import 'package:chat_translation/generated/l10n.dart';
 
-class SMyProfile {
-  final SBaseUser baseUser;
+class MyProfile {
+  final BaseUser baseUser;
   final RegisterStatus registerStatus;
   final Locale language;
   final String deviceId;
   final String? bio;
   final String email;
 
-  final List<UserRoles> roles;
+  final List<UserRole> roles;
   final String registerMethod;
   final UserPrivacy userPrivacy;
 
@@ -19,9 +20,9 @@ class SMyProfile {
   // bool get isPrime => roles.contains(UserRoles.prime);
   bool get isPrime => true;
 
-  bool get hasBadge => roles.contains(UserRoles.hasBadge);
+  bool get hasBadge => roles.contains(UserRole.hasBadge);
 
-  const SMyProfile({
+  const MyProfile({
     required this.baseUser,
     required this.registerStatus,
     required this.language,
@@ -34,7 +35,7 @@ class SMyProfile {
   });
 
   String get userBio {
-    if (bio == null) return "${S.current.hiIamUse} ${SConstants.appName}";
+    if (bio == null) return "${S.current.hiIamUse} ${ChatConstants.appName}";
     return bio!;
   }
 
@@ -64,9 +65,9 @@ class SMyProfile {
     };
   }
 
-  factory SMyProfile.fromMap(Map<String, dynamic> map) {
-    return SMyProfile(
-      baseUser: SBaseUser.fromMap(map['me'] as Map<String, dynamic>),
+  factory MyProfile.fromMap(Map<String, dynamic> map) {
+    return MyProfile(
+      baseUser: BaseUser.fromMap(map['me'] as Map<String, dynamic>),
       bio: map['me']['bio'] as String?,
       userPrivacy: (map['me']['userPrivacy'] as Map<String, dynamic>?) == null
           ? UserPrivacy.defaults()
@@ -75,7 +76,7 @@ class SMyProfile {
       email: map['me']['email'] as String,
       roles: (map['me']['roles'] as List?)
               ?.map(
-                (e) => UserRoles.values.byName(e.toString()),
+                (e) => UserRole.values.byName(e.toString()),
               )
               .toList() ??
           [],
@@ -87,18 +88,18 @@ class SMyProfile {
     );
   }
 
-  SMyProfile copyWith({
-    SBaseUser? baseUser,
+  MyProfile copyWith({
+    BaseUser? baseUser,
     RegisterStatus? registerStatus,
     Locale? language,
     String? deviceId,
-    List<UserRoles>? roles,
+    List<UserRole>? roles,
     String? bio,
     String? email,
     UserPrivacy? userPrivacy,
     String? registerMethod,
   }) {
-    return SMyProfile(
+    return MyProfile(
       baseUser: baseUser ?? this.baseUser,
       registerStatus: registerStatus ?? this.registerStatus,
       language: language ?? this.language,
