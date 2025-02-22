@@ -1,6 +1,6 @@
 import 'package:chat_core/chat_core.dart';
 import 'package:chat_room_page/chat_room_page.dart';
-import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart' hide VMessageConstants;
 import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/material.dart';
 
