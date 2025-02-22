@@ -6,8 +6,8 @@ class VProfileApi {
   final VChatConfig _chatConfig;
   final _log = Logger('user_api.Auth');
 
-  // Provides access to profile-related API services
-  VProfileApiService get _profileApi => _vNativeApi.remote.profile;
+  // // Provides access to profile-related API services
+  // VProfileApiService get _profileApi => _vNativeApi.remote.profile;
 
   VProfileApi(
     this._vNativeApi,
