@@ -1,5 +1,5 @@
 ///labels available to translate
-class VMessageInfoTrans {
+class MessageInfoTrans {
   /// The title to update to.
   final String updateTitleTo;
 
@@ -30,7 +30,7 @@ class VMessageInfoTrans {
   /// The message when the current user is added to a new broadcast.
   final String addedYouToNewBroadcast;
 
-  const VMessageInfoTrans({
+  const MessageInfoTrans({
     required this.updateTitleTo,
     required this.updateImage,
     required this.joinedBy,
@@ -43,8 +43,8 @@ class VMessageInfoTrans {
     required this.addedYouToNewBroadcast,
   });
 
-  factory VMessageInfoTrans.fromEnglish() {
-    return const VMessageInfoTrans(
+  factory MessageInfoTrans.fromEnglish() {
+    return const MessageInfoTrans(
       updateTitleTo: 'Update title to',
       updateImage: 'Update image',
       joinedBy: 'joined by',
@@ -80,7 +80,7 @@ class VRoomLanguage {
   final String areYouSureToPermitYourCopyThisActionCantUndo;
   final String areYouSureToLeaveThisGroupThisActionCantUndo;
   final String leaveGroupAndDeleteYourMessageCopy;
-  final VMessageInfoTrans vMessageInfoTrans;
+  final MessageInfoTrans vMessageInfoTrans;
 
   ///
 
@@ -122,7 +122,7 @@ class VRoomLanguage {
       areYouSureToPermitYourCopyThisActionCantUndo: "Are you sure to permit your copy? This action can't undo",
       areYouSureToLeaveThisGroupThisActionCantUndo: "Are you sure to leave this group? This action can't undo",
       leaveGroupAndDeleteYourMessageCopy: 'Leave group and delete your message copy',
-      vMessageInfoTrans: VMessageInfoTrans.fromEnglish(),
+      vMessageInfoTrans: MessageInfoTrans.fromEnglish(),
     );
   }
 }
