@@ -1,8 +1,8 @@
-import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 
 class VGroupMember {
-  final SBaseUser userData;
+  final BaseUser userData;
   final VGroupMemberRole role;
   final String createdAt;
 
@@ -31,7 +31,7 @@ class VGroupMember {
   }
 
   VGroupMember copyWith({
-    SBaseUser? user,
+    BaseUser? user,
     VGroupMemberRole? role,
     String? createdAt,
   }) {
@@ -52,7 +52,7 @@ class VGroupMember {
 
   factory VGroupMember.fromMap(Map<String, dynamic> map) {
     return VGroupMember(
-      userData: SBaseUser.fromMap(map['userData'] as Map<String, dynamic>),
+      userData: BaseUser.fromMap(map['userData'] as Map<String, dynamic>),
       role: VGroupMemberRole.values.byName(map['gR'] as String),
       createdAt: map['createdAt'] as String,
     );

@@ -1,9 +1,9 @@
-import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 
 /// Represents a record of a single video call in the VChat application.
 class VCallHistory {
-  final SBaseUser peerUser;
+  final BaseUser peerUser;
   final VMessageCallStatus callStatus;
   final String roomId;
   final String id;
@@ -60,7 +60,7 @@ class VCallHistory {
   /// Creates a new [VCallHistory] instance from a Map.
   factory VCallHistory.fromMap(Map<String, dynamic> map) {
     return VCallHistory(
-      peerUser: SBaseUser.fromMap(map['peerUser'] as Map<String, dynamic>),
+      peerUser: BaseUser.fromMap(map['peerUser'] as Map<String, dynamic>),
       callStatus: VMessageCallStatus.values.firstWhere((e) => e.name == map['callStatus']),
       roomId: map['roomId'] as String,
       id: map['_id'] as String,

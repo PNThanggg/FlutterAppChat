@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:chat_core/chat_core.dart';
+import 'package:chat_config/chat_preferences.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:http/http.dart' as http;
 
@@ -91,7 +91,7 @@ class VRemoteNativeApi {
     required Map<String, dynamic>? body,
     Map<String, String> headers = const {},
   }) async {
-    headers['authorization'] = "Bearer ${VAppPref.getHashedString(
+    headers['authorization'] = "Bearer ${ChatPreferences.getHashedString(
       key: SStorageKeys.vAccessToken.name,
     )}";
     headers["clint-version"] = VAppConstants.clintVersion;

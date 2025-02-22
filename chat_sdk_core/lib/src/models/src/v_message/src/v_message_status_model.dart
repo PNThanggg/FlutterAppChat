@@ -1,9 +1,10 @@
 import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
 
 class VMessageStatusModel {
   final String deliveredAt;
   final String? seenAt;
-  final SBaseUser peerUser;
+  final BaseUser peerUser;
 
   const VMessageStatusModel({
     required this.deliveredAt,
@@ -44,7 +45,7 @@ class VMessageStatusModel {
     return VMessageStatusModel(
       deliveredAt: map['dAt'] as String,
       seenAt: map['sAt'] as String?,
-      peerUser: SBaseUser.fromMap(map['userData'] as Map<String, dynamic>),
+      peerUser: BaseUser.fromMap(map['userData'] as Map<String, dynamic>),
     );
   }
 }

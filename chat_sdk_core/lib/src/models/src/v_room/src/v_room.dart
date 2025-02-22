@@ -1,8 +1,8 @@
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:diacritic/diacritic.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:intl/intl.dart';
-import 'package:chat_core/chat_core.dart';
-import 'package:chat_sdk_core/chat_sdk_core.dart';
 
 class VRoom {
   /// The unique identifier of the room.
@@ -60,7 +60,7 @@ class VRoom {
   /// A flag used for selecting the room, for example in a multi-select scenario.
   bool isSelected = false;
 
-  String get thumbImageS3 => SConstants.baseMediaUrl + thumbImage;
+  String get thumbImageS3 => ChatConstants.baseMediaUrl + thumbImage;
 
   String get realTitle => nickName ?? title;
 

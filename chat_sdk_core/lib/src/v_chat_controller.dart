@@ -1,3 +1,4 @@
+import 'package:chat_config/chat_preferences.dart';
 import 'package:chat_core/chat_core.dart';
 import 'package:chat_platform/v_platform.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
@@ -100,7 +101,7 @@ class VChatController {
     _isControllerInit = false;
   }
 
-  SharedPreferences get sharedPreferences => VAppPref.instance;
+  SharedPreferences get sharedPreferences => ChatPreferences.instance;
 
   ///shortcut for [VChatController.I.nativeApi.local.room]
   NativeLocalRoom get nativeLocalRoom => VChatController.I.nativeApi.local.room;
@@ -116,7 +117,7 @@ class VChatController {
   ///
   /// Returns true if successfully connected to the socket, false otherwise.
   bool connectToSocket() {
-    final access = VAppPref.getHashedString(key: SStorageKeys.vAccessToken.name);
+    final access = ChatPreferences.getHashedString(key: SStorageKeys.vAccessToken.name);
     if (access == null) {
       _log.warning(
         "You try to connect to socket without login. Please make sure you call VChatController.instance.login first.",
@@ -156,5 +157,5 @@ class VChatController {
   ///
   /// [languageCode] is the new language code to be set.
   Future<void> updateLanguageCode(String languageCode) =>
-      VAppPref.setStringKey(SStorageKeys.appLanguageTitle.name, languageCode);
+      ChatPreferences.setStringKey(SStorageKeys.appLanguageTitle.name, languageCode);
 }

@@ -1,9 +1,11 @@
 import 'dart:async';
 
-import 'package:logging/logging.dart';
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_config/chat_preferences.dart';
 import 'package:chat_core/chat_core.dart';
-import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:logging/logging.dart';
 
 class VChatControllerHelper {
   final _config = VChatController.I.vChatConfig;
@@ -20,7 +22,7 @@ class VChatControllerHelper {
   Future<VChatControllerHelper> init() async {
     _initLogger(_config.enableLog);
     _setupTimeAgo();
-    await VAppPref.setStringKey(
+    await ChatPreferences.setStringKey(
       SStorageKeys.vBaseUrl.name,
       VAppConstants.baseUri.toString(),
     );
@@ -74,7 +76,7 @@ class VChatControllerHelper {
       return null;
     }
     final token = await (await _config.currentPushProviderService)?.getToken(
-      VPlatforms.isWeb ? SConstants.webVapidKey : null,
+      VPlatforms.isWeb ? ChatConstants.webVapidKey : null,
     );
     if (token == null) {
       _log.warning(

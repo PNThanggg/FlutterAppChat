@@ -1,4 +1,4 @@
-import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
 
 /// A model class that represents a new call.<br />
 class VNewCallModel {
@@ -12,7 +12,7 @@ class VNewCallModel {
   final bool withVideo;
 
   /// An object that represents the peerId user of the call.<br />
-  final SBaseUser peerUser;
+  final BaseUser peerUser;
 
   /// A map that represents the payload of the call.<br />
   final Map<String, dynamic>? payload;
@@ -49,7 +49,7 @@ class VNewCallModel {
       meetId: map['meetId'] as String,
       withVideo: map['withVideo'] as bool,
       payload: map['payload'] as Map<String, dynamic>?,
-      peerUser: SBaseUser.fromMap(
+      peerUser: BaseUser.fromMap(
         map['userData'] as Map<String, dynamic>,
       ),
     );

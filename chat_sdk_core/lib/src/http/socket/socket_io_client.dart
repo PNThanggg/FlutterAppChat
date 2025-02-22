@@ -1,4 +1,4 @@
-import 'package:chat_core/chat_core.dart';
+import 'package:chat_config/chat_preferences.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:socket_io_client/socket_io_client.dart';
 
@@ -24,11 +24,11 @@ class SocketIoClient implements ISocketIoClient {
   static final _singleton = SocketIoClient._internal(_getSocket());
 
   static Socket _getSocket() {
-    final accessString = VAppPref.getHashedString(key: SStorageKeys.vAccessToken.name) ?? '';
-    // print(accessString);
-    // if (accessString.isEmpty) {
-    //   throw Exception("_getSocket while AppAuth.myAccessToken is Empty !");
-    // }
+    final accessString = ChatPreferences.getHashedString(key: SStorageKeys.vAccessToken.name) ?? '';
+    if (accessString.isEmpty) {
+      throw Exception("_getSocket while AppAuth.myAccessToken is Empty !");
+    }
+
     final access = "Bearer $accessString";
     return io(
       VAppConstants.baseServerIp,

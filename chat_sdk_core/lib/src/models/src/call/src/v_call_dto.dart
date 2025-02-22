@@ -1,11 +1,11 @@
-import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
 
 /// Represents a Data Transfer Object (DTO) for a caller in the VChat application.
 class VCallDto {
   final bool isVideoEnable;
   final String roomId;
   final String? meetId;
-  final SBaseUser peerUser;
+  final BaseUser peerUser;
   final bool isCaller;
 
   /// Create a new [VCallDto].

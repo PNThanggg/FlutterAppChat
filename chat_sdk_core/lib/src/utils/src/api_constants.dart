@@ -1,4 +1,4 @@
-import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 
 abstract class VAppConstants {
@@ -21,7 +21,7 @@ abstract class VAppConstants {
     return Uri.parse("$baseServerIp/api/$apiVersion");
   }
 
-  static SBaseUser get myProfile {
+  static BaseUser get myProfile {
     return AppAuth.myProfile.baseUser;
   }
 

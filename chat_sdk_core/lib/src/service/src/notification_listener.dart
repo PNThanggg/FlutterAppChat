@@ -1,4 +1,4 @@
-import 'package:chat_core/chat_core.dart';
+import 'package:chat_config/chat_constants.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:logging/logging.dart';
 import 'package:platform_local_notifications/platform_local_notifications.dart';
@@ -57,7 +57,7 @@ class VNotificationListener {
   /// It listens to notifications, updates room's seen status, and navigates to message page.
   Future<void> _init() async {
     if (vChatConfig.vPush.enableVForegroundNotification && vChatConfig.isPushEnable) {
-      await PlatformNotifier.I.init(appName: SConstants.appName);
+      await PlatformNotifier.I.init(appName: ChatConstants.appName);
       await PlatformNotifier.I.requestPermissions();
       PlatformNotifier.I.platformNotifierStream.listen((event) async {
         if (event.payload!.isEmpty) return;

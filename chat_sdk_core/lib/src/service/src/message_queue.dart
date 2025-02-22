@@ -1,4 +1,5 @@
 import 'package:background_downloader/background_downloader.dart';
+import 'package:chat_config/chat_preferences.dart';
 import 'package:chat_core/chat_core.dart';
 import 'package:chat_platform/v_platform.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
@@ -89,7 +90,7 @@ class VMessageUploaderQueue {
       _log.warning("This means this task already run!!");
       return;
     }
-    final access = VAppPref.getHashedString(
+    final access = ChatPreferences.getHashedString(
       key: SStorageKeys.vAccessToken.name,
     );
     final task = UploadTask(

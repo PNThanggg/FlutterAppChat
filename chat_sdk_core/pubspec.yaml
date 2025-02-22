@@ -19,6 +19,8 @@ dependencies:
     path: ../chat_model
   chat_config:
     path: ../chat_config
+  chat_shared_page:
+    path: ../chat_shared_page
 
   event_bus_plus: ^0.6.2
   chopper: ^8.1.0

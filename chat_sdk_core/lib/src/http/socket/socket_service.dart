@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:chat_config/chat_preferences.dart';
 import 'package:logging/logging.dart';
 import 'package:chat_core/chat_core.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
@@ -32,7 +33,7 @@ class SocketService {
   /// Handles the connection to the SocketIO server.
   /// Adds the authorization token to the connection if available.
   void handleConnect() {
-    final access = VAppPref.getHashedString(key: SStorageKeys.vAccessToken.name) ?? "";
+    final access = ChatPreferences.getHashedString(key: SStorageKeys.vAccessToken.name) ?? "";
     if (access.isNotEmpty) {
       _socketIoClient.socket.io.options = {
         ..._socketIoClient.socket.io.options ?? {},

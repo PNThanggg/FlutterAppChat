@@ -1,7 +1,7 @@
-import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
 
 class VBroadcastMember {
-  final SBaseUser userData;
+  final BaseUser userData;
   final String createdAt;
 
   const VBroadcastMember({
@@ -16,7 +16,7 @@ class VBroadcastMember {
 
   DateTime get createdAtLocal => DateTime.parse(createdAt).toLocal();
   VBroadcastMember copyWith({
-    SBaseUser? user,
+    BaseUser? user,
     String? createdAt,
   }) {
     return VBroadcastMember(
@@ -34,7 +34,7 @@ class VBroadcastMember {
 
   factory VBroadcastMember.fromMap(Map<String, dynamic> map) {
     return VBroadcastMember(
-      userData: SBaseUser.fromMap(map['userData'] as Map<String, dynamic>),
+      userData: BaseUser.fromMap(map['userData'] as Map<String, dynamic>),
       createdAt: map['createdAt'] as String,
     );
   }

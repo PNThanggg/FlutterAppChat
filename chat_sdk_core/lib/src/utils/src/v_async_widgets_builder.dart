@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 // switch between different widgets with animation
 // depending on api call status
 class VAsyncWidgetsBuilder extends StatelessWidget {
-  final VChatLoadingState loadingState;
+  final ChatLoadingState loadingState;
   final Widget Function()? loadingWidget;
   final Widget Function() successWidget;
   final Widget Function()? errorWidget;
@@ -23,9 +23,9 @@ class VAsyncWidgetsBuilder extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (loadingState == VChatLoadingState.success) {
+    if (loadingState == ChatLoadingState.success) {
       return successWidget();
-    } else if (loadingState == VChatLoadingState.error) {
+    } else if (loadingState == ChatLoadingState.error) {
       if (errorWidget == null) {
         return GestureDetector(
           onTap: onRefresh,
@@ -40,13 +40,13 @@ class VAsyncWidgetsBuilder extends StatelessWidget {
       } else {
         return errorWidget!();
       }
-    } else if (loadingState == VChatLoadingState.loading) {
+    } else if (loadingState == ChatLoadingState.loading) {
       if (loadingWidget == null) {
         return const Center(child: CircularProgressIndicator.adaptive());
       } else {
         return loadingWidget!();
       }
-    } else if (loadingState == VChatLoadingState.empty) {
+    } else if (loadingState == ChatLoadingState.empty) {
       if (emptyWidget == null) {
         return const SizedBox();
       } else {
