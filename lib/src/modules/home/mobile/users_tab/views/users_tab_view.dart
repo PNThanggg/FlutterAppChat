@@ -1,9 +1,10 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:loadmore/loadmore.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:s_translation/generated/l10n.dart';
 
 import '../controllers/users_tab_controller.dart';
 
@@ -75,7 +76,7 @@ class _UsersTabViewState extends State<UsersTabView> {
           child: Column(
             children: [
               Expanded(
-                child: ValueListenableBuilder<SLoadingState<List<SSearchUser>>>(
+                child: ValueListenableBuilder<LoadingState<List<SearchUser>>>(
                   valueListenable: controller,
                   builder: (_, value, __) {
                     return VAsyncWidgetsBuilder(

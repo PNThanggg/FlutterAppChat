@@ -1,6 +1,6 @@
+import 'package:chat_message_page/chat_message_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:v_chat_message_page/v_chat_message_page.dart';
 
 import 'no_animation_page_route.dart';
 

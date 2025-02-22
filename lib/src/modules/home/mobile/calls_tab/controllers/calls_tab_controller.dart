@@ -1,13 +1,14 @@
 import 'dart:async';
 
+import 'package:chat_config/chat_preferences.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 class CallsTabController extends SLoadingController<List<VCallHistory>> {
-  CallsTabController() : super(SLoadingState(<VCallHistory>[]));
+  CallsTabController() : super(LoadingState(<VCallHistory>[]));
 
   @override
   void onInit() {
@@ -22,7 +23,7 @@ class CallsTabController extends SLoadingController<List<VCallHistory>> {
       onSuccess: (response) async {
         data.clear();
         data.addAll(response);
-        unawaited(VAppPref.setMap("api/calls", {
+        unawaited(ChatPreferences.setMap("api/calls", {
           "data": response.map((e) => e.toMap()).toList(),
         }));
         setStateSuccess();
@@ -39,7 +40,7 @@ class CallsTabController extends SLoadingController<List<VCallHistory>> {
 
   void getCalls() async {
     try {
-      final oldCalls = VAppPref.getMap("api/calls");
+      final oldCalls = ChatPreferences.getMap("api/calls");
       if (oldCalls != null) {
         final list = oldCalls['data'] as List;
         value.data = list.map((e) => VCallHistory.fromMap(e)).toList();

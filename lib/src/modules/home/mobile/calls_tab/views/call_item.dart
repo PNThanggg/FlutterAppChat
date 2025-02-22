@@ -1,9 +1,9 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 class CallItem extends StatelessWidget {
   final VCallHistory callHistory;
@@ -25,13 +25,13 @@ class CallItem extends StatelessWidget {
       child: CupertinoListTile(
         leadingSize: 40,
         leading: VCircleAvatar(
-          vFileSource: VPlatformFile.fromUrl(url: callHistory.peerUser.userImage),
+          vFileSource: VPlatformFile.fromUrl(networkUrl: callHistory.peerUser.userImage),
         ),
         trailing: Container(
           padding: const EdgeInsets.all(8),
           child: callHistory.withVideo
               ? const Icon(
-                  PhosphorIcons.videoCameraFill,
+                  PhosphorIconsLight.videoCamera,
                 )
               : const Icon(
                   CupertinoIcons.phone_fill,
@@ -62,7 +62,7 @@ class CallItem extends StatelessWidget {
       case VMessageCallStatus.rejected:
         return S.of(context).rejected;
       case VMessageCallStatus.finished:
-        return "${call.duration}  ${S.of(context).minutes}" ?? "";
+        return "${call.duration}  ${S.of(context).minutes}";
       case VMessageCallStatus.sessionEnd:
         return S.of(context).finished;
       case VMessageCallStatus.inCall:

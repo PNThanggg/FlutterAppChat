@@ -1,16 +1,18 @@
 import 'dart:async';
 
+import 'package:chat_config/chat_preferences.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 import '../../../../../core/api_service/profile/profile_api_service.dart';
 import '../../../../peer_profile/views/peer_profile_view.dart';
 
-class UsersTabController extends SLoadingController<List<SSearchUser>> {
+class UsersTabController extends SLoadingController<List<SearchUser>> {
   UsersTabController(this.profileApiService)
       : super(
-          SLoadingState(
+          LoadingState(
             [],
           ),
         );
@@ -37,7 +39,7 @@ class UsersTabController extends SLoadingController<List<SSearchUser>> {
   }
 
   Future<void> getUsersDataFromApi() async {
-    await vSafeApiCall<List<SSearchUser>>(
+    await vSafeApiCall<List<SearchUser>>(
       request: () async {
         _filterDto = UserFilterDto.init();
         isFinishLoadMore = false;
@@ -47,7 +49,7 @@ class UsersTabController extends SLoadingController<List<SSearchUser>> {
         data.clear();
         data.addAll(response);
         unawaited(
-          VAppPref.setMap("api/users", {
+          ChatPreferences.setMap("api/users", {
             "data": response
                 .map(
                   (e) => e.toMap(),
@@ -61,7 +63,7 @@ class UsersTabController extends SLoadingController<List<SSearchUser>> {
     );
   }
 
-  void onItemPress(SSearchUser item, BuildContext context) {
+  void onItemPress(SearchUser item, BuildContext context) {
     context.toPage(
       PeerProfileView(
         peerId: item.baseUser.id,
@@ -74,7 +76,7 @@ class UsersTabController extends SLoadingController<List<SSearchUser>> {
       return false;
     }
 
-    final res = await vSafeApiCall<List<SSearchUser>>(
+    final res = await vSafeApiCall<List<SearchUser>>(
       onLoading: () {
         _isLoadMoreActive = true;
       },
@@ -131,7 +133,7 @@ class UsersTabController extends SLoadingController<List<SSearchUser>> {
     if (_debounce?.isActive ?? false) _debounce?.cancel();
 
     _debounce = Timer(const Duration(milliseconds: 1500), () async {
-      await vSafeApiCall<List<SSearchUser>>(
+      await vSafeApiCall<List<SearchUser>>(
         onLoading: () async {
           setStateLoading();
           update();
@@ -159,12 +161,12 @@ class UsersTabController extends SLoadingController<List<SSearchUser>> {
 
   Future getData() async {
     try {
-      final oldUsers = VAppPref.getMap("api/users");
+      final oldUsers = ChatPreferences.getMap("api/users");
       if (oldUsers != null) {
         final list = oldUsers['data'] as List;
         value.data = list
             .map(
-              (e) => SSearchUser.fromMap(e),
+              (e) => SearchUser.fromMap(e),
             )
             .toList();
         setStateSuccess();

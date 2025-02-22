@@ -1,12 +1,13 @@
 import 'dart:async';
 
+import 'package:chat_config/chat_preferences.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_message_page/chat_message_page.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_message_page/v_chat_message_page.dart';
-import 'package:v_chat_receive_share/v_chat_receive_share.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../../../../core/api_service/profile/profile_api_service.dart';
 import '../../../../core/controllers/version_checker_controller.dart';
@@ -20,7 +21,10 @@ class HomeController extends SLoadingController<int> {
   final ProfileApiService profileApiService;
   final BuildContext context;
 
-  HomeController(this.profileApiService, this.context) : super(SLoadingState(0));
+  HomeController(this.profileApiService, this.context)
+      : super(
+          LoadingState(0),
+        );
 
   int totalChatUnRead = 0;
   final versionCheckerController = GetIt.I.get<VersionCheckerController>();
@@ -106,7 +110,7 @@ class HomeController extends SLoadingController<int> {
 
   void _updateProfile() async {
     final newProfile = await profileApiService.getMyProfile();
-    await VAppPref.setMap(SStorageKeys.myProfile.name, newProfile.toMap());
+    await ChatPreferences.setMap(SStorageKeys.myProfile.name, newProfile.toMap());
     AppAuth.setProfileNull();
   }
 }

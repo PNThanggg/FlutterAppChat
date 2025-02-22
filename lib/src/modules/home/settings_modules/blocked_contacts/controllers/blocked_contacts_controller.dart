@@ -1,14 +1,20 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:get_it/get_it.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 import '../../../../../core/api_service/api_service.dart';
 
-class BlockedContactsController extends SLoadingController<List<SBaseUser>> {
+class BlockedContactsController extends SLoadingController<List<BaseUser>> {
   final _apiService = GetIt.I.get<ProfileApiService>();
 
-  BlockedContactsController() : super(SLoadingState([]));
+  BlockedContactsController()
+      : super(
+          LoadingState(
+            [],
+          ),
+        );
   bool isFinishLoadMore = false;
   bool _isLoadMoreActive = false;
   final _filterDto = VBaseFilter(
@@ -25,7 +31,7 @@ class BlockedContactsController extends SLoadingController<List<SBaseUser>> {
   }
 
   Future<void> getData() async {
-    await vSafeApiCall<List<SBaseUser>>(
+    await vSafeApiCall<List<BaseUser>>(
       onLoading: () async {
         setStateLoading();
       },
@@ -47,7 +53,7 @@ class BlockedContactsController extends SLoadingController<List<SBaseUser>> {
     if (_isLoadMoreActive) {
       return false;
     }
-    final res = await vSafeApiCall<List<SBaseUser>>(
+    final res = await vSafeApiCall<List<BaseUser>>(
       onLoading: () {
         _isLoadMoreActive = true;
       },

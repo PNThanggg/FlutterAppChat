@@ -1,9 +1,11 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:loadmore/loadmore.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:v_platform/v_platform.dart';
+
 import '../../../../peer_profile/views/peer_profile_view.dart';
 import '../controllers/blocked_contacts_controller.dart';
 
@@ -28,7 +30,7 @@ class _BlockedContactsPageState extends State<BlockedContactsPage> {
       ),
       child: SafeArea(
         bottom: false,
-        child: ValueListenableBuilder<SLoadingState<List<SBaseUser>>>(
+        child: ValueListenableBuilder<LoadingState<List<BaseUser>>>(
           valueListenable: controller,
           builder: (_, value, ___) => VAsyncWidgetsBuilder(
             loadingState: value.loadingState,
@@ -55,7 +57,7 @@ class _BlockedContactsPageState extends State<BlockedContactsPage> {
                       },
                       leading: GestureDetector(
                         child: VCircleAvatar(
-                          vFileSource: VPlatformFile.fromUrl(url: value.data[index].userImage),
+                          vFileSource: VPlatformFile.fromUrl(networkUrl: value.data[index].userImage),
                         ),
                       ),
                     );

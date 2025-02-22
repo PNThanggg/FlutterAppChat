@@ -1,5 +1,5 @@
+import 'package:chat_core/chat_core.dart';
 import 'package:flutter/material.dart' hide Badge;
-import 'package:super_up_core/super_up_core.dart';
 
 /// A widget that represents the un-read count of chats.
 /// This widget can be used to display the number of un-read chats, typically

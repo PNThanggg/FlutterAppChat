@@ -1,9 +1,10 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_model/model.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 import 'package:line_awesome_flutter/line_awesome_flutter.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 import '../../../../core/api_service/profile/profile_api_service.dart';
 import '../../../app/controller/app_controller.dart';
@@ -44,7 +45,8 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
     const SettingsTabView(),
   ];
 
-  List<BottomNavigationBarItem> listBottomItem(BuildContext context, HomeController controller) => <BottomNavigationBarItem>[
+  List<BottomNavigationBarItem> listBottomItem(BuildContext context, HomeController controller) =>
+      <BottomNavigationBarItem>[
         const BottomNavigationBarItem(
           icon: Icon(LineAwesomeIcons.telegram),
           label: "Workplace",
@@ -128,7 +130,7 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
       return const HomeWideView();
     }
 
-    return ValueListenableBuilder<SLoadingState<int>>(
+    return ValueListenableBuilder<LoadingState<int>>(
       valueListenable: controller,
       builder: (_, value, __) {
         return ValueListenableBuilder(
@@ -139,7 +141,9 @@ class _HomeViewState extends State<HomeView> with TickerProviderStateMixin {
               resizeToAvoidBottomInset: true,
               tabBar: CupertinoTabBar(
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-                items: appController.value.data.isAdmin ? listBottomItemAdmin(context, controller) : listBottomItem(context, controller),
+                items: appController.value.data.isAdmin
+                    ? listBottomItemAdmin(context, controller)
+                    : listBottomItem(context, controller),
               ),
               tabBuilder: (context, index) {
                 if (appController.value.data.isAdmin) {

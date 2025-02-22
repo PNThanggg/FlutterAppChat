@@ -1,9 +1,9 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 import '../controllers/calls_tab_controller.dart';
 import 'call_item.dart';
@@ -54,7 +54,7 @@ class _CallsTabViewState extends State<CallsTabView> {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.only(bottom: 50, top: 10),
-                child: ValueListenableBuilder<SLoadingState<List<VCallHistory>>>(
+                child: ValueListenableBuilder<LoadingState<List<VCallHistory>>>(
                   valueListenable: controller,
                   builder: (_, value, __) {
                     return VAsyncWidgetsBuilder(

@@ -1,7 +1,8 @@
+import 'package:chat_config/chat_constants.dart';
+import 'package:chat_core/chat_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:super_up_core/super_up_core.dart' hide NoAnimationPageRoute;
 
 import '../../../../core/app_config/app_config_controller.dart';
 import 'no_animation_page_route.dart';
@@ -41,7 +42,7 @@ class IdleMessagesRoute extends StatelessWidget {
       navigationBar: CupertinoNavigationBar(
         border: Border.all(color: Colors.transparent),
         backgroundColor: context.isDark ? const Color(0xff000814) : Colors.grey.shade100,
-        middle: SConstants.appName.h6.size(20).bold.color(context.textTheme.bodyLarge!.color!),
+        middle: ChatConstants.appName.h6.size(20).bold.color(context.textTheme.bodyLarge!.color!),
       ),
       child: Container(
         decoration: BoxDecoration(
