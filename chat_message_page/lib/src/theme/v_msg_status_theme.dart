@@ -1,5 +1,5 @@
+import 'package:chat_config/theme/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:chat_core/chat_core.dart';
 
 const double _iconSize = 16.5;
 
