@@ -14,14 +14,17 @@ class Noises extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: rList.map((e) => _singleNoise(e)).toList(),
+      children: rList
+          .map(
+            (e) => _singleNoise(e),
+          )
+          .toList(),
     );
   }
 
   Widget _singleNoise(double height) {
     return Container(
-      //  margin: EdgeInsets.symmetric(horizontal: 2),
-      width: 3,
+      width: 4,
       height: height,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(1000),
