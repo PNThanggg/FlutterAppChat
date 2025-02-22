@@ -1,5 +1,3 @@
-library textless;
-
 import 'package:flutter/material.dart';
 
 class ThemedText extends StatelessWidget {

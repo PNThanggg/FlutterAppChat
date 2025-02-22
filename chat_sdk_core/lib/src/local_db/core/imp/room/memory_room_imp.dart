@@ -143,8 +143,8 @@ class MemoryRoomImp extends BaseLocalRoomRepo {
   }
 
   @override
-  Future<VRoom?> getOneByPeerId(String peerId) async {
-    return _rooms.singleWhereOrNull((e) => e.peerId == peerId);
+  Future<VRoom?> getOneByPeerId(String roomId) async {
+    return _rooms.singleWhereOrNull((e) => e.peerId == roomId);
   }
 
   @override

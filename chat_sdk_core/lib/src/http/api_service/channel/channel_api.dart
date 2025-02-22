@@ -82,7 +82,7 @@ abstract class ChannelApi extends ChopperService {
   );
 
   ///delete room
-  @Delete(path: "/{roomId}", optionalBody: true)
+  @DELETE(path: "/{roomId}", optionalBody: true)
   Future<Response> deleteRoom(
     @Path() String roomId,
   );
@@ -102,7 +102,7 @@ abstract class ChannelApi extends ChopperService {
   );
 
   /// ----------------------------------------- broadcast apis ------------------------------------------
-  @Post(path: "/broadcast")
+  @POST(path: "/broadcast")
   @multipart
   Future<Response> createBroadcast(
     @PartMap() List<PartValue> body,
@@ -134,13 +134,13 @@ abstract class ChannelApi extends ChopperService {
     @QueryMap() Map<String, dynamic> query,
   );
 
-  @Post(path: "/{roomId}/broadcast/members")
+  @POST(path: "/{roomId}/broadcast/members")
   Future<Response> addParticipantsToBroadcast(
     @Path("roomId") String roomId,
     @Body() Map<String, dynamic> body,
   );
 
-  @Delete(path: "/{roomId}/broadcast/members/{peerId}", optionalBody: true)
+  @DELETE(path: "/{roomId}/broadcast/members/{peerId}", optionalBody: true)
   Future<Response> kickBroadcastUser(
     @Path('roomId') String roomId,
     @Path('peerId') String peerId,
@@ -165,14 +165,14 @@ abstract class ChannelApi extends ChopperService {
   );
 
   /// ----------------------------------------- group apis ------------------------------------------
-  @Post(path: "/group")
+  @POST(path: "/group")
   @multipart
   Future<Response> createGroup(
     @PartMap() List<PartValue> body,
     @PartFile("file") MultipartFile? file,
   );
 
-  @Post(path: "/{roomId}/group/leave", optionalBody: true)
+  @POST(path: "/{roomId}/group/leave", optionalBody: true)
   Future<Response> leaveGroup(@Path("roomId") String roomId);
 
   ///updateRoomTitle
@@ -240,7 +240,7 @@ abstract class ChannelApi extends ChopperService {
   );
 
   ///get getGroupMembers
-  @Post(path: "/{roomId}/group/members")
+  @POST(path: "/{roomId}/group/members")
   Future<Response> addParticipantsToGroup(
     @Path("roomId") String roomId,
     @Body() Map<String, dynamic> body,
@@ -256,7 +256,7 @@ abstract class ChannelApi extends ChopperService {
     @Path('role') String role,
   );
 
-  @Delete(path: "/{roomId}/group/members/{peerId}", optionalBody: true)
+  @DELETE(path: "/{roomId}/group/members/{peerId}", optionalBody: true)
   Future<Response> kickGroupUser(
     @Path('roomId') String roomId,
     @Path('peerId') String peerId,

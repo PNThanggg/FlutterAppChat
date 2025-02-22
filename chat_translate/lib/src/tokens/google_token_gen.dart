@@ -14,8 +14,7 @@ class GoogleTokenGenerator implements TokenProvider {
   /// Generate a valid Google Translate request token
   /// [a] is the text to translate
   String tokenGen(dynamic a) {
-    var tkk = TKK();
-    var b = tkk[0];
+    var b = tkk()[0];
 
     var d = []; //List();
 
@@ -51,7 +50,7 @@ class GoogleTokenGenerator implements TokenProvider {
       a = wr(a, '+-a^+6');
     }
     a = wr(a, '+-3^+b+-f');
-    a ^= tkk[1] != null ? tkk[1] + 0 : 0;
+    a ^= tkk()[1] != null ? tkk()[1] + 0 : 0;
     if (0 > a) {
       a = (a & 2147483647) + 2147483648;
     }
@@ -60,7 +59,7 @@ class GoogleTokenGenerator implements TokenProvider {
     return '$a.${a ^ int.parse(b)}';
   }
 
-  List TKK() {
+  List tkk() {
     return ['406398', (561666268 + 1526272306)];
   }
 

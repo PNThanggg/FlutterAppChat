@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:chopper/chopper.dart';
 import 'package:chat_core/chat_core.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
-import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:chat_platform/v_platform.dart';
 
 class VFileMessage extends VBaseMessage implements VDownloadableMessage, VUploadMessage {

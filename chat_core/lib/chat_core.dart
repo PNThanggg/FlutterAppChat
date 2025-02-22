@@ -1,5 +1,3 @@
-library super_up_core;
-
 export 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 export 'package:phosphor_flutter/phosphor_flutter.dart';
 export 'package:timeago/timeago.dart';

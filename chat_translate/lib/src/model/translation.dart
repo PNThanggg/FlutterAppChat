@@ -21,9 +21,13 @@ abstract class Translation {
 }
 
 class _Translation extends Translation {
+  @override
   final String text;
+  @override
   final String source;
+  @override
   final Language sourceLanguage;
+  @override
   final Language targetLanguage;
 
   _Translation(
@@ -33,5 +37,6 @@ class _Translation extends Translation {
     required this.source,
   }) : super._(text, source, sourceLanguage, targetLanguage);
 
+  @override
   String operator +(other) => toString() + other.toString();
 }
