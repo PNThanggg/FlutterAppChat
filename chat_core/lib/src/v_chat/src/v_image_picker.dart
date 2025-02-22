@@ -1,7 +1,6 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_platform/v_platform.dart';
 import 'package:flutter/material.dart';
-import 'package:v_platform/v_platform.dart';
-
-import 'package:super_up_core/super_up_core.dart';
 
 class VImagePicker extends StatefulWidget {
   final bool withCrop;

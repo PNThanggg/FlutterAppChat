@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:ui' as ui;
 
 import 'package:flutter/cupertino.dart';
-import 'package:super_up_core/super_up_core.dart';
+import 'package:chat_core/chat_core.dart';
 
 class VLanguageListener extends ValueNotifier<Locale> {
   VLanguageListener._() : super(const Locale("en"));

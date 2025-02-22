@@ -1,6 +1,6 @@
+import 'package:chat_core/chat_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 class STextFiled extends StatelessWidget {
   final String textHint;

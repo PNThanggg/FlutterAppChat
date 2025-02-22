@@ -1,6 +1,6 @@
 import 'package:enum_to_string/enum_to_string.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
+import 'package:chat_core/chat_core.dart';
 
 class SSearchUser {
   final SBaseUser baseUser;

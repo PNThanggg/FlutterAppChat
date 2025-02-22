@@ -1,6 +1,5 @@
+import 'package:chat_core/chat_core.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/src/v_chat/src/extension.dart';
-import 'package:textless/textless.dart';
 
 class CustomListTile extends StatelessWidget {
   final Widget leading;
@@ -47,8 +46,7 @@ class CustomListTile extends StatelessWidget {
                         children: [
                           title.h6.maxLine(1).overflowEllipsis.size(16),
                           SizedBox(height: subtitle != null ? 2 : 0),
-                          subtitle?.h6.size(12).color(Theme.of(context).primaryColor) ??
-                              const SizedBox.shrink(),
+                          subtitle?.h6.size(12).color(Theme.of(context).primaryColor) ?? const SizedBox.shrink(),
                         ],
                       ),
                     ),

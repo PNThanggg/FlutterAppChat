@@ -3,7 +3,7 @@ import 'dart:io';
 import 'package:badges/badges.dart' as badges;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:v_platform/v_platform.dart';
+import 'package:chat_platform/v_platform.dart';
 
 class VCircleAvatar extends StatelessWidget {
   final double radius;

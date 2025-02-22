@@ -1,3 +1,5 @@
+import 'package:chat_core/chat_core.dart';
+
 class Status {
   final String id;
   final SBaseUser user;

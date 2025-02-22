@@ -1,9 +1,9 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart' as adaptive_dialog;
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_translate/chat_translate.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:translate/translate.dart';
 
 abstract class VAppAlert {
   static Future showLoading({
@@ -293,10 +293,14 @@ abstract class VAppAlert {
     required BuildContext context,
     Duration? duration,
   }) {
-    showToast(message,
-        context: context,
-        duration: duration,
-        position: const ToastPosition(align: Alignment.bottomCenter));
+    showToast(
+      message,
+      context: context,
+      duration: duration,
+      position: const ToastPosition(
+        align: Alignment.bottomCenter,
+      ),
+    );
   }
 
   static void showErrorSnackBar({

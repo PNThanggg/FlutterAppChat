@@ -1,6 +1,6 @@
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:uuid/uuid.dart' as u;
-import 'package:v_platform/v_platform.dart';
+import 'package:chat_platform/v_platform.dart';
 
 class DeviceInfoHelper {
   final deviceInfoPlugin = DeviceInfoPlugin();

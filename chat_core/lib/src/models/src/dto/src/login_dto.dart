@@ -1,3 +1,5 @@
+import 'package:chat_core/chat_core.dart';
+
 class LoginDto {
   final String email;
   final Map<String, dynamic> deviceInfo;

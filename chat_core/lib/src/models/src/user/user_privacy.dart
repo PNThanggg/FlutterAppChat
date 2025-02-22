@@ -1,5 +1,5 @@
+import 'package:chat_core/chat_core.dart';
 import 'package:enum_to_string/enum_to_string.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 class UserPrivacy {
   final UserPrivacyType startChat;

@@ -1,3 +1,4 @@
+import 'package:chat_core/chat_core.dart';
 import 'package:flutter/cupertino.dart';
 
 class ChatSettingsTileInfo extends StatelessWidget {

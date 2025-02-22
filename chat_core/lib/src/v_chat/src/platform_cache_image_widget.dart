@@ -2,9 +2,9 @@ import 'dart:io';
 import 'dart:typed_data';
 
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:chat_platform/v_platform.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:v_platform/v_platform.dart';
 
 class VPlatformCacheImageWidget extends StatefulWidget {
   final VPlatformFile source;
@@ -21,8 +21,7 @@ class VPlatformCacheImageWidget extends StatefulWidget {
   });
 
   @override
-  State<VPlatformCacheImageWidget> createState() =>
-      _VPlatformCacheImageWidgetState();
+  State<VPlatformCacheImageWidget> createState() => _VPlatformCacheImageWidgetState();
 }
 
 class _VPlatformCacheImageWidgetState extends State<VPlatformCacheImageWidget> {
@@ -71,8 +70,7 @@ class _VPlatformCacheImageWidgetState extends State<VPlatformCacheImageWidget> {
       fit: widget.fit,
       cacheKey: widget.source.getUrlPath,
       imageUrl: widget.source.url!,
-      placeholder: (context, url) =>
-          const CupertinoActivityIndicator.partiallyRevealed(),
+      placeholder: (context, url) => const CupertinoActivityIndicator.partiallyRevealed(),
       errorWidget: (context, url, error) => GestureDetector(
         onTap: () {
           setState(() {

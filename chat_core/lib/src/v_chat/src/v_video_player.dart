@@ -1,16 +1,16 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:chewie/chewie.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:gal/gal.dart';
 import 'package:http/http.dart' as http;
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
 import 'package:universal_html/html.dart' as html;
-import 'package:v_platform/v_platform.dart';
 import 'package:video_player/video_player.dart';
 
 class VVideoPlayer extends StatefulWidget {
@@ -61,7 +61,9 @@ class _VVideoPlayerState extends State<VVideoPlayer> {
       final base64data = base64Encode(data);
 
       // then we create and AnchorElement with the html package
-      final html.AnchorElement anchorElement = html.AnchorElement(href: 'data:image/jpeg;base64,$base64data');
+      final html.AnchorElement anchorElement = html.AnchorElement(
+        href: 'data:image/jpeg;base64,$base64data',
+      );
 
       // set the name of the file we want the image to get
       // downloaded to

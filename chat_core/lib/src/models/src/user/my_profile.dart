@@ -1,7 +1,7 @@
 import 'dart:ui';
 
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 
 class SMyProfile {
   final SBaseUser baseUser;
@@ -51,7 +51,6 @@ class SMyProfile {
         'registerStatus': registerStatus.name,
         'bio': bio,
         'email': email,
-
         'registerMethod': registerMethod,
         'roles': roles.map((e) => e.name).toList(),
         'isPrime': isPrime,
@@ -70,20 +69,21 @@ class SMyProfile {
       baseUser: SBaseUser.fromMap(map['me'] as Map<String, dynamic>),
       bio: map['me']['bio'] as String?,
       userPrivacy: (map['me']['userPrivacy'] as Map<String, dynamic>?) == null
-          ? const UserPrivacy.defaults()
+          ? UserPrivacy.defaults()
           : UserPrivacy.fromMap(map['me']['userPrivacy']),
       registerMethod: map['me']['registerMethod'] as String,
       email: map['me']['email'] as String,
       roles: (map['me']['roles'] as List?)
-          ?.map((e) => UserRoles.values.byName(e.toString()))
-          .toList() ??
+              ?.map(
+                (e) => UserRoles.values.byName(e.toString()),
+              )
+              .toList() ??
           [],
       language: Locale(
         (map['currentDevice'] as Map<String, dynamic>)['language'] as String,
       ),
       deviceId: (map['currentDevice'] as Map<String, dynamic>)['_id'] as String,
-      registerStatus:
-      RegisterStatus.values.byName(map['me']['registerStatus'] as String),
+      registerStatus: RegisterStatus.values.byName(map['me']['registerStatus'] as String),
     );
   }
 

@@ -1,15 +1,14 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_platform/v_platform.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:file_saver/file_saver.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:path/path.dart';
-import 'package:path_provider/path_provider.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_platform/v_platform.dart';
 import 'package:path/path.dart' as p;
+import 'package:path_provider/path_provider.dart';
 import "package:universal_html/html.dart" as html;
 
 abstract class VFileUtils {
@@ -17,7 +16,7 @@ abstract class VFileUtils {
     final path = (await getApplicationDocumentsDirectory()).path;
 
     ///data/user/0/com.xxx.xxx/app_flutter/media
-    return join(path, "media");
+    return p.join(path, "media");
   }
 
   static String downloadPath() {
@@ -34,12 +33,12 @@ abstract class VFileUtils {
       }
       return false;
     }
-    return File(join(rootPath, filePath)).existsSync();
+    return File(p.join(rootPath, filePath)).existsSync();
   }
 
   static String getLocalPath(String hashIdWithExt) {
     final rootPath = VAppPref.getStringOrNullKey(SStorageKeys.appRootPath.name);
-    return join(rootPath!, hashIdWithExt);
+    return p.join(rootPath!, hashIdWithExt);
   }
 
   static Future<void> copyFileToAppFolder(
@@ -47,7 +46,7 @@ abstract class VFileUtils {
     String pickedFilePath,
   ) async {
     final rootPath = await _downloadPath();
-    final newPath = join(rootPath, localFilePathWithExt);
+    final newPath = p.join(rootPath, localFilePathWithExt);
     await File(pickedFilePath).copy(newPath);
   }
 
@@ -80,7 +79,7 @@ abstract class VFileUtils {
   ) async {
     if (VPlatforms.isWeb) {
       html.AnchorElement anchorElement = html.AnchorElement(href: fileSource.url!);
-      anchorElement.download = basename(fileSource.url!);
+      anchorElement.download = p.basename(fileSource.url!);
       anchorElement.target = "black";
       anchorElement.click();
       return "";
@@ -107,7 +106,7 @@ abstract class VFileUtils {
     }
 
     await FileSaver.instance.saveAs(
-      name: basename(fileAttachment.name),
+      name: p.basename(fileAttachment.name),
       ext: p.extension(fileAttachment.name).substring(1),
       mimeType: EnumToString.fromString(
             MimeType.values,
