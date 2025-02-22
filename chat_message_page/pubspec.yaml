@@ -1,0 +1,29 @@
+name: chat_message_page
+description: "A new Flutter package project."
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  chat_input_ui:
+    path: ../chat_input_ui
+  chat_sdk_core:
+    path: ../chat_sdk_core
+  chat_core:
+    path: ../chat_core
+  chat_voice_player:
+    path: ../chat_voice_player
+  chat_platform:
+    path: ../chat_platform
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
