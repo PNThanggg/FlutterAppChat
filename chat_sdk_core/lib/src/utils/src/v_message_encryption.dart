@@ -1,0 +1,11 @@
+abstract class VMessageEncryption {
+  // final _key = VChatController.I.vChatConfig.encryptHashKey;
+
+  static String encryptMessage(String message) {
+    return message;
+  }
+
+  static String deCryptMessage(String message) {
+    return message;
+  }
+}
