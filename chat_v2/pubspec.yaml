@@ -1,0 +1,25 @@
+name: chat_v2
+description: "A new Flutter package project."
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  chat_translation:
+    path: ../chat_translation
+  chat_message_page:
+    path: ../chat_message_page
+  chat_sdk_core:
+    path: ../chat_sdk_core
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+

@@ -44,6 +44,8 @@ dependencies:
     path: chat_translation
   chat_voice_player:
     path: chat_voice_player
+  chat_v2:
+    path: chat_v2
 
 
   cupertino_icons: ^1.0.8

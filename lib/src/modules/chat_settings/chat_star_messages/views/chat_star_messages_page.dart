@@ -3,6 +3,7 @@ import 'package:chat_message_page/chat_message_page.dart';
 import 'package:chat_platform/v_platform.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:chat_translation/generated/l10n.dart';
+import 'package:chat_v2/translations.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
