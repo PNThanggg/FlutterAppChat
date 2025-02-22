@@ -1,15 +1,14 @@
 import 'dart:async';
 
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_message_page/chat_message_page.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ringtone_player/flutter_ringtone_player.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
-
-import '../../../../v_chat_message_page.dart';
 
 class PickUp extends StatefulWidget {
   const PickUp({
@@ -50,7 +49,9 @@ class _PickUpState extends State<PickUp> {
               Column(
                 children: [
                   VCircleAvatar(
-                    vFileSource: VPlatformFile.fromUrl(url: widget.callModel.peerUser.userImage),
+                    vFileSource: VPlatformFile.fromUrl(
+                      networkUrl: widget.callModel.peerUser.userImage,
+                    ),
                     radius: 80,
                   ),
                   const SizedBox(height: 30.0),
@@ -121,9 +122,7 @@ class _PickUpState extends State<PickUp> {
 
   void _acceptCall() async {
     if (widget.callModel.withVideo) {
-      if (!await _requestMicrophonePermission() &&
-          !await _requestCameraPermission() &&
-          !VPlatforms.isWeb) {
+      if (!await _requestMicrophonePermission() && !await _requestCameraPermission() && !VPlatforms.isWeb) {
         VAppAlert.showErrorSnackBar(
           message: S.of(context).microphoneAndCameraPermissionMustBeAccepted,
           context: context,
@@ -133,7 +132,9 @@ class _PickUpState extends State<PickUp> {
     } else {
       if (!await _requestMicrophonePermission() && !VPlatforms.isWeb) {
         VAppAlert.showErrorSnackBar(
-            message: S.of(context).microphonePermissionMustBeAccepted, context: context);
+          message: S.of(context).microphonePermissionMustBeAccepted,
+          context: context,
+        );
         return;
       }
     }
