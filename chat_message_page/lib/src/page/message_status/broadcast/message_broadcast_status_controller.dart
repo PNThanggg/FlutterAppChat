@@ -1,9 +1,9 @@
 import 'dart:async';
 
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_voice_player/chat_voice_player.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_chat_voice_player/v_chat_voice_player.dart';
 
 import '../group/message_group_status_controller.dart';
 
@@ -23,7 +23,7 @@ class MessageBroadcastStatusController extends ValueNotifier<MessageStatusState>
 
   final VBaseMessage message;
 
-  VChatLoadingState state = VChatLoadingState.ideal;
+  ChatLoadingState state = ChatLoadingState.ideal;
   VVoiceMessageController? voiceMessageController;
 
   VVoiceMessageController? getVoiceController(VBaseMessage message) {
@@ -43,8 +43,8 @@ class MessageBroadcastStatusController extends ValueNotifier<MessageStatusState>
   void getData() async {
     await vSafeApiCall<MessageStatusState>(
       onLoading: () {
-        if (state != VChatLoadingState.success) {
-          state = VChatLoadingState.loading;
+        if (state != ChatLoadingState.success) {
+          state = ChatLoadingState.loading;
           notifyListeners();
         }
       },
@@ -64,11 +64,11 @@ class MessageBroadcastStatusController extends ValueNotifier<MessageStatusState>
       },
       onSuccess: (response) {
         value = response;
-        state = VChatLoadingState.success;
+        state = ChatLoadingState.success;
         notifyListeners();
       },
       onError: (exception, trace) {
-        state = VChatLoadingState.error;
+        state = ChatLoadingState.error;
         notifyListeners();
       },
     );
