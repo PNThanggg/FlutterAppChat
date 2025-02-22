@@ -131,8 +131,6 @@ enum VMessagesFilter { media, links, file, voice, all }
 
 enum VLoadMoreStatus { loading, loaded, error, completed }
 
-enum VChatLoadingState { loading, success, error, ideal, empty }
-
 enum VChatPushService { firebase, onesignal }
 
 enum VNotificationActionRes { click, push }
