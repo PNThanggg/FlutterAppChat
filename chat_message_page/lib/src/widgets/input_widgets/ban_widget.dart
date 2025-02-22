@@ -1,5 +1,5 @@
+import 'package:chat_core/chat_core.dart';
 import 'package:flutter/material.dart';
-import 'package:textless/textless.dart';
 
 class BanWidget extends StatelessWidget {
   final bool isMy;
@@ -24,13 +24,6 @@ class BanWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             youDontHaveAccess.text.color(Colors.white).black,
-            // if (isMy)
-            //   GestureDetector(
-            //     onTap: onUnBan,
-            //     child: "Un block".text.color(Colors.blueAccent),
-            //   )
-            // else
-            //   const SizedBox(),
           ],
         ),
       ),

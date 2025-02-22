@@ -60,7 +60,7 @@ final fakeLocalMessages = [
     "tb_m_type": VMessageType.image.name,
     "tb_m_att": jsonEncode(
       VMessageImageData(
-        fileSource: VPlatformFile.fromUrl(url: "url"),
+        fileSource: VPlatformFile.fromUrl(networkUrl: "url"),
         width: 300,
         height: 300,
         blurHash: null,

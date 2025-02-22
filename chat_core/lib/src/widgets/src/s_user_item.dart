@@ -40,13 +40,17 @@ class SUserItem extends StatelessWidget {
   Widget _getLeading() {
     if (!hasBadge) {
       return VCircleAvatar(
-        vFileSource: VPlatformFile.fromUrl(url: baseUser.userImage),
+        vFileSource: VPlatformFile.fromUrl(
+          networkUrl: baseUser.userImage,
+        ),
         radius: 50,
       );
     }
 
     return VCircleVerifiedAvatar(
-      vFileSource: VPlatformFile.fromUrl(url: baseUser.userImage),
+      vFileSource: VPlatformFile.fromUrl(
+        networkUrl: baseUser.userImage,
+      ),
       radius: 50,
     );
   }

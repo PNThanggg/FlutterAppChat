@@ -88,7 +88,9 @@ class _VImageViewerState extends State<VImageViewer> {
                       if (!await Gal.hasAccess()) {
                         await Gal.requestAccess();
                       }
-                      final path = await DefaultCacheManager().getSingleFile(widget.platformFileSource.url!);
+                      final path = await DefaultCacheManager().getSingleFile(
+                        widget.platformFileSource.networkUrl!,
+                      );
                       await Gal.putImage(path.path);
 
                       if (context.mounted) {
@@ -97,7 +99,7 @@ class _VImageViewerState extends State<VImageViewer> {
                     }
 
                     if (VPlatforms.isWeb) {
-                      await downloadImage(widget.platformFileSource.url!);
+                      await downloadImage(widget.platformFileSource.networkUrl!);
 
                       if (context.mounted) {
                         return " ${S.of(context).download}";
@@ -289,8 +291,8 @@ class _VImageViewerState extends State<VImageViewer> {
     }
 
     return CachedNetworkImageProvider(
-      widget.platformFileSource.url!,
-      cacheKey: widget.platformFileSource.getUrlPath,
+      widget.platformFileSource.networkUrl!,
+      cacheKey: widget.platformFileSource.getCachedUrlKey,
     );
   }
 }

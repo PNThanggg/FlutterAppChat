@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
+import 'package:chat_core/chat_core.dart';
 
-import '../../v_chat_message_page.dart';
+import '../v_message.dart';
 
 typedef CustomMessageItemTypeDef = Widget Function(
   BuildContext context,

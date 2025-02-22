@@ -1,10 +1,10 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_message_page/src/core/core.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_message_page/src/core/core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../message_items/shared/message_typing_widget.dart';
 
@@ -45,7 +45,9 @@ class VMessageAppBare extends StatelessWidget {
       middle: ChatListTile(
         title: room.realTitle,
         leading: VCircleAvatar(
-          vFileSource: VPlatformFile.fromUrl(url: room.thumbImage),
+          vFileSource: VPlatformFile.fromUrl(
+            networkUrl: room.thumbImage,
+          ),
           radius: 18,
         ),
         onTap: () => onTitlePress.call(context),
@@ -53,12 +55,7 @@ class VMessageAppBare extends StatelessWidget {
             ? MessageTypingWidget(
                 text: inTypingText(context)!,
               )
-            : _getSubTitle(context)
-                ?.text
-                .color(CupertinoColors.systemGreen)
-                .size(12)
-                .maxLine(1)
-                .overflowEllipsis,
+            : _getSubTitle(context)?.text.color(CupertinoColors.systemGreen).size(12).maxLine(1).overflowEllipsis,
       ),
       padding: const EdgeInsetsDirectional.all(0),
       trailing: Row(
@@ -144,7 +141,7 @@ class VMessageAppBare extends StatelessWidget {
           CupertinoButton(
             padding: EdgeInsets.zero,
             child: Icon(
-              PhosphorIcons.videoCamera,
+              PhosphorIconsLight.videoCamera,
               size: 30,
               color: isCallAllowed ? null : Colors.grey,
             ),

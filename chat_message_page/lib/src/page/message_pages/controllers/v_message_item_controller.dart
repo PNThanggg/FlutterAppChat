@@ -1,15 +1,15 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:open_filex/open_filex.dart';
-import 'package:s_translation/generated/l10n.dart';
 import 'package:share_plus/share_plus.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
 
-import '../../../../v_chat_message_page.dart';
+import '../../../../chat_message_page.dart';
 import '../providers/message_provider.dart';
 
 class VMessageItemController {
@@ -159,7 +159,10 @@ class VMessageItemController {
       _deleteItem(),
     );
 
-    if (message.messageType.isText || message.messageType.isImage || message.messageType.isFile || message.messageType.isVideo) {
+    if (message.messageType.isText ||
+        message.messageType.isImage ||
+        message.messageType.isFile ||
+        message.messageType.isVideo) {
       items.add(_copyItem());
     }
 
@@ -317,7 +320,7 @@ class VMessageItemController {
         pFile = message.data.fileSource;
       }
       final file = await DefaultCacheManager().getSingleFile(
-        pFile.url!,
+        pFile.networkUrl!,
       );
       await Share.shareXFiles([XFile(file.path)]);
     }

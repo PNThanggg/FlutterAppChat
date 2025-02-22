@@ -1,5 +1,5 @@
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/material.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 class MessageDownloaderWidget extends StatelessWidget {
   final VBaseMessage message;
@@ -23,7 +23,9 @@ class MessageDownloaderWidget extends StatelessWidget {
           children: [
             Icon(
               Icons.download,
-              color: Theme.of(context).brightness == Brightness.dark ? const Color.fromARGB(255, 131, 131, 131) : const Color.fromARGB(255, 255, 255, 255),
+              color: Theme.of(context).brightness == Brightness.dark
+                  ? const Color.fromARGB(255, 131, 131, 131)
+                  : const Color.fromARGB(255, 255, 255, 255),
             )
           ],
         ),

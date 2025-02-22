@@ -1,12 +1,12 @@
 import 'package:background_downloader/background_downloader.dart';
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_message_page/src/theme/theme.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:open_filex/open_filex.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_message_page/src/theme/theme.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../shared/download_upload_widgets/message_downloader_circular_widget.dart';
 import '../shared/download_upload_widgets/message_downloader_widget.dart';

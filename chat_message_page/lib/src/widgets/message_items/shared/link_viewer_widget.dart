@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
+import 'package:chat_core/chat_core.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:v_chat_message_page/src/theme/theme.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
+import 'package:chat_message_page/src/theme/theme.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 
 class LinkViewerWidget extends StatelessWidget {
   final VLinkPreviewData? data;
@@ -30,7 +30,7 @@ class LinkViewerWidget extends StatelessWidget {
         constraints: const BoxConstraints(
           maxWidth: 250,
         ),
-        margin: const EdgeInsets.only(top: 3),
+        margin: const EdgeInsets.only(top: 4),
         decoration: BoxDecoration(
           color: isMeSender
               ? context.vMessageTheme.senderReplyColor

@@ -1,7 +1,7 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_message_page/chat_message_page.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:textless/textless.dart';
-import 'package:v_chat_message_page/v_chat_message_page.dart';
 
 class DateDividerItem extends StatelessWidget {
   final DateTime dateTime;
@@ -55,7 +55,8 @@ class DateDividerItem extends StatelessWidget {
                 vertical: 4,
               ),
               decoration: BoxDecoration(
-                color: Theme.of(context).brightness == Brightness.dark ? const Color(0xFF2A2A2A) : const Color(0xFFE0E0E0),
+                color:
+                    Theme.of(context).brightness == Brightness.dark ? const Color(0xFF2A2A2A) : const Color(0xFFE0E0E0),
                 borderRadius: BorderRadius.circular(16),
               ),
               child: text.text.color(Colors.white).size(12),

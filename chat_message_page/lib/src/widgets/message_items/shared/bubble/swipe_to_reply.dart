@@ -121,11 +121,11 @@ class _SwipeToReplyState extends State<SwipeToReply> with SingleTickerProviderSt
       end: Offset(onRight ? 0.1 : -0.1, 0.0),
     ).animate(CurvedAnimation(curve: Curves.decelerate, parent: _controller));
     if (onRight) {
-      _leftScaleAnimation = Tween(begin: 0.0, end: 1.0)
-          .animate(CurvedAnimation(curve: Curves.decelerate, parent: _controller));
+      _leftScaleAnimation =
+          Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(curve: Curves.decelerate, parent: _controller));
     } else {
-      _rightScaleAnimation = Tween(begin: 0.0, end: 1.0)
-          .animate(CurvedAnimation(curve: Curves.decelerate, parent: _controller));
+      _rightScaleAnimation =
+          Tween(begin: 0.0, end: 1.0).animate(CurvedAnimation(curve: Curves.decelerate, parent: _controller));
     }
     _controller.forward().whenComplete(() {
       _controller.reverse().whenComplete(() {

@@ -5,6 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:logging/logging.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'service/src/app_lifecycle_state.dart';
+
 /// Represents a controller for VChat.
 ///
 /// It must be initialized before used using [init] method. After

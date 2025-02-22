@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../../../v_chat_message_page.dart';
-
 class TextMessageItem extends StatelessWidget {
   final String message;
   final TextStyle textStyle;

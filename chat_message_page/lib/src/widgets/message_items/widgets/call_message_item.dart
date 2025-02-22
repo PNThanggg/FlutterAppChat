@@ -1,8 +1,8 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:chat_translation/generated/l10n.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:s_translation/generated/l10n.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 class CallMessageItem extends StatelessWidget {
   final VCallMessage message;
@@ -58,23 +58,17 @@ class CallMessageItem extends StatelessWidget {
             color: Colors.red,
           ),
           child: Icon(
-            message.data.withVideo
-                ? PhosphorIcons.videoCameraFill
-                : PhosphorIcons.phoneCall,
+            message.data.withVideo ? PhosphorIconsLight.videoCamera : PhosphorIconsLight.phoneCall,
             color: Colors.white,
           ),
         ),
-        padding: const EdgeInsets.symmetric(vertical: 0),
       ),
     );
   }
 
   Widget _getSub(BuildContext context) {
     if (message.data.duration != null) {
-      return "${message.data.duration.toString()} S"
-          .text
-          .maxLine(2)
-          .overflowEllipsis;
+      return "${message.data.duration.toString()} S".text.maxLine(2).overflowEllipsis;
     }
 
     return callStatusLabel.toString().text.maxLine(2).overflowEllipsis;

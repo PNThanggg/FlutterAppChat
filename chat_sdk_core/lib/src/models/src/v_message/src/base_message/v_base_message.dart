@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:chat_core/chat_core.dart';
 import 'package:chopper/chopper.dart';
 import 'package:enum_to_string/enum_to_string.dart';
 import 'package:flutter/cupertino.dart';

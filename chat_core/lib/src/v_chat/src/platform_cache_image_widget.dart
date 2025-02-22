@@ -68,8 +68,8 @@ class _VPlatformCacheImageWidgetState extends State<VPlatformCacheImageWidget> {
       height: widget.size?.height,
       width: widget.size?.width,
       fit: widget.fit,
-      cacheKey: widget.source.getUrlPath,
-      imageUrl: widget.source.url!,
+      cacheKey: widget.source.getCachedUrlKey,
+      imageUrl: widget.source.networkUrl!,
       placeholder: (context, url) => const CupertinoActivityIndicator.partiallyRevealed(),
       errorWidget: (context, url, error) => GestureDetector(
         onTap: () {

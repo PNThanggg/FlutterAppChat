@@ -20,24 +20,5 @@ class ForwardItemWidget extends StatelessWidget {
       color: Colors.grey,
       size: 15,
     );
-
-    // return Padding(
-    //   padding: const EdgeInsets.only(bottom: 3),
-    //   child: Row(
-    //     mainAxisSize: MainAxisSize.min,
-    //     mainAxisAlignment: MainAxisAlignment.start,
-    //     children: [
-    //       const Icon(
-    //         Icons.forward,
-    //         color: Colors.grey,
-    //         size: 18,
-    //       ),
-    //       const SizedBox(
-    //         width: 6,
-    //       ),
-    //       language.forwarded.cap.color(Colors.grey)
-    //     ],
-    //   ),
-    // );
   }
 }

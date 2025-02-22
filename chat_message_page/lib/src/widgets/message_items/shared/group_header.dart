@@ -1,6 +1,6 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_platform/v_platform.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 class GroupHeader extends StatelessWidget {
   final bool isGroup;
@@ -18,7 +18,10 @@ class GroupHeader extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    if (!isGroup) return const SizedBox.shrink();
+    if (!isGroup) {
+      return const SizedBox.shrink();
+    }
+
     return Padding(
       padding: const EdgeInsets.all(4),
       child: GestureDetector(
@@ -27,7 +30,9 @@ class GroupHeader extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             VCircleAvatar(
-              vFileSource: VPlatformFile.fromUrl(url: senderImage),
+              vFileSource: VPlatformFile.fromUrl(
+                networkUrl: senderImage,
+              ),
               radius: 10,
             ),
             const SizedBox(

@@ -1,16 +1,15 @@
 import 'dart:async';
 
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_message_page/src/page/message_pages/controllers/v_message_item_controller.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:super_up_core/super_up_core.dart';
 import 'package:uuid/uuid.dart';
-import 'package:v_chat_media_editor/v_chat_media_editor.dart';
-import 'package:v_chat_message_page/src/page/message_pages/controllers/v_message_item_controller.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart' hide VStringUtils;
-import 'package:v_platform/v_platform.dart';
 
-import '../../../../v_chat_message_page.dart';
+import '../../../../chat_message_page.dart';
 import '../pasteboard/file_convertor.dart';
 import '../pasteboard/pasteboard.dart';
 import '../states/input_state_controller.dart';

@@ -1,5 +1,5 @@
+import 'package:chat_core/chat_core.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:textless/textless.dart';
 
 class MessageTypingWidget extends StatelessWidget {
   final String text;

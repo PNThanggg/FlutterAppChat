@@ -1,9 +1,9 @@
 import 'dart:ui';
 
 import 'package:background_downloader/background_downloader.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/material.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../shared/constraint_image.dart';
 import '../shared/download_upload_widgets/message_downloader_circular_widget.dart';

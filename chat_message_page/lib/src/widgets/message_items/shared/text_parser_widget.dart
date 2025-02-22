@@ -1,7 +1,8 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_link_previewer/flutter_link_previewer.dart';
 import 'package:flutter_parsed_text/flutter_parsed_text.dart';
-import 'package:super_up_core/super_up_core.dart';
 
 class VTextParserWidget extends StatefulWidget {
   final Function(String email)? onEmailPress;

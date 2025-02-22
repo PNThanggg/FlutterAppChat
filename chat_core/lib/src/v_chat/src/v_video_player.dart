@@ -109,13 +109,14 @@ class _VVideoPlayerState extends State<VVideoPlayer> {
                       if (!await Gal.hasAccess()) {
                         await Gal.requestAccess();
                       }
-                      final File path = await DefaultCacheManager().getSingleFile(widget.platformFileSource.url!);
+                      final File path =
+                          await DefaultCacheManager().getSingleFile(widget.platformFileSource.networkUrl!);
                       await Gal.putVideo(path.path);
                       return " ${S.of(context).currentDevice}";
                     }
 
                     if (VPlatforms.isWeb) {
-                      await downloadVideo(widget.platformFileSource.url!);
+                      await downloadVideo(widget.platformFileSource.networkUrl!);
 
                       if (context.mounted) {
                         return " ${S.of(context).download}";
@@ -182,14 +183,14 @@ class _VVideoPlayerState extends State<VVideoPlayer> {
     } else if (widget.platformFileSource.isFromUrl) {
       final file = await (VPlatforms.isMobile
           ? DefaultCacheManager().getSingleFile(
-              widget.platformFileSource.url!,
-              key: widget.platformFileSource.getUrlPath,
+              widget.platformFileSource.networkUrl!,
+              key: widget.platformFileSource.getCachedUrlKey,
             )
           : null);
       controller = file != null
           ? VideoPlayerController.file(file, videoPlayerOptions: options)
           : VideoPlayerController.networkUrl(
-              Uri.parse(widget.platformFileSource.url!),
+              Uri.parse(widget.platformFileSource.networkUrl!),
               videoPlayerOptions: options,
             );
     }

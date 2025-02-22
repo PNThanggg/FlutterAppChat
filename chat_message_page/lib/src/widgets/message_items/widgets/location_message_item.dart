@@ -1,6 +1,6 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart' hide VStringUtils;
 
 class LocationMessageItem extends StatelessWidget {
   final VLocationMessage message;
@@ -30,7 +30,9 @@ class LocationMessageItem extends StatelessWidget {
           CupertinoIcons.location,
           size: 40,
         ),
-        title: message.data.linkPreviewData.title.toString().text,
+        title: message.data.linkPreviewData.title
+            .toString()
+            .text,
         subtitle: message.data.linkPreviewData.description
             .toString()
             .text

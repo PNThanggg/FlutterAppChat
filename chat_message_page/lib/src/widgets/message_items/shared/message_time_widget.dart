@@ -1,7 +1,7 @@
+import 'package:chat_core/chat_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:textless/textless.dart';
 
 class MessageTimeWidget extends StatelessWidget {
   final DateTime dateTime;

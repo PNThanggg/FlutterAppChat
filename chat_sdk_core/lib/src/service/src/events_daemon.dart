@@ -4,6 +4,8 @@ import 'package:chat_platform/v_platform.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 
+import 'downloader_service.dart';
+
 /// EventsDaemon class is responsible for managing message events.
 class EventsDaemon {
   /// A [StreamSubscription] for message events.
@@ -81,8 +83,8 @@ class EventsDaemon {
     // get the file from cache.
     if (message is VVoiceMessage && VPlatforms.isMobile && !message.isMeSender) {
       await DefaultCacheManager().getSingleFile(
-        message.data.fileSource.url!,
-        key: message.data.fileSource.getUrlPath,
+        message.data.fileSource.networkUrl!,
+        key: message.data.fileSource.getCachedUrlKey,
       );
     }
 

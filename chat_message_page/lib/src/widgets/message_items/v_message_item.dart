@@ -1,25 +1,21 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_message_page/src/widgets/message_items/shared/bubble/swipe_to_reply.dart';
-import 'package:v_chat_message_page/src/widgets/message_items/shared/center_item_holder.dart';
-import 'package:v_chat_message_page/src/widgets/message_items/shared/forward_item_widget.dart';
-import 'package:v_chat_message_page/src/widgets/message_items/shared/message_broadcast_icon.dart';
-import 'package:v_chat_message_page/src/widgets/message_items/shared/message_time_widget.dart';
-import 'package:v_chat_message_page/src/widgets/message_items/shared/reply_item_widget.dart';
-import 'package:v_chat_message_page/src/widgets/message_items/shared/star_item_widget.dart';
-import 'package:v_chat_message_page/src/widgets/message_items/widgets/all_deleted_item.dart';
-import 'package:v_chat_message_page/src/widgets/message_items/widgets/call_message_item.dart';
-import 'package:v_chat_message_page/src/widgets/message_items/widgets/location_message_item.dart';
-import 'package:v_chat_message_page/src/widgets/message_items/widgets/one_seen_widget.dart';
-import 'package:v_chat_message_page/src/widgets/message_items/widgets/text_message_item.dart';
-import 'package:v_chat_message_page/src/widgets/message_items/widgets/voice_message_item.dart';
-import 'package:v_chat_message_page/v_chat_message_page.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart' hide VStringUtils;
-import 'package:v_platform/v_platform.dart';
 
-import '../../core/types.dart';
+import '../../../chat_message_page.dart';
 import '../../v_chat/v_message_constants.dart';
+import 'shared/bubble/swipe_to_reply.dart';
+import 'shared/center_item_holder.dart';
+import 'shared/forward_item_widget.dart';
+import 'shared/message_broadcast_icon.dart';
+import 'shared/message_time_widget.dart';
+import 'shared/star_item_widget.dart';
+import 'widgets/all_deleted_item.dart';
+import 'widgets/one_seen_widget.dart';
+import 'widgets/text_message_item.dart';
+import 'widgets/voice_message_item.dart';
 
 class VMessageItem extends StatelessWidget {
   final VBaseMessage message;
@@ -413,7 +409,10 @@ class VMessageItem extends StatelessWidget {
         },
         child: Padding(
           padding: const EdgeInsets.only(left: 10, bottom: 4),
-          child: (message.telegramName == null ? message.senderName : "${message.senderName} ${message.telegramName}").h6.color(Colors.grey).size(11),
+          child: (message.telegramName == null ? message.senderName : "${message.senderName} ${message.telegramName}")
+              .h6
+              .color(Colors.grey)
+              .size(11),
         ),
       );
     }

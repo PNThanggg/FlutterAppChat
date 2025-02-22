@@ -1,6 +1,6 @@
+import 'package:chat_message_page/src/theme/theme.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/material.dart';
-import 'package:v_chat_message_page/src/theme/theme.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 class AllDeletedItem extends StatelessWidget {
   final VBaseMessage message;
@@ -15,7 +15,9 @@ class AllDeletedItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 4,
+      ),
       child: Text(
         messageHasBeenDeletedLabel,
         style: message.isMeSender

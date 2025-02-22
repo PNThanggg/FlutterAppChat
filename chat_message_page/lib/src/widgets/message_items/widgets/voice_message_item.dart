@@ -1,8 +1,8 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_message_page/chat_message_page.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_message_page/v_chat_message_page.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 class VoiceMessageItem extends StatelessWidget {
   final VVoiceMessage message;
@@ -16,7 +16,6 @@ class VoiceMessageItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //   print(message.data.fileSource.url);
     return Container(
       constraints: const BoxConstraints(
         maxWidth: 300,
@@ -32,8 +31,7 @@ class VoiceMessageItem extends StatelessWidget {
                 context,
               )
               .withOpacity(.3),
-          activeSliderColor:
-              context.isDark ? CupertinoColors.systemGreen : Colors.red,
+          activeSliderColor: context.isDark ? CupertinoColors.systemGreen : Colors.red,
         ),
       ),
     );

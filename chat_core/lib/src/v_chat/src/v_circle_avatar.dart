@@ -2,8 +2,8 @@ import 'dart:io';
 
 import 'package:badges/badges.dart' as badges;
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flutter/material.dart';
 import 'package:chat_platform/v_platform.dart';
+import 'package:flutter/material.dart';
 
 class VCircleAvatar extends StatelessWidget {
   final double radius;
@@ -21,15 +21,15 @@ class VCircleAvatar extends StatelessWidget {
       backgroundColor: Colors.transparent,
       radius: radius,
       backgroundImage: CachedNetworkImageProvider(
-        vFileSource.url!,
-        cacheKey: vFileSource.getUrlPath,
+        vFileSource.networkUrl!,
+        cacheKey: vFileSource.getCachedUrlKey,
       ),
     );
   }
 
   ImageProvider getImageProvider() {
-    if (vFileSource.url != null) {
-      return CachedNetworkImageProvider(vFileSource.url!);
+    if (vFileSource.networkUrl != null) {
+      return CachedNetworkImageProvider(vFileSource.networkUrl!);
     }
     if (vFileSource.isFromBytes) {
       return MemoryImage(vFileSource.uint8List);
@@ -38,7 +38,7 @@ class VCircleAvatar extends StatelessWidget {
     if (vFileSource.isFromPath) {
       return FileImage(File(vFileSource.fileLocalPath!));
     } else {
-      return CachedNetworkImageProvider(vFileSource.url!);
+      return CachedNetworkImageProvider(vFileSource.networkUrl!);
     }
   }
 }

@@ -78,8 +78,8 @@ abstract class VFileUtils {
     VPlatformFile fileSource,
   ) async {
     if (VPlatforms.isWeb) {
-      html.AnchorElement anchorElement = html.AnchorElement(href: fileSource.url!);
-      anchorElement.download = p.basename(fileSource.url!);
+      html.AnchorElement anchorElement = html.AnchorElement(href: fileSource.networkUrl!);
+      anchorElement.download = p.basename(fileSource.networkUrl!);
       anchorElement.target = "black";
       anchorElement.click();
       return "";
@@ -87,7 +87,7 @@ abstract class VFileUtils {
 
     return await FileSaver.instance.saveFile(
       name: fileSource.name,
-      link: LinkDetails(link: fileSource.url!),
+      link: LinkDetails(link: fileSource.networkUrl!),
       ext: p.extension(fileSource.name),
       mimeType: EnumToString.fromString(
             MimeType.values,
@@ -113,7 +113,7 @@ abstract class VFileUtils {
             fileAttachment.getMimeType ?? "xx",
           ) ??
           MimeType.other,
-      link: LinkDetails(link: fileAttachment.url!),
+      link: LinkDetails(link: fileAttachment.networkUrl!),
     );
     return "";
   }

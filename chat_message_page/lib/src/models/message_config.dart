@@ -1,4 +1,4 @@
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 
 ///[vRoom]: The chat room for which the messages are displayed. This parameter is required.
 ///[isCallsAllowed]: A boolean value that indicates whether calls are allowed in the chat room. The default value is true.

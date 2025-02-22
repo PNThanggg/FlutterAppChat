@@ -1,7 +1,7 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
-import 'package:v_chat_message_page/src/v_chat/platform_cache_image_widget.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 class VConstraintImage extends StatelessWidget {
   final VMessageImageData data;

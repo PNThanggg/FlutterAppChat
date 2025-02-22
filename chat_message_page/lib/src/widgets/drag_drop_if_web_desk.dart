@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dropzone/flutter_dropzone.dart';
-import 'package:v_platform/v_platform.dart';
+import 'package:chat_platform/v_platform.dart';
 
 class DragDropIfWeb extends StatefulWidget {
   final Widget child;

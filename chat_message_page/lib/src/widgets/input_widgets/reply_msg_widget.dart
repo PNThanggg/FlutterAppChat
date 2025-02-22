@@ -1,6 +1,6 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/material.dart';
-import 'package:textless/textless.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
 
 import '../../v_chat/platform_cache_image_widget.dart';
 
@@ -29,11 +29,7 @@ class ReplyMsgWidget extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 getTitle(context).text.maxLine(1),
-                vBaseMessage.realContentMentionParsedWithAt.text
-                    .maxLine(2)
-                    .size(12)
-                    .thin
-                    .overflowEllipsis,
+                vBaseMessage.realContentMentionParsedWithAt.text.maxLine(2).size(12).thin.overflowEllipsis,
               ],
             ),
           ),
