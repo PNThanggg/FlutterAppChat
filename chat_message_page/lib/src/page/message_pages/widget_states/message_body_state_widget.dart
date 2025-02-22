@@ -1,15 +1,12 @@
+import 'package:chat_core/chat_core.dart';
+import 'package:chat_message_page/chat_message_page.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/material.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
-import 'package:super_up_core/super_up_core.dart';
-import 'package:v_chat_message_page/src/core/core.dart';
-import 'package:v_chat_message_page/src/page/message_pages/controllers/v_base_message_controller.dart';
-import 'package:v_chat_sdk_core/v_chat_sdk_core.dart';
-import 'package:v_platform/v_platform.dart';
 
 import '../../../widgets/arrow_down.dart';
 import '../../../widgets/drag_drop_if_web_desk.dart';
-import '../../../widgets/message_items/v_message_item.dart';
-import '../../../widgets/message_items/widgets/date_divider_item.dart';
 import '../states/message_state/message_state_controller.dart';
 
 class MessageBodyStateWidget extends StatelessWidget {
@@ -63,7 +60,8 @@ class MessageBodyStateWidget extends StatelessWidget {
                               key: UniqueKey(),
                               controller: controller.scrollController,
                               index: index,
-                              highlightColor: context.isDark ? Colors.white.withOpacity(0.2) : Colors.black.withOpacity(0.2),
+                              highlightColor:
+                                  context.isDark ? Colors.white.withOpacity(0.2) : Colors.black.withOpacity(0.2),
                               child: VMessageItem(
                                 language: language,
                                 roomType: roomType,
@@ -86,7 +84,9 @@ class MessageBodyStateWidget extends StatelessWidget {
                         final isTopMessage = _isTopMessage(value.listMessage.length, index);
                         final dividerDate = _getDateDiff(
                           bigDate: message.createdAtDate,
-                          smallDate: isTopMessage ? value.listMessage[index].createdAtDate : value.listMessage[index + 1].createdAtDate,
+                          smallDate: isTopMessage
+                              ? value.listMessage[index].createdAtDate
+                              : value.listMessage[index + 1].createdAtDate,
                         );
                         if (dividerDate != null || isTopMessage) {
                           //set date divider
