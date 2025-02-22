@@ -23,7 +23,7 @@ class RoomItemMsg extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = context.vRoomTheme;
-    final language = VMessageInfoTrans(
+    final language = MessageInfoTrans(
       addedYouToNewBroadcast: S.of(context).addedYouToNewBroadcast,
       dismissedToMemberBy: S.of(context).dismissedToMemberBy,
       groupCreatedBy: S.of(context).groupCreatedBy,
