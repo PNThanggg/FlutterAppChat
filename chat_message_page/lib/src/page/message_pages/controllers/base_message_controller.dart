@@ -11,12 +11,8 @@ import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../chat_message_page.dart';
-import '../pasteboard/file_convertor.dart';
-import '../pasteboard/pasteboard.dart';
-import '../states/input_state_controller.dart';
-import '../states/message_state/message_state_controller.dart';
 
-abstract class VBaseMessageController extends MessageStateController with StreamMix {
+abstract class BaseMessageController extends MessageStateController with StreamMix {
   final focusNode = FocusNode();
   final vConfig = VChatController.I.vChatConfig;
   final InputStateController inputStateController;
@@ -25,7 +21,7 @@ abstract class VBaseMessageController extends MessageStateController with Stream
   final MessageConfig vMessageConfig;
   final uuid = const Uuid();
 
-  VBaseMessageController({
+  BaseMessageController({
     required super.vRoom,
     required super.messageProvider,
     required super.scrollController,

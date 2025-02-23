@@ -8,7 +8,7 @@ import 'package:flutter/cupertino.dart';
 
 import 'order_app_bar_controller.dart';
 
-class OrderController extends VBaseMessageController {
+class OrderController extends BaseMessageController {
   final OrderAppBarController orderAppBarController;
   final VMessageLocalization language;
 

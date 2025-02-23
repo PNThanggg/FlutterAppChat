@@ -7,8 +7,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
-import '../../providers/message_provider.dart';
-
 class MessageState {
   final List<VBaseMessage> listMessage;
   final List<VBaseMessage> listStarMessage;

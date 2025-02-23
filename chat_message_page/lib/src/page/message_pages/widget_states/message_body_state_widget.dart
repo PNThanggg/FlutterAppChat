@@ -7,10 +7,9 @@ import 'package:scroll_to_index/scroll_to_index.dart';
 
 import '../../../widgets/arrow_down.dart';
 import '../../../widgets/drag_drop_if_web_desk.dart';
-import '../states/message_state/message_state_controller.dart';
 
 class MessageBodyStateWidget extends StatelessWidget {
-  final VBaseMessageController controller;
+  final BaseMessageController controller;
   final VRoomType roomType;
   final VMessageLocalization language;
 

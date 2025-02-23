@@ -9,7 +9,7 @@ import 'package:flutter/cupertino.dart';
 
 import 'single_app_bar_controller.dart';
 
-class SingleController extends VBaseMessageController with StreamMix {
+class SingleController extends BaseMessageController with StreamMix {
   final SingleAppBarController singleAppBarController;
   final VMessageLocalization language;
   StreamSubscription? _subscription;

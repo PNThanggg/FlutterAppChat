@@ -1,7 +1,6 @@
+import 'package:chat_message_page/chat_message_page.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/material.dart';
-
-import '../../../chat_message_page.dart';
 
 class VMessagePage extends StatelessWidget {
   final VRoom vRoom;

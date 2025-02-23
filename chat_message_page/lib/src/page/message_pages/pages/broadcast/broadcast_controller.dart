@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 
 import 'broadcast_app_bar_controller.dart';
 
-class BroadcastController extends VBaseMessageController {
+class BroadcastController extends BaseMessageController {
   final BroadcastAppBarController broadcastAppBarController;
 
   BroadcastController({
