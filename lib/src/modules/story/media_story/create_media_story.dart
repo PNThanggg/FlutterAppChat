@@ -10,7 +10,7 @@ import '../../../core/models/story/create_story_dto.dart';
 import '../../../core/utils/enums.dart';
 
 class CreateMediaStory extends StatefulWidget {
-  final VBaseMediaRes media;
+  final BaseMediaRes media;
 
   const CreateMediaStory({super.key, required this.media});
 
@@ -92,7 +92,7 @@ class _CreateMediaStoryState extends State<CreateMediaStory> {
           content: StoryType.image.name,
           caption: _txtController.text.isEmpty ? null : _txtController.text,
           image: widget.media.getVPlatformFile(),
-          attachment: (widget.media as VMediaImageRes).data.toMap(),
+          attachment: (widget.media as MediaImageRes).data.toMap(),
         );
         return _api.createStory(dto);
       },

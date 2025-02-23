@@ -18,7 +18,7 @@ class ChatStarMessagesController extends SLoadingController<List<VBaseMessage>> 
   final TextEditingController txtController = TextEditingController();
   final ScrollController scrollController = ScrollController();
 
-  late final VVoicePlayerController voiceControllers;
+  late final VoicePlayerController voiceControllers;
 
   @override
   void onClose() {
@@ -34,7 +34,7 @@ class ChatStarMessagesController extends SLoadingController<List<VBaseMessage>> 
   }
 
   void _setUpVoiceController() {
-    voiceControllers = VVoicePlayerController(
+    voiceControllers = VoicePlayerController(
       (localId) {
         final index = value.data.indexWhere((e) => e.localId == localId);
         if (index == -1 || index == 0) {

@@ -155,13 +155,13 @@ class StoryTabController extends SLoadingController<StoryTabState> {
     return entity;
   }
 
-  Future<VBaseMediaRes?> onSubmitMedia(
+  Future<BaseMediaRes?> onSubmitMedia(
     BuildContext context,
     List<VPlatformFile> files,
   ) async {
     final fileRes = await context.toPage(VMediaEditorView(
       files: files,
-    )) as List<VBaseMediaRes>?;
+    )) as List<BaseMediaRes>?;
     if (fileRes == null || fileRes.isEmpty) return null;
     return fileRes.first;
   }

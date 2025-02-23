@@ -76,7 +76,7 @@ class TelegramTabController extends ValueNotifier implements BaseController {
             fileSource: fileSource,
             height: data.image.height,
             width: data.image.width,
-            blurHash: await VMediaFileUtils.getBlurHash(fileSource),
+            blurHash: await MediaFileUtils.getBlurHash(fileSource),
           ),
         );
         await VChatController.I.nativeApi.local.message.insertMessage(message);
