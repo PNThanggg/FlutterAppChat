@@ -28,7 +28,7 @@ class MessageGroupStatusController extends ValueNotifier<MessageStatusState> {
   }
 
   ChatLoadingState state = ChatLoadingState.ideal;
-  VVoiceMessageController? voiceMessageController;
+  VoiceMessageController? voiceMessageController;
 
   void close() {
     voiceMessageController?.dispose();
@@ -36,9 +36,9 @@ class MessageGroupStatusController extends ValueNotifier<MessageStatusState> {
     dispose();
   }
 
-  VVoiceMessageController? getVoiceController(VBaseMessage message) {
+  VoiceMessageController? getVoiceController(VBaseMessage message) {
     if (message is VVoiceMessage && voiceMessageController == null) {
-      voiceMessageController = VVoiceMessageController(
+      voiceMessageController = VoiceMessageController(
         id: message.localId,
         audioSrc: message.data.fileSource,
         maxDuration: message.data.durationObj,

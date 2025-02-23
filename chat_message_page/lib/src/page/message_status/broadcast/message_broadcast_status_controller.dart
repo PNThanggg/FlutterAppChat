@@ -24,11 +24,11 @@ class MessageBroadcastStatusController extends ValueNotifier<MessageStatusState>
   final VBaseMessage message;
 
   ChatLoadingState state = ChatLoadingState.ideal;
-  VVoiceMessageController? voiceMessageController;
+  VoiceMessageController? voiceMessageController;
 
-  VVoiceMessageController? getVoiceController(VBaseMessage message) {
+  VoiceMessageController? getVoiceController(VBaseMessage message) {
     if (message is VVoiceMessage && voiceMessageController == null) {
-      voiceMessageController = VVoiceMessageController(
+      voiceMessageController = VoiceMessageController(
         id: message.localId,
         audioSrc: message.data.fileSource,
         maxDuration: message.data.durationObj,

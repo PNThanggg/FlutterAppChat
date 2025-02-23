@@ -3,20 +3,20 @@ import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:chat_voice_player/chat_voice_player.dart';
 
 class VoicePlayerController {
-  final _voiceControllers = <VVoiceMessageController>[];
+  final _voiceControllers = <VoiceMessageController>[];
   final String? Function(String localId) onVoiceNeedToPlayNext;
 
   VoicePlayerController(this.onVoiceNeedToPlayNext);
 
-  VVoiceMessageController? getById(String id) =>
+  VoiceMessageController? getById(String id) =>
       _voiceControllers.firstWhereOrNull((e) => e.id == id);
 
-  VVoiceMessageController getVoiceController(VVoiceMessage voiceMessage) {
+  VoiceMessageController getVoiceController(VVoiceMessage voiceMessage) {
     final oldController = getById(voiceMessage.localId);
 
     if (oldController != null) return oldController;
 
-    final controller = VVoiceMessageController(
+    final controller = VoiceMessageController(
       id: voiceMessage.localId,
       audioSrc: voiceMessage.data.fileSource,
       onComplete: (String localId) {

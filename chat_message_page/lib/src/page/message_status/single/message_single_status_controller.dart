@@ -2,15 +2,15 @@ import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:chat_voice_player/chat_voice_player.dart';
 
 class MessageSingleStatusController {
-  VVoiceMessageController? voiceMessageController;
+  VoiceMessageController? voiceMessageController;
 
   void close() {
     voiceMessageController?.dispose();
   }
 
-  VVoiceMessageController? getVoiceController(VBaseMessage message) {
+  VoiceMessageController? getVoiceController(VBaseMessage message) {
     if (message is VVoiceMessage && voiceMessageController == null) {
-      voiceMessageController = VVoiceMessageController(
+      voiceMessageController = VoiceMessageController(
         id: message.localId,
         audioSrc: message.data.fileSource,
         maxDuration: message.data.durationObj,
