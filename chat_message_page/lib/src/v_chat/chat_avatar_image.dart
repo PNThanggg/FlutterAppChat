@@ -22,11 +22,17 @@ class ChatAvatarImage extends StatelessWidget {
     return AdvancedAvatar(
       size: size.toDouble(),
       statusColor: isOnline ? CupertinoColors.systemGreen : null,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(100)),
-      foregroundDecoration: BoxDecoration(borderRadius: BorderRadius.circular(100)),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(100),
+      ),
+      foregroundDecoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(100),
+      ),
       name: chatTitle,
       child: VCircleAvatar(
-        vFileSource: VPlatformFile.fromUrl(networkUrl: imageUrl),
+        vFileSource: VPlatformFile.fromUrl(
+          networkUrl: imageUrl,
+        ),
       ),
     );
   }
