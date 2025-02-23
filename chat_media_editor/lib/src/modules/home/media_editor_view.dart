@@ -1,8 +1,8 @@
 import 'package:chat_media_editor/src/modules/home/widgets/horz_media_item.dart';
 import 'package:chat_media_editor/src/modules/home/widgets/media_item.dart';
+import 'package:chat_platform/v_platform.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:chat_platform/v_platform.dart';
 
 import '../../core/core.dart';
 import 'media_editor_controller.dart';
@@ -41,9 +41,7 @@ class _VMediaEditorViewState extends State<VMediaEditorView> {
               : FloatingActionButton.small(
                   elevation: 0,
                   onPressed: () => controller.onSubmitData(context),
-                  child: controller.isCompressing
-                      ? const CupertinoActivityIndicator()
-                      : const Icon(Icons.send),
+                  child: controller.isCompressing ? const CupertinoActivityIndicator() : const Icon(Icons.send),
                 ),
           backgroundColor: Colors.black26,
           body: SafeArea(
