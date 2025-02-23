@@ -119,8 +119,6 @@ flutter:
   fonts:
     - family: SvnGilroy
       fonts:
-        - asset: fonts/svn_gilroy_black_900.otf
-          weight: 900
         - asset: fonts/svn_gilroy_bold_700.otf
           weight: 700
         - asset: fonts/svn_gilroy_semibold_600.otf
@@ -131,8 +129,6 @@ flutter:
           weight: 400
         - asset: fonts/svn_gilroy_light_300.otf
           weight: 300
-        - asset: fonts/svn_gilroy_thin_100.otf
-          weight: 100
 
 #only for windows app
 msix_config:
