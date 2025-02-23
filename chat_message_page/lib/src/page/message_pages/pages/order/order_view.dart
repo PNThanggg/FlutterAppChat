@@ -11,10 +11,10 @@ import '../../providers/message_provider.dart';
 import '../../states/input_state_controller.dart';
 import '../../widget_states/input_widget_state.dart';
 import 'order_app_bar_controller.dart';
-import 'v_order_controller.dart';
+import 'order_controller.dart';
 
-class VOrderView extends StatefulWidget {
-  const VOrderView({
+class OrderView extends StatefulWidget {
+  const OrderView({
     super.key,
     required this.vRoom,
     required this.language,
@@ -26,17 +26,17 @@ class VOrderView extends StatefulWidget {
   final VMessageLocalization language;
 
   @override
-  State<VOrderView> createState() => _VOrderViewState();
+  State<OrderView> createState() => _OrderViewState();
 }
 
-class _VOrderViewState extends State<VOrderView> {
-  late final VOrderController controller;
+class _OrderViewState extends State<OrderView> {
+  late final OrderController controller;
 
   @override
   void initState() {
     super.initState();
     final provider = MessageProvider();
-    controller = VOrderController(
+    controller = OrderController(
       vRoom: widget.vRoom,
       language: widget.language,
       vMessageConfig: widget.vMessageConfig,

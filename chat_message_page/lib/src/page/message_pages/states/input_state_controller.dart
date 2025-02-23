@@ -8,7 +8,11 @@ class InputStateController extends ValueNotifier<MessageInputModel> {
 
   InputStateController(
     this.vRoom,
-  ) : super(MessageInputModel(isCloseInput: false)) {
+  ) : super(
+          MessageInputModel(
+            isCloseInput: false,
+          ),
+        ) {
     // if (_vRoom.roomType.isGroup) {
     //   _checkStatus(_vRoom.id);
     // }

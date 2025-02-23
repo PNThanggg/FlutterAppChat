@@ -41,7 +41,7 @@ class VMessagePage extends StatelessWidget {
           language: localization,
         );
       case VRoomType.o:
-        return VOrderView(
+        return OrderView(
           vMessageConfig: vMessageConfig,
           vRoom: vRoom,
           language: localization,
