@@ -1,7 +1,7 @@
 import 'package:adaptive_dialog/adaptive_dialog.dart' as adaptive_dialog;
 import 'package:flutter/material.dart';
 
-abstract class VAppAlert {
+abstract class InputUIAlert {
   static void showErrorSnackBar({
     required String msg,
     required BuildContext context,
