@@ -12,7 +12,7 @@ import 'package:video_thumbnail/video_thumbnail.dart';
 
 import 'message_image_data.dart';
 
-abstract class VMediaFileUtils {
+abstract class MediaFileUtils {
   static Future<MessageImageData?> getVideoThumb({
     required VPlatformFile fileSource,
     int maxWidth = 600,

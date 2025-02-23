@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-class VConditionalBuilder extends StatelessWidget {
+class ConditionalBuilder extends StatelessWidget {
   final bool _condition;
   final Function _thenBuilder;
   final Function? _elseBuilder;
 
-  const VConditionalBuilder({
+  const ConditionalBuilder({
     super.key,
     required bool condition,
     required Function thenBuilder,
