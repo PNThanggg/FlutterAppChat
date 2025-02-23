@@ -28,7 +28,9 @@ class Pasteboard implements IPasteboard {
     return document.onPaste.listen((ClipboardEvent event) async {
       if (event.clipboardData == null ||
           event.clipboardData!.items == null ||
-          event.clipboardData!.items!.length == null) return;
+          event.clipboardData!.items!.length == null) {
+        return;
+      }
       final result = await _onClipboardEvent(event);
       onData(result);
     });
