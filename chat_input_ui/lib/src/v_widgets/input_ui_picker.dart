@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:wechat_camera_picker/wechat_camera_picker.dart';
 
-abstract class VAppPick {
+abstract class InputUiPicker {
   static bool isPicking = false;
 
   static Future<VPlatformFile?> getCroppedImage({
