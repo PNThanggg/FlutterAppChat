@@ -10,7 +10,6 @@ import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../chat_message_page.dart';
-import 'message_item_controller.dart';
 
 abstract class BaseMessageController extends MessageStateController with StreamMix {
   final focusNode = FocusNode();

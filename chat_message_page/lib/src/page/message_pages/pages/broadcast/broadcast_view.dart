@@ -4,7 +4,7 @@ import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
-import '../../../../v_chat/v_socket_status_widget.dart';
+import '../../../../v_chat/socket_status_widget.dart';
 import '../../../../widgets/app_bar/message_page_app_bar.dart';
 import 'broadcast_app_bar_controller.dart';
 import 'broadcast_controller.dart';
@@ -87,7 +87,7 @@ class _VBroadcastViewState extends State<BroadcastView> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             if (widget.vMessageConfig.showDisconnectedWidget)
-              VSocketStatusWidget(
+              SocketStatusWidget(
                 connectingLabel: widget.language.connecting,
                 delay: Duration.zero,
               ),

@@ -8,7 +8,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
-import '../../../../v_chat/v_socket_status_widget.dart';
+import '../../../../v_chat/socket_status_widget.dart';
 import '../../../../widgets/app_bar/message_page_app_bar.dart';
 import 'group_app_bar_controller.dart';
 
@@ -105,7 +105,7 @@ class _VGroupViewState extends State<VGroupView> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
                 if (widget.vMessageConfig.showDisconnectedWidget)
-                  VSocketStatusWidget(
+                  SocketStatusWidget(
                     connectingLabel: widget.language.connecting,
                     delay: Duration.zero,
                   ),

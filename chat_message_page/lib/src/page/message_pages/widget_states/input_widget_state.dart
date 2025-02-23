@@ -3,9 +3,6 @@ import 'package:chat_platform/v_platform.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/material.dart';
 
-import '../../../widgets/input_widgets/ban_widget.dart';
-import '../../../widgets/input_widgets/reply_msg_widget.dart';
-
 class InputWidgetState extends StatelessWidget {
   final BaseMessageController controller;
   final VMessageLocalization language;
