@@ -10,7 +10,7 @@ class VMessageItem extends StatelessWidget {
   final VMessageCallback? onSwipe;
 
   final VMessageCallback? onLongTap;
-  final VVoiceMessageController? Function(VBaseMessage message)? voiceController;
+  final VoiceMessageController? Function(VBaseMessage message)? voiceController;
   final VMessageCallback? onHighlightMessage;
   final VMessageCallback? onReSend;
   final VRoomType roomType;
