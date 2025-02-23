@@ -3,8 +3,6 @@ import 'package:chat_message_page/chat_message_page.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/material.dart';
 
-import '../../providers/message_provider.dart';
-
 class SingleAppBarController extends ValueNotifier<SingleAppBarStateModel> with StreamMix {
   final VRoom vRoom;
   final MessageProvider messageProvider;

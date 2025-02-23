@@ -6,10 +6,6 @@ import 'package:scroll_to_index/scroll_to_index.dart';
 
 import '../../../../v_chat/v_socket_status_widget.dart';
 import '../../../../widgets/app_bar/message_page_app_bar.dart';
-import '../../controllers/v_message_item_controller.dart';
-import '../../providers/message_provider.dart';
-import '../../states/input_state_controller.dart';
-import '../../widget_states/input_widget_state.dart';
 import 'order_app_bar_controller.dart';
 import 'order_controller.dart';
 
@@ -50,7 +46,7 @@ class _OrderViewState extends State<OrderView> {
         vRoom: widget.vRoom,
         messageProvider: provider,
       ),
-      itemController: VMessageItemController(
+      itemController: MessageItemController(
         messageProvider: provider,
         context: context,
         vMessageConfig: widget.vMessageConfig,

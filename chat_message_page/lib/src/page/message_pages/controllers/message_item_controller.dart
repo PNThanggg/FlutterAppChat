@@ -10,14 +10,13 @@ import 'package:open_filex/open_filex.dart';
 import 'package:share_plus/share_plus.dart';
 
 import '../../../../chat_message_page.dart';
-import '../providers/message_provider.dart';
 
-class VMessageItemController {
+class MessageItemController {
   final MessageProvider messageProvider;
   final BuildContext context;
   final MessageConfig vMessageConfig;
 
-  VMessageItemController({
+  MessageItemController({
     required this.messageProvider,
     required this.context,
     required this.vMessageConfig,

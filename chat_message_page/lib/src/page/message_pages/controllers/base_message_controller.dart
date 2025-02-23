@@ -2,7 +2,6 @@ import 'dart:async';
 
 import 'package:chat_core/chat_core.dart';
 import 'package:chat_media_editor/chat_media_editor.dart';
-import 'package:chat_message_page/src/page/message_pages/controllers/v_message_item_controller.dart';
 import 'package:chat_platform/v_platform.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/foundation.dart';
@@ -11,12 +10,13 @@ import 'package:scroll_to_index/scroll_to_index.dart';
 import 'package:uuid/uuid.dart';
 
 import '../../../../chat_message_page.dart';
+import 'message_item_controller.dart';
 
 abstract class BaseMessageController extends MessageStateController with StreamMix {
   final focusNode = FocusNode();
   final vConfig = VChatController.I.vChatConfig;
   final InputStateController inputStateController;
-  final VMessageItemController itemController;
+  final MessageItemController itemController;
   final events = VEventBusSingleton.vEventBus;
   final MessageConfig vMessageConfig;
   final uuid = const Uuid();

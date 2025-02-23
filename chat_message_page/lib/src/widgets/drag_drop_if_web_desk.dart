@@ -58,7 +58,7 @@ class _DragDropIfWebState extends State<DragDropIfWeb> {
                   isHovering = true;
                 });
               },
-              onDrop: (dynamic file) async {},
+              onDropFile: (DropzoneFileInterface file) async {},
               onDropMultiple: (List<dynamic>? files) async {
                 isHovering = false;
                 setState(() {});
