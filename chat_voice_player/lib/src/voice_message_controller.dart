@@ -15,7 +15,7 @@ import 'helpers/play_status.dart';
 /// A controller for handling voice message playback, including play, pause,
 /// seek, and speed control. It manages the audio player, animation controller,
 /// and playback status.
-class VVoiceMessageController extends ValueNotifier implements TickerProvider {
+class VoiceMessageController extends ValueNotifier implements TickerProvider {
   /// The source of the audio file.
   final VPlatformFile audioSrc;
 
@@ -87,7 +87,7 @@ class VVoiceMessageController extends ValueNotifier implements TickerProvider {
   /// [onComplete] is a callback function when playback completes.
   /// [onPause] is a callback function when playback is paused.
   /// [onPlaying] is a callback function when playback starts.
-  VVoiceMessageController({
+  VoiceMessageController({
     required this.id,
     required this.audioSrc,
     this.maxDuration = const Duration(days: 1),

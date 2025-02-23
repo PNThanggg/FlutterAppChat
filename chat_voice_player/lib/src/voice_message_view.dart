@@ -8,9 +8,9 @@ import '../chat_voice_player.dart';
 ///
 /// The seek bar visualizes the playback progress and allows users to seek
 /// within the audio. It also includes an optional noise visualization.
-class VVoiceMessageView extends StatelessWidget {
+class VoiceMessageView extends StatelessWidget {
   /// The controller managing the voice message playback.
-  final VVoiceMessageController controller;
+  final VoiceMessageController controller;
 
   /// The color of the active part of the seek bar.
   final Color activeSliderColor;
@@ -36,11 +36,11 @@ class VVoiceMessageView extends StatelessWidget {
   /// Builder function for customizing the speed display widget.
   final Widget Function(String speed)? speedBuilder;
 
-  /// Creates a [VVoiceMessageView].
+  /// Creates a [VoiceMessageView].
   ///
   /// [controller] is required and manages the playback state.
   /// Other parameters are optional and allow customization of the UI.
-  const VVoiceMessageView({
+  const VoiceMessageView({
     super.key,
     required this.controller,
     this.activeSliderColor = Colors.red,
