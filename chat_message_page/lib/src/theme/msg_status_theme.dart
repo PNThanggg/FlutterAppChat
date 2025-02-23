@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 
 const double _iconSize = 16.5;
 
-class VMsgStatusTheme {
+class MsgStatusTheme {
   final Widget pendingIcon;
   final Widget sendIcon;
   final Widget deliverIcon;
   final Widget seenIcon;
   final Widget refreshIcon;
 
-  const VMsgStatusTheme._({
+  const MsgStatusTheme._({
     required this.pendingIcon,
     required this.sendIcon,
     required this.deliverIcon,
@@ -18,7 +18,7 @@ class VMsgStatusTheme {
     required this.refreshIcon,
   });
 
-  const VMsgStatusTheme.light({
+  const MsgStatusTheme.light({
     this.pendingIcon = const Icon(
       Icons.timer_outlined,
       color: Colors.black26,
@@ -46,7 +46,7 @@ class VMsgStatusTheme {
     ),
   });
 
-  const VMsgStatusTheme.dark({
+  const MsgStatusTheme.dark({
     this.pendingIcon = const Icon(
       Icons.timer_outlined,
       color: Colors.grey,
@@ -74,14 +74,14 @@ class VMsgStatusTheme {
     ),
   });
 
-  VMsgStatusTheme copyWith({
+  MsgStatusTheme copyWith({
     Widget? pendingIcon,
     Widget? sendIcon,
     Widget? deliverIcon,
     Widget? seenIcon,
     Widget? refreshIcon,
   }) {
-    return VMsgStatusTheme._(
+    return MsgStatusTheme._(
       pendingIcon: pendingIcon ?? this.pendingIcon,
       sendIcon: sendIcon ?? this.sendIcon,
       deliverIcon: deliverIcon ?? this.deliverIcon,

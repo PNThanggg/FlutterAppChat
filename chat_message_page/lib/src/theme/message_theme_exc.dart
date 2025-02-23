@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:chat_core/chat_core.dart';
+import 'package:flutter/material.dart';
 
 import '../../chat_message_page.dart';
 
@@ -42,13 +42,13 @@ const _darkTextReceiverColor = TextStyle(
   fontWeight: FontWeight.w500,
 );
 
-class VMessageTheme extends ThemeExtension<VMessageTheme> {
+class MessageTheme extends ThemeExtension<MessageTheme> {
   final Color senderBubbleColor;
   final Color receiverBubbleColor;
 
   final Color senderReplyColor;
   final Color receiverReplyColor;
-  final VMsgStatusTheme messageSendingStatus;
+  final MsgStatusTheme messageSendingStatus;
   final BoxDecoration scaffoldDecoration;
   final CustomMessageItemTypeDef? customMessageItem;
   final TextStyle receiverTextStyle;
@@ -56,7 +56,7 @@ class VMessageTheme extends ThemeExtension<VMessageTheme> {
 
   final VMessageItemTheme vMessageItemTheme;
 
-  VMessageTheme._({
+  MessageTheme._({
     required this.senderBubbleColor,
     required this.receiverBubbleColor,
     required this.senderReplyColor,
@@ -69,28 +69,28 @@ class VMessageTheme extends ThemeExtension<VMessageTheme> {
     required this.vMessageItemTheme,
   });
 
-  factory VMessageTheme.light() {
-    return VMessageTheme._(
+  factory MessageTheme.light() {
+    return MessageTheme._(
       senderBubbleColor: _lightMySenderColor,
       vMessageItemTheme: const VMessageItemTheme.light(),
       receiverBubbleColor: _lightReceiverColor,
       senderTextStyle: _lightTextMeSenderColor,
       receiverTextStyle: _lightTextMeReceiverColor,
-      messageSendingStatus: const VMsgStatusTheme.light(),
+      messageSendingStatus: const MsgStatusTheme.light(),
       scaffoldDecoration: sMessageBackground(isDark: false),
       senderReplyColor: const Color(0xffD7F2C9),
       receiverReplyColor: const Color(0xffF2F2F2),
     );
   }
 
-  factory VMessageTheme.dark() {
-    return VMessageTheme._(
+  factory MessageTheme.dark() {
+    return MessageTheme._(
       senderBubbleColor: _darkMeSenderColor,
       receiverBubbleColor: _darkReceiverColor,
       vMessageItemTheme: const VMessageItemTheme.dark(),
       senderTextStyle: _darkTextMeSenderColor,
       receiverTextStyle: _darkTextReceiverColor,
-      messageSendingStatus: const VMsgStatusTheme.dark(),
+      messageSendingStatus: const MsgStatusTheme.dark(),
       scaffoldDecoration: sMessageBackground(isDark: true),
       senderReplyColor: const Color(0xff003C34),
       receiverReplyColor: const Color(0xff28282A),
@@ -98,28 +98,27 @@ class VMessageTheme extends ThemeExtension<VMessageTheme> {
   }
 
   @override
-  ThemeExtension<VMessageTheme> lerp(
-      ThemeExtension<VMessageTheme>? other, double t) {
-    if (other is! VMessageTheme) {
+  ThemeExtension<MessageTheme> lerp(ThemeExtension<MessageTheme>? other, double t) {
+    if (other is! MessageTheme) {
       return this;
     }
     return this;
   }
 
   @override
-  VMessageTheme copyWith({
+  MessageTheme copyWith({
     Color? senderBubbleColor,
     Color? receiverBubbleColor,
     Color? senderReplyColor,
     Color? receiverReplyColor,
     VMessageItemTheme? vMessageItemTheme,
-    VMsgStatusTheme? messageSendingStatus,
+    MsgStatusTheme? messageSendingStatus,
     BoxDecoration? scaffoldDecoration,
     CustomMessageItemTypeDef? customMessageItem,
     TextStyle? receiverTextStyle,
     TextStyle? senderTextStyle,
   }) {
-    return VMessageTheme._(
+    return MessageTheme._(
       senderBubbleColor: senderBubbleColor ?? this.senderBubbleColor,
       vMessageItemTheme: vMessageItemTheme ?? this.vMessageItemTheme,
       senderReplyColor: senderReplyColor ?? this.senderReplyColor,
@@ -135,8 +134,8 @@ class VMessageTheme extends ThemeExtension<VMessageTheme> {
 }
 
 extension VMessageThemeNewExt on BuildContext {
-  VMessageTheme get vMessageTheme {
-    return Theme.of(this).extension<VMessageTheme>() ?? VMessageTheme.light();
+  MessageTheme get vMessageTheme {
+    return Theme.of(this).extension<MessageTheme>() ?? MessageTheme.light();
   }
 
   Color getMessageItemHolderColor(bool isSender, BuildContext context) {
