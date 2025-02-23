@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class VoiceMessageItem extends StatelessWidget {
   final VVoiceMessage message;
-  final VVoiceMessageController? Function(VBaseMessage message) voiceController;
+  final VoiceMessageController? Function(VBaseMessage message) voiceController;
 
   const VoiceMessageItem({
     super.key,
@@ -23,7 +23,7 @@ class VoiceMessageItem extends StatelessWidget {
       padding: const EdgeInsets.all(10),
       child: Material(
         color: Colors.transparent,
-        child: VVoiceMessageView(
+        child: VoiceMessageView(
           controller: voiceController(message)!,
           notActiveSliderColor: context
               .getMessageItemHolderColor(
