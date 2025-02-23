@@ -2,12 +2,12 @@ import 'package:chat_message_page/chat_message_page.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/material.dart';
 
-class VMessagePage extends StatelessWidget {
+class MessagePage extends StatelessWidget {
   final VRoom vRoom;
   final MessageConfig vMessageConfig;
   final VMessageLocalization localization;
 
-  const VMessagePage({
+  const MessagePage({
     super.key,
     required this.localization,
     required this.vRoom,
