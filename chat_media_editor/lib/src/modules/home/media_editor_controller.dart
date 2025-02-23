@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 import 'dart:typed_data';
 
+import 'package:chat_media_editor/chat_media_editor.dart';
 import 'package:chat_platform/v_platform.dart';
 import 'package:flutter/material.dart';
 import 'package:path/path.dart';
@@ -9,9 +10,8 @@ import 'package:path_provider/path_provider.dart';
 import 'package:pro_image_editor/core/models/editor_callbacks/pro_image_editor_callbacks.dart';
 import 'package:pro_image_editor/features/main_editor/main_editor.dart';
 
-import '../../core/core.dart';
 import '../video_editor/media_editor_video_player.dart';
-import 'app_pick.dart';
+import 'media_editor_picker.dart';
 
 class MediaEditorController extends ValueNotifier {
   MediaEditorController(this.platformFiles, this.config) : super(null) {
@@ -41,7 +41,7 @@ class MediaEditorController extends ValueNotifier {
   }
 
   Future<void> onCrop(MediaImageRes item, BuildContext context) async {
-    final res = await VAppPick.croppedImage(file: item.data.fileSource);
+    final res = await MediaEditorPicker.croppedImage(file: item.data.fileSource);
     item.data.fileSource = res!;
     _updateScreen();
   }

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:image_cropper/image_cropper.dart';
 import 'package:chat_platform/v_platform.dart';
 
-abstract class VAppPick {
+abstract class MediaEditorPicker {
   static bool isPicking = false;
 
   static Future<VPlatformFile?> getCroppedImage({
