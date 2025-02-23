@@ -37,7 +37,7 @@ class _CreateMediaStoryState extends State<CreateMediaStory> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const SizedBox(),
-                VPlatformCacheImageWidget(
+                PlatformCacheImageWidget(
                   source: widget.media.getVPlatformFile(),
                   size: const Size(500, 500),
                 ),

@@ -94,9 +94,9 @@ class ReplyItemWidget extends StatelessWidget {
   Widget _getImage() {
     if (rToMessage! is VImageMessage) {
       final msg = rToMessage! as VImageMessage;
-      return VPlatformCacheImageWidget(
+      return PlatformCacheImageWidget(
         source: msg.data.fileSource,
-        borderRadius: BorderRadius.circular(9),
+        borderRadius: BorderRadius.circular(8),
         size: const Size(40, 40),
       );
     }

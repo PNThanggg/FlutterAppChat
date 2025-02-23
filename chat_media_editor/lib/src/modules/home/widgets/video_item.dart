@@ -1,6 +1,6 @@
+import 'package:chat_core/chat_core.dart';
 import 'package:chat_media_editor/chat_media_editor.dart';
 import 'package:flutter/material.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class VideoItem extends StatelessWidget {
   final MediaVideoRes video;
@@ -59,7 +59,7 @@ class VideoItem extends StatelessWidget {
             alignment: Alignment.center,
             children: [
               video.data.thumbImage != null
-                  ? VPlatformCacheImageWidget(
+                  ? PlatformCacheImageWidget(
                       source: video.data.thumbImage!.fileSource,
                     )
                   : Container(

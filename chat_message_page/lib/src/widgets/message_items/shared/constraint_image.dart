@@ -26,7 +26,7 @@ class ConstraintImage extends StatelessWidget {
       ),
       child: AspectRatio(
         aspectRatio: data.width / data.height,
-        child: VPlatformCacheImageWidget(
+        child: PlatformCacheImageWidget(
           source: data.fileSource,
           borderRadius: borderRadius,
           fit: fit,

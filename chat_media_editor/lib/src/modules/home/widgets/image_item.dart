@@ -1,7 +1,7 @@
+import 'package:chat_core/chat_core.dart';
 import 'package:chat_media_editor/chat_media_editor.dart';
 import 'package:chat_platform/v_platform.dart';
 import 'package:flutter/material.dart';
-import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class ImageItem extends StatelessWidget {
   final MediaImageRes image;
@@ -84,7 +84,7 @@ class ImageItem extends StatelessWidget {
           ),
         ),
         Expanded(
-          child: VPlatformCacheImageWidget(
+          child: PlatformCacheImageWidget(
             source: image.data.fileSource,
             fit: BoxFit.contain,
           ),

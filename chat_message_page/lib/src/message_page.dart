@@ -18,7 +18,6 @@ export './page/message_status/export.dart';
 export './theme/theme.dart';
 export './v_chat/chat_avatar_image.dart';
 export './v_chat/message_page_constants.dart';
-export './v_chat/platform_cache_image_widget.dart';
 export './v_chat/socket_status_widget.dart';
 export './widgets/input_widgets/ban_widget.dart';
 export './widgets/input_widgets/reply_msg_widget.dart';

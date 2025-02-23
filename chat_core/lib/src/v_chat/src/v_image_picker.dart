@@ -39,7 +39,7 @@ class _VImagePickerState extends State<VImagePicker> {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          VPlatformCacheImageWidget(
+          PlatformCacheImageWidget(
             source: current,
             borderRadius: BorderRadius.circular(130),
             fit: BoxFit.cover,

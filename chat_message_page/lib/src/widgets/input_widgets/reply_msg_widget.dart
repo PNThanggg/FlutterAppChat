@@ -1,4 +1,4 @@
-import 'package:chat_core/chat_core.dart' hide VPlatformCacheImageWidget;
+import 'package:chat_core/chat_core.dart';
 import 'package:chat_message_page/chat_message_page.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/material.dart';
