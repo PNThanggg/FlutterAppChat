@@ -1,7 +1,9 @@
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 
+import '../../chat_message_page.dart';
+
 abstract class MessagePageConstants {
-  static String getMessageBody(VBaseMessage m, MessageInfoTrans language) {
+  static String getMessageBody(VBaseMessage m, MessagesInfoTrans language) {
     if (m is VInfoMessage) {
       final infoAtt = m.data;
       final messages = {

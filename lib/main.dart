@@ -66,7 +66,7 @@ void main() async {
           data: _getIosBrightness(theme) == Brightness.dark
               ? ThemeData.dark().copyWith(
                   extensions: [
-                    VMessageTheme.dark().copyWith(
+                    MessageTheme.dark().copyWith(
                       senderBubbleColor: const Color(0xff005046),
                       receiverBubbleColor: const Color(0xff363638),
                       senderTextStyle: const TextStyle(
@@ -85,7 +85,7 @@ void main() async {
                 )
               : ThemeData.light().copyWith(
                   extensions: [
-                    VMessageTheme.light().copyWith(
+                    MessageTheme.light().copyWith(
                       senderBubbleColor: const Color(0xffE2FFD4),
                       receiverBubbleColor: const Color(0xffFFFFFF),
                       senderTextStyle: const TextStyle(

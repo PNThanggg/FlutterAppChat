@@ -79,7 +79,7 @@ Future<void> initVChat(GlobalKey<NavigatorState> navigatorKey) async {
         //when user click on notification or lunch the app from notification this function will call to open the message page
         toMessagePage: (context, vRoom) {
           final config = VAppConfigController.appConfig;
-          final messageConfig = VMessageConfig(
+          final messageConfig = MessageConfig(
             googleMapsApiKey: ChatConstants.googleMapsApiKey,
             isCallsAllowed: VPlatforms.isMobile ? config.allowCall : false,
             isSendMediaAllowed: config.allowSendMedia,
@@ -93,7 +93,7 @@ Future<void> initVChat(GlobalKey<NavigatorState> navigatorKey) async {
             compressImageQuality: 55,
             maxRecordTime: const Duration(minutes: 30),
           );
-          final msgPage = VMessagePage(
+          final msgPage = MessagePage(
             vRoom: vRoom,
             localization: vMessageLocalizationPageModel(context),
             vMessageConfig: messageConfig,
@@ -109,7 +109,7 @@ Future<void> initVChat(GlobalKey<NavigatorState> navigatorKey) async {
         toSingleChatMessageInfo: (context, baseMessage) {
           AppNavigation.toPage(
             context,
-            VMessageSingleStatusPage(
+            MessageSingleStatusPage(
               message: baseMessage,
               deliveredLabel: S.of(context).delivered,
               readLabel: S.of(context).read,
@@ -122,7 +122,7 @@ Future<void> initVChat(GlobalKey<NavigatorState> navigatorKey) async {
         toBroadcastChatMessageInfo: (context, baseMessage) {
           AppNavigation.toPage(
             context,
-            VMessageBroadcastStatusPage(
+            MessageBroadcastStatusPage(
               message: baseMessage,
               deliveredLabel: S.of(context).delivered,
               readLabel: S.of(context).read,
@@ -136,7 +136,7 @@ Future<void> initVChat(GlobalKey<NavigatorState> navigatorKey) async {
         toGroupChatMessageInfo: (context, baseMessage) {
           AppNavigation.toPage(
             context,
-            VMessageGroupStatusPage(
+            MessageGroupStatusPage(
               message: baseMessage,
               deliveredLabel: S.of(context).delivered,
               readLabel: S.of(context).read,
