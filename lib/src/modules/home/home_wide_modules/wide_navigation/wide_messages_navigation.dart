@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:get_it/get_it.dart';
 
 import '../../../../core/app_config/app_config_controller.dart';
-import 'no_animation_page_route.dart';
 
 class WideMessagesNavigation extends StatelessWidget {
   WideMessagesNavigation({
