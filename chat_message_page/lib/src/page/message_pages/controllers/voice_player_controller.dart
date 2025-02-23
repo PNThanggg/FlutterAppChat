@@ -2,11 +2,11 @@ import 'package:collection/collection.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:chat_voice_player/chat_voice_player.dart';
 
-class VVoicePlayerController {
+class VoicePlayerController {
   final _voiceControllers = <VVoiceMessageController>[];
   final String? Function(String localId) onVoiceNeedToPlayNext;
 
-  VVoicePlayerController(this.onVoiceNeedToPlayNext);
+  VoicePlayerController(this.onVoiceNeedToPlayNext);
 
   VVoiceMessageController? getById(String id) =>
       _voiceControllers.firstWhereOrNull((e) => e.id == id);

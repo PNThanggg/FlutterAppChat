@@ -2,7 +2,7 @@ export './agora/v_agora.dart';
 export './models/models.dart';
 export './page/message_pages/controllers/base_message_controller.dart';
 export './page/message_pages/controllers/message_item_controller.dart';
-export './page/message_pages/controllers/v_voice_controller.dart';
+export './page/message_pages/controllers/voice_player_controller.dart';
 export './page/message_pages/pages/broadcast/broadcast_view.dart';
 export './page/message_pages/pages/group/group_view.dart';
 export './page/message_pages/pages/order/order_view.dart';

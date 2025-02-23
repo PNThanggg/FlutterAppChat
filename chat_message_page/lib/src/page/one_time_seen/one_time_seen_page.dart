@@ -20,7 +20,7 @@ class OneTimeSeenPage extends StatefulWidget {
 }
 
 class _OneTimeSeenPageState extends State<OneTimeSeenPage> {
-  final VVoicePlayerController voiceControllers = VVoicePlayerController(
+  final VoicePlayerController voiceControllers = VoicePlayerController(
     (localId) {
       return null;
     },

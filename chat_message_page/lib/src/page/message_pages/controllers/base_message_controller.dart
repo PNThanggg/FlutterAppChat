@@ -38,7 +38,7 @@ abstract class BaseMessageController extends MessageStateController with StreamM
   }
 
   // StreamSubscription? clipboardSubscription;
-  late final VVoicePlayerController voiceControllers;
+  late final VoicePlayerController voiceControllers;
 
   @override
   String get roomId => vRoom.id;
@@ -274,7 +274,7 @@ abstract class BaseMessageController extends MessageStateController with StreamM
   );
 
   void _setUpVoiceController() {
-    voiceControllers = VVoicePlayerController(
+    voiceControllers = VoicePlayerController(
       (localId) {
         final index = value.listMessage.indexWhere((e) => e.localId == localId);
         if (index == -1 || index == 0) {
