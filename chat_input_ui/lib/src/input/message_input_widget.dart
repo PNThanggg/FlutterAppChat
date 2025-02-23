@@ -1,13 +1,13 @@
+import 'package:chat_core/chat_core.dart' hide ModelSheetItem;
+import 'package:chat_mention_controller/chat_mention_controller.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/services.dart';
 import 'package:latlong2/latlong.dart' as latlong;
 import 'package:pasteboard/pasteboard.dart';
 import 'package:place_picker_v2/entities/localization_item.dart';
 import 'package:place_picker_v2/place_picker.dart';
-import 'package:chat_core/chat_core.dart' hide ModelSheetItem, VCircleAvatar, VAppPick, VAppAlert;
-import 'package:chat_mention_controller/chat_mention_controller.dart';
-import 'package:chat_sdk_core/chat_sdk_core.dart';
-import 'package:chat_platform/v_platform.dart';
 
 import '../../chat_input_ui.dart';
 import '../enums.dart';
@@ -16,9 +16,9 @@ import '../models/location_message_data.dart';
 import '../models/message_voice_data.dart';
 import '../permission_manager.dart';
 import '../recorder/record_widget.dart';
-import '../v_widgets/app_pick.dart';
-import '../v_widgets/v_app_alert.dart';
-import '../v_widgets/v_circle_avatar.dart';
+import '../v_widgets/circle_avatar_widget.dart';
+import '../v_widgets/input_ui_alert.dart';
+import '../v_widgets/input_ui_picker.dart';
 import 'widgets/emoji_keyboard.dart';
 import 'widgets/link_preview_loader.dart';
 import 'widgets/message_record_btn.dart';
@@ -281,7 +281,7 @@ class _VMessageInputWidgetState extends State<VMessageInputWidget> {
                                             );
                                           }
                                           return CupertinoListTile(
-                                            leading: VCircleAvatar(
+                                            leading: CircleAvatarWidget(
                                               fullUrl: _mentionsWithPhoto[index].imageS3,
                                               radius: 20,
                                             ),
@@ -429,7 +429,7 @@ class _VMessageInputWidgetState extends State<VMessageInputWidget> {
     if (widget.onAttachIconPress != null) {
       res = await widget.onAttachIconPress!();
     } else {
-      final x = await VAppAlert.showModalSheet(
+      final x = await InputUIAlert.showModalSheet(
         content: [
           ModelSheetItem<AttachEnumRes>(
             title: language.media,
@@ -458,13 +458,13 @@ class _VMessageInputWidgetState extends State<VMessageInputWidget> {
     if (res != null) {
       switch (res) {
         case AttachEnumRes.media:
-          final files = await VAppPick.getMedia();
+          final files = await InputUiPicker.getMedia();
           if (files != null) {
             if (files.isNotEmpty) widget.onSubmitMedia(files);
           }
           break;
         case AttachEnumRes.files:
-          final files = await VAppPick.getFiles();
+          final files = await InputUiPicker.getFiles();
           if (files != null) {
             final resFiles = _processFilesToSubmit(files);
             if (resFiles.isNotEmpty) widget.onSubmitFiles(files);
@@ -503,7 +503,7 @@ class _VMessageInputWidgetState extends State<VMessageInputWidget> {
       final x = await PermissionManager.askForCamera();
       if (!x) return;
     }
-    final entity = await VAppPick.pickFromWeAssetCamera(
+    final entity = await InputUiPicker.pickFromWeAssetCamera(
       onXFileCaptured: (p0, p1) {
         Navigator.pop(context);
         _sendWeChatImage(VPlatformFile.fromPath(
@@ -567,7 +567,7 @@ class _VMessageInputWidgetState extends State<VMessageInputWidget> {
       if (sourceFile.fileSize > widget.maxMediaSize) {
         //this file should be ignored
 
-        VAppAlert.showErrorSnackBar(
+        InputUIAlert.showErrorSnackBar(
           msg: widget.language.thereIsFileHasSizeBiggerThanAllowedSize,
           context: context,
         );
