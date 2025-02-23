@@ -1,4 +1,5 @@
 import 'package:chat_core/chat_core.dart';
+import 'package:chat_message_page/chat_message_page.dart';
 import 'package:chat_platform/v_platform.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:chat_translation/generated/l10n.dart';
@@ -8,8 +9,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:open_filex/open_filex.dart';
 import 'package:share_plus/share_plus.dart';
-
-import '../../../../chat_message_page.dart';
 
 class MessageItemController {
   final MessageProvider messageProvider;

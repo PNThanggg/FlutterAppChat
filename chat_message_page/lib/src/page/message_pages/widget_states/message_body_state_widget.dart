@@ -5,9 +5,6 @@ import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/material.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
-import '../../../widgets/arrow_down.dart';
-import '../../../widgets/drag_drop_if_web_desk.dart';
-
 class MessageBodyStateWidget extends StatelessWidget {
   final BaseMessageController controller;
   final VRoomType roomType;

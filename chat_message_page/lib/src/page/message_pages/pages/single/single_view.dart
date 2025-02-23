@@ -4,8 +4,6 @@ import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
-import '../../../../v_chat/socket_status_widget.dart';
-import '../../../../widgets/app_bar/message_page_app_bar.dart';
 import 'single_app_bar_controller.dart';
 import 'single_controller.dart';
 

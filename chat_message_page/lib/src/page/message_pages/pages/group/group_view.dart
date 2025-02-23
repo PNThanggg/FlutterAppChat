@@ -8,8 +8,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
-import '../../../../v_chat/socket_status_widget.dart';
-import '../../../../widgets/app_bar/message_page_app_bar.dart';
 import 'group_app_bar_controller.dart';
 
 class VGroupView extends StatefulWidget {

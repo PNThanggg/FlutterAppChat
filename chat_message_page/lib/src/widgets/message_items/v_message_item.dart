@@ -1,24 +1,9 @@
 import 'package:chat_core/chat_core.dart';
+import 'package:chat_message_page/chat_message_page.dart';
 import 'package:chat_platform/v_platform.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart' hide VMessageConstants;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import '../../../chat_message_page.dart';
-import '../../v_chat/message_page_constants.dart';
-import 'shared/bubble/swipe_to_reply.dart';
-import 'shared/center_item_holder.dart';
-import 'shared/forward_item_widget.dart';
-import 'shared/message_broadcast_icon.dart';
-import 'shared/message_time_widget.dart';
-import 'shared/reply_item_widget.dart';
-import 'shared/star_item_widget.dart';
-import 'widgets/all_deleted_item.dart';
-import 'widgets/call_message_item.dart';
-import 'widgets/location_message_item.dart';
-import 'widgets/one_seen_widget.dart';
-import 'widgets/text_message_item.dart';
-import 'widgets/voice_message_item.dart';
 
 class VMessageItem extends StatelessWidget {
   final VBaseMessage message;
