@@ -53,19 +53,38 @@ class SingleAppBarController extends ValueNotifier<SingleAppBarStateModel> with 
   }
 
   void _initStreams() {
-    streamsMix.addAll([
-      VEventBusSingleton.vEventBus.on<VRoomOfflineEvent>().where((e) => e.roomId == value.roomId).listen((_) {
-        updateOffline();
-      }),
-      VEventBusSingleton.vEventBus.on<VRoomOnlineEvent>().where((e) => e.roomId == value.roomId).listen((_) {
-        updateOnline();
-      }),
-      VEventBusSingleton.vEventBus
-          .on<VUpdateRoomTypingEvent>()
-          .where((e) => e.roomId == value.roomId)
-          .listen(_updateRoomTyping),
-      VEventBusSingleton.vEventBus.on<VSingleBlockEvent>().where((e) => e.roomId == value.roomId).listen(_handleOnBlock)
-    ]);
+    streamsMix.addAll(
+      [
+        VEventBusSingleton.vEventBus
+            .on<VRoomOfflineEvent>()
+            .where(
+              (e) => e.roomId == value.roomId,
+            )
+            .listen((_) {
+          updateOffline();
+        }),
+        VEventBusSingleton.vEventBus
+            .on<VRoomOnlineEvent>()
+            .where(
+              (e) => e.roomId == value.roomId,
+            )
+            .listen((_) {
+          updateOnline();
+        }),
+        VEventBusSingleton.vEventBus
+            .on<VUpdateRoomTypingEvent>()
+            .where(
+              (e) => e.roomId == value.roomId,
+            )
+            .listen(_updateRoomTyping),
+        VEventBusSingleton.vEventBus
+            .on<VSingleBlockEvent>()
+            .where(
+              (e) => e.roomId == value.roomId,
+            )
+            .listen(_handleOnBlock)
+      ],
+    );
   }
 
   void _autoUpdateLastSeenValue() {
