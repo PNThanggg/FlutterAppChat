@@ -7,21 +7,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_cache_manager/flutter_cache_manager.dart';
 import 'package:video_player/video_player.dart';
 
-class VVideoPlayer extends StatefulWidget {
+class MediaEditorVideoPlayer extends StatefulWidget {
   final VPlatformFile platformFileSource;
   final String appName;
 
-  const VVideoPlayer({
+  const MediaEditorVideoPlayer({
     super.key,
     required this.platformFileSource,
     required this.appName,
   });
 
   @override
-  State<VVideoPlayer> createState() => _VVideoPlayerState();
+  State<MediaEditorVideoPlayer> createState() => _MediaEditorVideoPlayerState();
 }
 
-class _VVideoPlayerState extends State<VVideoPlayer> {
+class _MediaEditorVideoPlayerState extends State<MediaEditorVideoPlayer> {
   bool isLoading = true;
   VideoPlayerController? _videoPlayerController;
   ChewieController? _chewieController;
