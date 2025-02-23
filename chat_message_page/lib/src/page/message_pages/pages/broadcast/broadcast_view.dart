@@ -11,10 +11,10 @@ import '../../providers/message_provider.dart';
 import '../../states/input_state_controller.dart';
 import '../../widget_states/input_widget_state.dart';
 import 'broadcast_app_bar_controller.dart';
-import 'v_broadcast_controller.dart';
+import 'broadcast_controller.dart';
 
-class VBroadcastView extends StatefulWidget {
-  const VBroadcastView({
+class BroadcastView extends StatefulWidget {
+  const BroadcastView({
     super.key,
     required this.vRoom,
     required this.vMessageConfig,
@@ -26,17 +26,17 @@ class VBroadcastView extends StatefulWidget {
   final VMessageLocalization language;
 
   @override
-  State<VBroadcastView> createState() => _VBroadcastViewState();
+  State<BroadcastView> createState() => _VBroadcastViewState();
 }
 
-class _VBroadcastViewState extends State<VBroadcastView> {
-  late final VBroadcastController controller;
+class _VBroadcastViewState extends State<BroadcastView> {
+  late final BroadcastController controller;
 
   @override
   void initState() {
     super.initState();
     final provider = MessageProvider();
-    controller = VBroadcastController(
+    controller = BroadcastController(
       vRoom: widget.vRoom,
       vMessageConfig: widget.vMessageConfig,
       messageProvider: provider,

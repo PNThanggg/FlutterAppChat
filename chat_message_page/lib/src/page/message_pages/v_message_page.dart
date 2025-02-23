@@ -35,7 +35,7 @@ class VMessagePage extends StatelessWidget {
           language: localization,
         );
       case VRoomType.b:
-        return VBroadcastView(
+        return BroadcastView(
           vMessageConfig: vMessageConfig,
           vRoom: vRoom,
           language: localization,
