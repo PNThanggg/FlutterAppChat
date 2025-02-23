@@ -5,7 +5,7 @@ import '../../../chat_message_page.dart';
 
 class VMessagePage extends StatelessWidget {
   final VRoom vRoom;
-  final VMessageConfig vMessageConfig;
+  final MessageConfig vMessageConfig;
   final VMessageLocalization localization;
 
   const VMessagePage({

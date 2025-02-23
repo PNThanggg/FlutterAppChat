@@ -15,7 +15,7 @@ import '../providers/message_provider.dart';
 class VMessageItemController {
   final MessageProvider messageProvider;
   final BuildContext context;
-  final VMessageConfig vMessageConfig;
+  final MessageConfig vMessageConfig;
 
   VMessageItemController({
     required this.messageProvider,

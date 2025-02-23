@@ -22,7 +22,7 @@ abstract class VBaseMessageController extends MessageStateController with Stream
   final InputStateController inputStateController;
   final VMessageItemController itemController;
   final events = VEventBusSingleton.vEventBus;
-  final VMessageConfig vMessageConfig;
+  final MessageConfig vMessageConfig;
   final uuid = const Uuid();
 
   VBaseMessageController({
@@ -44,7 +44,9 @@ abstract class VBaseMessageController extends MessageStateController with Stream
   // StreamSubscription? clipboardSubscription;
   late final VVoicePlayerController voiceControllers;
 
+  @override
   String get roomId => vRoom.id;
+
   final IPasteboard pasteboard = Pasteboard(FileConvertor());
 
   void onTitlePress(BuildContext context);

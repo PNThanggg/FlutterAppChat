@@ -22,7 +22,7 @@ class BroadcastView extends StatefulWidget {
   });
 
   final VRoom vRoom;
-  final VMessageConfig vMessageConfig;
+  final MessageConfig vMessageConfig;
   final VMessageLocalization language;
 
   @override

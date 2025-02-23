@@ -6,13 +6,13 @@ import 'package:flutter/material.dart';
 
 import 'message_single_status_controller.dart';
 
-class VMessageSingleStatusPage extends StatefulWidget {
+class MessageSingleStatusPage extends StatefulWidget {
   final VBaseMessage message;
   final VMessageLocalization vMessageLocalization;
   final String readLabel;
   final String deliveredLabel;
 
-  const VMessageSingleStatusPage({
+  const MessageSingleStatusPage({
     super.key,
     required this.message,
     required this.readLabel,
@@ -21,10 +21,10 @@ class VMessageSingleStatusPage extends StatefulWidget {
   });
 
   @override
-  State<VMessageSingleStatusPage> createState() => _VMessageSingleStatusPageState();
+  State<MessageSingleStatusPage> createState() => _MessageSingleStatusPageState();
 }
 
-class _VMessageSingleStatusPageState extends State<VMessageSingleStatusPage> with StreamMix {
+class _MessageSingleStatusPageState extends State<MessageSingleStatusPage> with StreamMix {
   late final MessageSingleStatusController controller;
 
   @override

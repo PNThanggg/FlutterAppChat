@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 
 import 'message_group_status_controller.dart';
 
-class VMessageGroupStatusPage extends StatefulWidget {
+class MessageGroupStatusPage extends StatefulWidget {
   final VBaseMessage message;
   final String messageInfoLabel;
   final String readLabel;
   final String deliveredLabel;
   final VMessageLocalization vMessageLocalization;
 
-  const VMessageGroupStatusPage({
+  const MessageGroupStatusPage({
     super.key,
     required this.message,
     required this.messageInfoLabel,
@@ -24,10 +24,10 @@ class VMessageGroupStatusPage extends StatefulWidget {
   });
 
   @override
-  State<VMessageGroupStatusPage> createState() => _VMessageGroupStatusPageState();
+  State<MessageGroupStatusPage> createState() => _MessageGroupStatusPageState();
 }
 
-class _VMessageGroupStatusPageState extends State<VMessageGroupStatusPage> {
+class _MessageGroupStatusPageState extends State<MessageGroupStatusPage> {
   late final MessageGroupStatusController controller;
 
   @override
