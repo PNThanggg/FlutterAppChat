@@ -95,7 +95,9 @@ class _PasteImageDialogState extends State<PasteImageDialog> {
                           _isLoadingSendPasteImage = false;
                         });
 
-                        Navigator.of(context).pop();
+                        if (context.mounted) {
+                          Navigator.of(context).pop();
+                        }
                       });
                     },
                     icon: _isLoadingSendPasteImage
