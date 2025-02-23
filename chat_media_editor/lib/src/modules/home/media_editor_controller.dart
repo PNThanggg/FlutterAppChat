@@ -10,7 +10,7 @@ import 'package:pro_image_editor/core/models/editor_callbacks/pro_image_editor_c
 import 'package:pro_image_editor/features/main_editor/main_editor.dart';
 
 import '../../core/core.dart';
-import '../video_editor/v_video_player.dart';
+import '../video_editor/media_editor_video_player.dart';
 import 'app_pick.dart';
 
 class MediaEditorController extends ValueNotifier {
@@ -185,7 +185,7 @@ class MediaEditorController extends ValueNotifier {
     if (item is VMediaVideoRes) {
       Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => VVideoPlayer(
+          builder: (context) => MediaEditorVideoPlayer(
             platformFileSource: item.data.fileSource,
             appName: "media_editor",
           ),
