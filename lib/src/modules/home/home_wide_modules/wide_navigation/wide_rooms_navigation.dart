@@ -12,7 +12,6 @@ import 'package:lottie/lottie.dart';
 import '../../../../constant.dart';
 import '../../../../core/app_config/app_config_controller.dart';
 import '../../../app/controller/app_controller.dart';
-import 'no_animation_page_route.dart';
 
 class WideRoomsNavigation extends StatefulWidget {
   final VoidCallback onShowSettings;
