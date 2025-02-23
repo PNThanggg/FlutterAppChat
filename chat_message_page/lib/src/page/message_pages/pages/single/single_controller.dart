@@ -9,12 +9,12 @@ import 'package:flutter/cupertino.dart';
 
 import 'single_app_bar_controller.dart';
 
-class VSingleController extends VBaseMessageController with StreamMix {
+class SingleController extends VBaseMessageController with StreamMix {
   final SingleAppBarController singleAppBarController;
   final VMessageLocalization language;
   StreamSubscription? _subscription;
 
-  VSingleController({
+  SingleController({
     required super.vRoom,
     required super.messageProvider,
     required super.scrollController,

@@ -1,15 +1,4 @@
-enum VMessageItemClickRes {
-  forward,
-  reply,
-  share,
-  info,
-  delete,
-  copy,
-  download,
-  star,
-  unStar,
-  translate
-}
+enum VMessageItemClickRes { forward, reply, share, info, delete, copy, download, star, unStar, translate }
 
 enum LoadMoreStatus { loading, loaded, error, completed }
 
@@ -24,23 +13,21 @@ enum CallStatus {
   timeout,
   //when any user close the chat
   callEnd,
-  rejected,
-}
+  rejected;
 
-extension CallStatusExt on CallStatus {
   bool get isConnecting => this == CallStatus.connecting;
 
-  bool get busy => this == CallStatus.busy;
+  bool get isBusy => this == CallStatus.busy;
 
-  bool get ring => this == CallStatus.ring;
+  bool get isRing => this == CallStatus.ring;
 
-  bool get accepted => this == CallStatus.accepted;
+  bool get isAccepted => this == CallStatus.accepted;
 
-  bool get timeout => this == CallStatus.timeout;
+  bool get isTimeOut => this == CallStatus.timeout;
 
-  bool get callEnd => this == CallStatus.callEnd;
+  bool get isCallEnd => this == CallStatus.callEnd;
 
-  bool get rejected => this == CallStatus.rejected;
+  bool get isRejected => this == CallStatus.rejected;
 
-  bool get roomAlreadyInCall => this == CallStatus.roomAlreadyInCall;
+  bool get isRoomAlreadyInCall => this == CallStatus.roomAlreadyInCall;
 }

@@ -2,20 +2,19 @@ import 'package:chat_core/chat_core.dart';
 import 'package:chat_message_page/chat_message_page.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
 import 'package:scroll_to_index/scroll_to_index.dart';
 
 import '../../../../v_chat/v_socket_status_widget.dart';
-import '../../../../widgets/app_bare/v_message_app_bare.dart';
+import '../../../../widgets/app_bar/message_page_app_bar.dart';
 import '../../controllers/v_message_item_controller.dart';
 import '../../providers/message_provider.dart';
 import '../../states/input_state_controller.dart';
 import '../../widget_states/input_widget_state.dart';
 import 'single_app_bar_controller.dart';
-import 'v_single_controller.dart';
+import 'single_controller.dart';
 
-class VSingleView extends StatefulWidget {
-  const VSingleView({
+class SingleView extends StatefulWidget {
+  const SingleView({
     super.key,
     required this.vRoom,
     required this.vMessageConfig,
@@ -27,17 +26,19 @@ class VSingleView extends StatefulWidget {
   final VMessageLocalization language;
 
   @override
-  State<VSingleView> createState() => _VSingleViewState();
+  State<SingleView> createState() => _SingleViewState();
 }
 
-class _VSingleViewState extends State<VSingleView> {
-  late final VSingleController controller;
+class _SingleViewState extends State<SingleView> {
+  late final SingleController controller;
 
   @override
   void initState() {
     super.initState();
+
     final provider = MessageProvider();
-    controller = VSingleController(
+
+    controller = SingleController(
       vRoom: widget.vRoom,
       language: widget.language,
       vMessageConfig: widget.vMessageConfig,
@@ -75,7 +76,7 @@ class _VSingleViewState extends State<VSingleView> {
                 searchLabel: widget.language.search,
               );
             }
-            return VMessageAppBare(
+            return MessagePageAppBar(
               isCallAllowed: widget.vMessageConfig.isCallsAllowed,
               room: widget.vRoom,
               inTypingText: (context) => _inSingleText(value.typingModel),

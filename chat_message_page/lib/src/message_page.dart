@@ -5,7 +5,7 @@ export './page/message_pages/controllers/v_voice_controller.dart';
 export './page/message_pages/pages/broadcast/v_broadcast_view.dart';
 export './page/message_pages/pages/group/group_view.dart';
 export './page/message_pages/pages/order/v_order_view.dart';
-export './page/message_pages/pages/single/v_single_view.dart';
+export './page/message_pages/pages/single/single_view.dart';
 export './page/message_pages/v_message_page.dart';
 export './page/message_pages/widget_states/message_body_state_widget.dart';
 export './page/message_status/export.dart';

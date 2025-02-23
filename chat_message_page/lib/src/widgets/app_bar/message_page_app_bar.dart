@@ -8,7 +8,7 @@ import 'package:get_it/get_it.dart';
 
 import '../message_items/shared/message_typing_widget.dart';
 
-class VMessageAppBare extends StatelessWidget {
+class MessagePageAppBar extends StatelessWidget {
   final Function(BuildContext context) onTitlePress;
 
   final Function(bool isVideo)? onCreateCall;
@@ -21,7 +21,7 @@ class VMessageAppBare extends StatelessWidget {
   final String? Function(BuildContext context) inTypingText;
   final bool isCallAllowed;
 
-  const VMessageAppBare({
+  const MessagePageAppBar({
     super.key,
     required this.onTitlePress,
     required this.room,

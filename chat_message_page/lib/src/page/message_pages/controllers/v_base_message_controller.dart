@@ -98,22 +98,22 @@ abstract class VBaseMessageController extends MessageStateController with Stream
     final fileRes = await context.toPage(
       VMediaEditorView(
         files: files,
-        config: VMediaEditorConfig(
+        config: MediaEditorConfig(
           imageQuality: vMessageConfig.compressImageQuality,
         ),
       ),
-    ) as List<VBaseMediaRes>?;
+    ) as List<BaseMediaRes>?;
 
     if (fileRes == null) return;
 
     for (var media in fileRes) {
-      if (media is VMediaImageRes) {
+      if (media is MediaImageRes) {
         final localMsg = VImageMessage.buildMessage(
           roomId: vRoom.id,
           data: VMessageImageData.fromMap(media.data.toMap()),
         );
         _onSubmitSendMessage(localMsg);
-      } else if (media is VMediaVideoRes) {
+      } else if (media is MediaVideoRes) {
         final localMsg = VVideoMessage.buildMessage(
           data: VMessageVideoData.fromMap(media.data.toMap()),
           roomId: vRoom.id,
@@ -129,16 +129,16 @@ abstract class VBaseMessageController extends MessageStateController with Stream
     final fileRes = await context.toPage(
       VMediaEditorView(
         files: files,
-        config: VMediaEditorConfig(
+        config: MediaEditorConfig(
           imageQuality: vMessageConfig.compressImageQuality,
         ),
       ),
-    ) as List<VBaseMediaRes>?;
+    ) as List<BaseMediaRes>?;
 
     if (fileRes == null || fileRes.isEmpty) return;
 
     for (final file in fileRes) {
-      if (file is VMediaImageRes) {
+      if (file is MediaImageRes) {
         _onSubmitSendMessage(
           VImageMessage.buildMessage(
             roomId: roomId,
@@ -148,7 +148,7 @@ abstract class VBaseMessageController extends MessageStateController with Stream
           ),
         );
       }
-      if (file is VMediaFileRes) {
+      if (file is MediaFileRes) {
         _onSubmitSendMessage(
           VFileMessage.buildMessage(
             roomId: roomId,
@@ -355,15 +355,15 @@ abstract class VBaseMessageController extends MessageStateController with Stream
             name: "${uuid.v4()}.png",
           ),
         ],
-        config: VMediaEditorConfig(
+        config: MediaEditorConfig(
           imageQuality: vMessageConfig.compressImageQuality,
         ),
       ),
-    ) as List<VBaseMediaRes>?;
+    ) as List<BaseMediaRes>?;
 
     if (fileRes == null || fileRes.isEmpty) return;
     for (final e in fileRes) {
-      if (e is VMediaImageRes) {
+      if (e is MediaImageRes) {
         _onSubmitSendMessage(
           VImageMessage.buildMessage(
             roomId: roomId,

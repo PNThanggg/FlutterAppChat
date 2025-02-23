@@ -23,7 +23,7 @@ class VMessagePage extends StatelessWidget {
   Widget _child(BuildContext context) {
     switch (vRoom.roomType) {
       case VRoomType.s:
-        return VSingleView(
+        return SingleView(
           vMessageConfig: vMessageConfig,
           vRoom: vRoom,
           language: localization,
