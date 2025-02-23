@@ -29,7 +29,7 @@ class VGroupView extends StatefulWidget {
 }
 
 class _VGroupViewState extends State<VGroupView> {
-  late final VGroupController controller;
+  late final GroupController controller;
   final MessageProvider _provider = MessageProvider();
 
   bool _isPinnedVisible = true;
@@ -38,7 +38,7 @@ class _VGroupViewState extends State<VGroupView> {
   void initState() {
     super.initState();
 
-    controller = VGroupController(
+    controller = GroupController(
       vRoom: widget.vRoom,
       vMessageConfig: widget.vMessageConfig,
       messageProvider: _provider,

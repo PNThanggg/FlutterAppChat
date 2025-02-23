@@ -51,7 +51,7 @@ class ReplyMsgWidget extends StatelessWidget {
       final msg = vBaseMessage as VImageMessage;
       return Stack(
         children: [
-          VPlatformCacheImageWidget(
+          PlatformCacheImageWidget(
             source: msg.data.fileSource,
             size: const Size(50, 50),
             borderRadius: BorderRadius.circular(10),

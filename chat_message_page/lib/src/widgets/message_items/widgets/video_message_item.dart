@@ -95,7 +95,7 @@ class VideoMessageItem extends StatelessWidget {
         ),
       );
     }
-    return VConstraintImage(
+    return ConstraintImage(
       data: message.data.thumbImage!,
       borderRadius: BorderRadius.circular(15),
       fit: BoxFit.contain,

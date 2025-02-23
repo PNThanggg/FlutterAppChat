@@ -3,13 +3,13 @@ import 'package:chat_platform/v_platform.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_advanced_avatar/flutter_advanced_avatar.dart';
 
-class VChatAvatarImage extends StatelessWidget {
+class ChatAvatarImage extends StatelessWidget {
   final String imageUrl;
   final bool isOnline;
   final String chatTitle;
   final int size;
 
-  const VChatAvatarImage({
+  const ChatAvatarImage({
     super.key,
     required this.imageUrl,
     required this.isOnline,

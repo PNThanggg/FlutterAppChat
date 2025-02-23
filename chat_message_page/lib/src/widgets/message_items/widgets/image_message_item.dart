@@ -32,7 +32,7 @@ class ImageMessageItem extends StatelessWidget {
     if (!VPlatforms.isMobile) {
       return GestureDetector(
         onTap: () => _navigateToImageViewer(message, context),
-        child: VConstraintImage(
+        child: ConstraintImage(
           data: message.data,
           fit: BoxFit.cover,
           borderRadius: BorderRadius.circular(12),
@@ -46,7 +46,7 @@ class ImageMessageItem extends StatelessWidget {
         alignment: Alignment.center,
         children: [
           message.isFileDownloaded
-              ? VConstraintImage(
+              ? ConstraintImage(
                   data: message.data,
                   fit: BoxFit.cover,
                   borderRadius: BorderRadius.circular(12),
@@ -58,7 +58,7 @@ class ImageMessageItem extends StatelessWidget {
                       sigmaX: 10,
                       sigmaY: 10,
                     ),
-                    child: VConstraintImage(
+                    child: ConstraintImage(
                       data: message.data,
                       fit: BoxFit.cover,
                       borderRadius: BorderRadius.circular(12),

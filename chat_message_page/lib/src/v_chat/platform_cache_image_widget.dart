@@ -6,13 +6,13 @@ import 'package:chat_platform/v_platform.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class VPlatformCacheImageWidget extends StatefulWidget {
+class PlatformCacheImageWidget extends StatefulWidget {
   final VPlatformFile source;
   final Size? size;
   final BoxFit? fit;
   final BorderRadius? borderRadius;
 
-  const VPlatformCacheImageWidget({
+  const PlatformCacheImageWidget({
     super.key,
     required this.source,
     this.size,
@@ -21,10 +21,10 @@ class VPlatformCacheImageWidget extends StatefulWidget {
   });
 
   @override
-  State<VPlatformCacheImageWidget> createState() => _VPlatformCacheImageWidgetState();
+  State<PlatformCacheImageWidget> createState() => _PlatformCacheImageWidgetState();
 }
 
-class _VPlatformCacheImageWidgetState extends State<VPlatformCacheImageWidget> {
+class _PlatformCacheImageWidgetState extends State<PlatformCacheImageWidget> {
   var imageKey = UniqueKey();
 
   @override

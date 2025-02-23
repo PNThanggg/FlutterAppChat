@@ -10,12 +10,12 @@ import 'package:flutter/cupertino.dart';
 
 import 'group_app_bar_controller.dart';
 
-class VGroupController extends BaseMessageController with StreamMix {
+class GroupController extends BaseMessageController with StreamMix {
   final GroupAppBarController groupAppBarController;
   final String _cacheKey = "group-info-";
   StreamSubscription? _subscription;
 
-  VGroupController({
+  GroupController({
     required super.vRoom,
     required super.vMessageConfig,
     required super.messageProvider,

@@ -1,14 +1,14 @@
-import 'package:flutter/material.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:flutter/material.dart';
 
-class VSocketStatusWidget extends StatefulWidget {
+class SocketStatusWidget extends StatefulWidget {
   final BoxDecoration decoration;
   final EdgeInsets padding;
   final String connectingLabel;
 
   final Duration delay;
 
-  const VSocketStatusWidget({
+  const SocketStatusWidget({
     super.key,
     this.decoration = const BoxDecoration(color: Colors.amber),
     this.padding = const EdgeInsets.all(5),
@@ -17,10 +17,10 @@ class VSocketStatusWidget extends StatefulWidget {
   });
 
   @override
-  State<VSocketStatusWidget> createState() => _VSocketStatusWidgetState();
+  State<SocketStatusWidget> createState() => _SocketStatusWidgetState();
 }
 
-class _VSocketStatusWidgetState extends State<VSocketStatusWidget> {
+class _SocketStatusWidgetState extends State<SocketStatusWidget> {
   final _socket = VChatController.I.nativeApi.remote.socketIo;
   bool show = false;
 

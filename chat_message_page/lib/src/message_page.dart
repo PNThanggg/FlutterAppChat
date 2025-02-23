@@ -16,6 +16,8 @@ export './page/message_pages/widget_states/input_widget_state.dart';
 export './page/message_pages/widget_states/message_body_state_widget.dart';
 export './page/message_status/export.dart';
 export './theme/theme.dart';
+export './widgets/input_widgets/ban_widget.dart';
+export './widgets/input_widgets/reply_msg_widget.dart';
 export './widgets/message_items/v_message_item.dart';
 export './widgets/message_items/widgets/date_divider_item.dart';
 export './widgets/widgets.dart';

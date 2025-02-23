@@ -3,12 +3,12 @@ import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_blurhash/flutter_blurhash.dart';
 
-class VConstraintImage extends StatelessWidget {
+class ConstraintImage extends StatelessWidget {
   final VMessageImageData data;
   final BorderRadius? borderRadius;
   final BoxFit? fit;
 
-  const VConstraintImage({
+  const ConstraintImage({
     super.key,
     required this.data,
     this.borderRadius,

@@ -5,7 +5,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../../../chat_message_page.dart';
-import '../../v_chat/v_message_constants.dart';
+import '../../v_chat/message_page_constants.dart';
 import 'shared/bubble/swipe_to_reply.dart';
 import 'shared/center_item_holder.dart';
 import 'shared/forward_item_widget.dart';
@@ -49,7 +49,7 @@ class VMessageItem extends StatelessWidget {
   Widget build(BuildContext context) {
     if (message.messageType.isCenter) {
       return CenterItemHolder(
-        child: VMessageConstants.getMessageBody(message, language.vMessagesInfoTrans).h6.regular.size(14),
+        child: MessagePageConstants.getMessageBody(message, language.vMessagesInfoTrans).h6.regular.size(14),
       );
     }
 
