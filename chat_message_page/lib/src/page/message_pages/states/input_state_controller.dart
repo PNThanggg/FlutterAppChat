@@ -1,7 +1,7 @@
 import 'package:chat_sdk_core/chat_sdk_core.dart';
 import 'package:flutter/material.dart';
 
-import '../../../models/input_state_model.dart';
+import '../../../models/src/input_state_model.dart';
 
 class InputStateController extends ValueNotifier<MessageInputModel> {
   final VRoom vRoom;

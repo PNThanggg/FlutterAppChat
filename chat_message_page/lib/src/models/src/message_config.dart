@@ -10,7 +10,7 @@ import 'package:chat_sdk_core/chat_sdk_core.dart';
 ///[maxMediaSize]: An integer value that represents the maximum size of the media files that can be uploaded. The default value is 50 MB.
 ///[compressImageQuality]: An integer value that represents the quality of the compressed image. The default value is 55.
 ///[maxRecordTime]: A Duration instance that represents the maximum duration of the recorded audio. The default value is 30 minutes.
-class VMessageConfig {
+class MessageConfig {
   final bool isCallsAllowed;
   final bool isSendMediaAllowed;
   final bool isEnableAds;
@@ -32,7 +32,7 @@ class VMessageConfig {
   ///set max record time
   final Duration maxRecordTime;
 
-  const VMessageConfig({
+  const MessageConfig({
     this.isCallsAllowed = true,
     this.isEnableAds = false,
     this.isSendMediaAllowed = true,
