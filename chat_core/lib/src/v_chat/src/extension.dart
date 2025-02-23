@@ -1,14 +1,13 @@
+import 'package:chat_platform/v_platform.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:chat_platform/v_platform.dart';
 
 import 'no_animation_page_route.dart';
 
 extension MediaQueryExt2 on BuildContext {
   bool get isDark => CupertinoTheme.of(this).brightness == Brightness.dark;
 
-  CupertinoTextThemeData get cupertinoTextTheme =>
-      CupertinoTheme.of(this).textTheme;
+  CupertinoTextThemeData get cupertinoTextTheme => CupertinoTheme.of(this).textTheme;
 
   Future<T?> toPage<T>(
     Widget page, {
@@ -53,8 +52,9 @@ extension MediaQueryExt2 on BuildContext {
 
   Future<T?> toPageAndRemoveAllWithOutAnimation<T>(Widget page) {
     return Navigator.of(this).pushAndRemoveUntil(
-        NoAnimationPageRoute(builder: (context) => page),
-        (Route<dynamic> route) => false);
+      NoAnimationPageRoute(builder: (context) => page),
+      (Route<dynamic> route) => false,
+    );
   }
 
   bool get isRtl => Directionality.of(this).name.toLowerCase() == "rtl";

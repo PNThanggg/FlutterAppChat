@@ -5,5 +5,5 @@ export 'src/enums.dart';
 export 'src/iterable_extension.dart';
 export 'src/lang.dart';
 export 'src/once_stream.dart';
-export 'src/shared.dart';
+export 'src/s_message_background.dart';
 export 'src/show_toast.dart';
