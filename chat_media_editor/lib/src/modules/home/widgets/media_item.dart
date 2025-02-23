@@ -10,13 +10,13 @@ import 'video_item.dart';
 
 class MediaItem extends StatelessWidget {
   final VoidCallback onCloseClicked;
-  final Function(VBaseMediaRes item) onDelete;
-  final Function(VBaseMediaRes item) onCrop;
-  final Function(VBaseMediaRes item) onStartDraw;
-  final Function(VBaseMediaRes item) onPlayVideo;
+  final Function(BaseMediaRes item) onDelete;
+  final Function(BaseMediaRes item) onCrop;
+  final Function(BaseMediaRes item) onStartDraw;
+  final Function(BaseMediaRes item) onPlayVideo;
   final bool isProcessing;
 
-  final VBaseMediaRes mediaFile;
+  final BaseMediaRes mediaFile;
 
   const MediaItem({
     super.key,
@@ -40,9 +40,9 @@ class MediaItem extends StatelessWidget {
       );
     }
 
-    if (mediaFile is VMediaImageRes) {
+    if (mediaFile is MediaImageRes) {
       return ImageItem(
-        image: mediaFile as VMediaImageRes,
+        image: mediaFile as MediaImageRes,
         onCloseClicked: onCloseClicked,
         onCrop: onCrop,
         onDelete: onDelete,
@@ -50,9 +50,9 @@ class MediaItem extends StatelessWidget {
       );
     }
 
-    if (mediaFile is VMediaVideoRes) {
+    if (mediaFile is MediaVideoRes) {
       return VideoItem(
-        video: mediaFile as VMediaVideoRes,
+        video: mediaFile as MediaVideoRes,
         onCloseClicked: onCloseClicked,
         onPlayVideo: onPlayVideo,
         onDelete: onDelete,
@@ -60,7 +60,7 @@ class MediaItem extends StatelessWidget {
     }
 
     return FileItem(
-      file: mediaFile as VMediaFileRes,
+      file: mediaFile as MediaFileRes,
       onCloseClicked: onCloseClicked,
       onDelete: onDelete,
     );
@@ -69,8 +69,8 @@ class MediaItem extends StatelessWidget {
   Widget getImage() {
     const BoxFit fit = BoxFit.contain;
 
-    if (mediaFile is VMediaImageRes) {
-      final m = mediaFile as VMediaImageRes;
+    if (mediaFile is MediaImageRes) {
+      final m = mediaFile as MediaImageRes;
       if (m.data.isFromPath) {
         return Image.file(
           File(m.data.fileSource.fileLocalPath!),
@@ -83,8 +83,8 @@ class MediaItem extends StatelessWidget {
           fit: fit,
         );
       }
-    } else if (mediaFile is VMediaVideoRes) {
-      final m = mediaFile as VMediaVideoRes;
+    } else if (mediaFile is MediaVideoRes) {
+      final m = mediaFile as MediaVideoRes;
       if (m.data.isFromPath) {
         return Image.file(
           File(m.data.thumbImage!.fileSource.fileLocalPath!),

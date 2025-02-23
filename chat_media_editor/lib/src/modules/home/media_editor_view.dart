@@ -9,12 +9,12 @@ import 'media_editor_controller.dart';
 
 class VMediaEditorView extends StatefulWidget {
   final List<VPlatformFile> files;
-  final VMediaEditorConfig config;
+  final MediaEditorConfig config;
 
   const VMediaEditorView({
     super.key,
     required this.files,
-    this.config = const VMediaEditorConfig(),
+    this.config = const MediaEditorConfig(),
   });
 
   @override
@@ -56,12 +56,12 @@ class _VMediaEditorViewState extends State<VMediaEditorView> {
                         mediaFile: controller.mediaFiles[index],
                         onCloseClicked: () => controller.onEmptyPress(context),
                         onDelete: (item) => controller.onDelete(item, context),
-                        onCrop: (item) => controller.onCrop(item as VMediaImageRes, context),
+                        onCrop: (item) => controller.onCrop(item as MediaImageRes, context),
                         onPlayVideo: (item) => controller.onPlayVideo(item, context),
                         onStartDraw: (item) {
-                          if (item is VMediaVideoRes) {
+                          if (item is MediaVideoRes) {
                             return controller.onStartEditVideo(item, context);
-                          } else if (item is VMediaImageRes) {
+                          } else if (item is MediaImageRes) {
                             return controller.onStartDraw(item, context);
                           }
                         },

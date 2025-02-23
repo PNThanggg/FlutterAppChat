@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class HorizontalMediaItem extends StatelessWidget {
-  final VBaseMediaRes mediaFile;
+  final BaseMediaRes mediaFile;
   final bool isLoading;
 
   const HorizontalMediaItem({
@@ -32,8 +32,8 @@ class HorizontalMediaItem extends StatelessWidget {
       child: Stack(
         fit: StackFit.expand,
         children: [
-          if (isLoading && mediaFile is VMediaVideoRes) const SizedBox() else getImage(),
-          if (mediaFile is VMediaVideoRes)
+          if (isLoading && mediaFile is MediaVideoRes) const SizedBox.shrink() else getImage(),
+          if (mediaFile is MediaVideoRes)
             Positioned(
               top: 0,
               right: 0,
@@ -57,8 +57,8 @@ class HorizontalMediaItem extends StatelessWidget {
 
   Widget getImage() {
     const fit = BoxFit.cover;
-    if (mediaFile is VMediaImageRes) {
-      final m = mediaFile as VMediaImageRes;
+    if (mediaFile is MediaImageRes) {
+      final m = mediaFile as MediaImageRes;
       if (m.data.isFromPath) {
         return Image.file(
           File(m.data.fileSource.fileLocalPath!),
@@ -71,8 +71,8 @@ class HorizontalMediaItem extends StatelessWidget {
           fit: fit,
         );
       }
-    } else if (mediaFile is VMediaVideoRes) {
-      final m = mediaFile as VMediaVideoRes;
+    } else if (mediaFile is MediaVideoRes) {
+      final m = mediaFile as MediaVideoRes;
       if (m.data.isFromPath) {
         if(m.data.thumbImage != null) {
           return Image.file(

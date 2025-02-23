@@ -3,9 +3,9 @@ import 'package:chat_media_editor/chat_media_editor.dart';
 import 'package:flutter/material.dart';
 
 class FileItem extends StatelessWidget {
-  final VMediaFileRes file;
+  final MediaFileRes file;
   final VoidCallback onCloseClicked;
-  final Function(VMediaFileRes item) onDelete;
+  final Function(MediaFileRes item) onDelete;
 
   const FileItem({
     super.key,

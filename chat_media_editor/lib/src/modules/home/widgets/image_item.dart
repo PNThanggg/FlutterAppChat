@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class ImageItem extends StatelessWidget {
-  final VMediaImageRes image;
+  final MediaImageRes image;
   final VoidCallback onCloseClicked;
-  final Function(VMediaImageRes item) onDelete;
-  final Function(VMediaImageRes item) onCrop;
-  final Function(VMediaImageRes item) onStartDraw;
+  final Function(MediaImageRes item) onDelete;
+  final Function(MediaImageRes item) onCrop;
+  final Function(MediaImageRes item) onStartDraw;
 
   const ImageItem({
     super.key,

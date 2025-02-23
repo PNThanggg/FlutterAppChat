@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:phosphor_flutter/phosphor_flutter.dart';
 
 class VideoItem extends StatelessWidget {
-  final VMediaVideoRes video;
+  final MediaVideoRes video;
   final VoidCallback onCloseClicked;
-  final Function(VMediaVideoRes item) onDelete;
-  final Function(VMediaVideoRes item) onPlayVideo;
+  final Function(MediaVideoRes item) onDelete;
+  final Function(MediaVideoRes item) onPlayVideo;
 
   const VideoItem({
     super.key,

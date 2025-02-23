@@ -19,8 +19,8 @@ class MediaEditorController extends ValueNotifier {
   }
 
   final List<VPlatformFile> platformFiles;
-  final mediaFiles = <VBaseMediaRes>[];
-  final VMediaEditorConfig config;
+  final mediaFiles = <BaseMediaRes>[];
+  final MediaEditorConfig config;
   bool isLoading = true;
   bool isCompressing = false;
 
@@ -32,7 +32,7 @@ class MediaEditorController extends ValueNotifier {
     Navigator.pop(context);
   }
 
-  void onDelete(VBaseMediaRes item, BuildContext context) {
+  void onDelete(BaseMediaRes item, BuildContext context) {
     mediaFiles.remove(item);
     if (mediaFiles.isEmpty) {
       return Navigator.pop(context);
@@ -40,14 +40,14 @@ class MediaEditorController extends ValueNotifier {
     _updateScreen();
   }
 
-  Future<void> onCrop(VMediaImageRes item, BuildContext context) async {
+  Future<void> onCrop(MediaImageRes item, BuildContext context) async {
     final res = await VAppPick.croppedImage(file: item.data.fileSource);
     item.data.fileSource = res!;
     _updateScreen();
   }
 
   Future onStartEditVideo(
-    VMediaVideoRes item,
+    MediaVideoRes item,
     BuildContext context,
   ) async {
     // if (item.data.isFromPath) {
@@ -65,10 +65,10 @@ class MediaEditorController extends ValueNotifier {
   }
 
   Future<void> onStartDraw(
-    VBaseMediaRes item,
+    BaseMediaRes item,
     BuildContext context,
   ) async {
-    if (item is VMediaImageRes) {
+    if (item is MediaImageRes) {
       if (item.data.isFromBytes) {
         Navigator.push(
           context,
@@ -141,7 +141,7 @@ class MediaEditorController extends ValueNotifier {
   Future _init() async {
     for (final f in platformFiles) {
       if (f.getMediaType == VSupportedFilesType.image) {
-        final mImage = VMediaImageRes(
+        final mImage = MediaImageRes(
           data: MessageImageData(
             fileSource: f,
             blurHash: null,
@@ -155,7 +155,7 @@ class MediaEditorController extends ValueNotifier {
         if (f.fileLocalPath != null) {
           thumb = await _getThumb(f.fileLocalPath!);
         }
-        final mFile = VMediaVideoRes(
+        final mFile = MediaVideoRes(
           data: MessageVideoData(
             fileSource: f,
             duration: -1,
@@ -164,7 +164,7 @@ class MediaEditorController extends ValueNotifier {
         );
         mediaFiles.add(mFile);
       } else {
-        mediaFiles.add(VMediaFileRes(data: f));
+        mediaFiles.add(MediaFileRes(data: f));
       }
     }
     mediaFiles[0].isSelected = true;
@@ -174,15 +174,15 @@ class MediaEditorController extends ValueNotifier {
   }
 
   Future<MessageImageData?> _getThumb(String path) async {
-    return VMediaFileUtils.getVideoThumb(
+    return MediaFileUtils.getVideoThumb(
       fileSource: VPlatformFile.fromPath(
         fileLocalPath: path,
       ),
     );
   }
 
-  void onPlayVideo(VBaseMediaRes item, BuildContext context) {
-    if (item is VMediaVideoRes) {
+  void onPlayVideo(BaseMediaRes item, BuildContext context) {
+    if (item is MediaVideoRes) {
       Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) => MediaEditorVideoPlayer(
@@ -196,8 +196,8 @@ class MediaEditorController extends ValueNotifier {
 
   Future<void> startCompressImagesIfNeed() async {
     for (final f in mediaFiles) {
-      if (f is VMediaImageRes) {
-        f.data.fileSource = (await VMediaFileUtils.compressImage(fileSource: f.data.fileSource));
+      if (f is MediaImageRes) {
+        f.data.fileSource = (await MediaFileUtils.compressImage(fileSource: f.data.fileSource));
       }
       _updateScreen();
     }
@@ -207,21 +207,21 @@ class MediaEditorController extends ValueNotifier {
     isCompressing = true;
     _updateScreen();
     for (final media in mediaFiles) {
-      if (media is VMediaImageRes && media.data.isFromPath) {
-        final data = await VMediaFileUtils.getImageInfo(
+      if (media is MediaImageRes && media.data.isFromPath) {
+        final data = await MediaFileUtils.getImageInfo(
           fileSource: media.data.fileSource,
         );
         media.data.width = data.image.width;
         media.data.height = data.image.height;
-        media.data.blurHash = await VMediaFileUtils.getBlurHash(media.data.fileSource);
-      } else if (media is VMediaImageRes && media.data.isFromBytes) {
-        final data = await VMediaFileUtils.getImageInfo(
+        media.data.blurHash = await MediaFileUtils.getBlurHash(media.data.fileSource);
+      } else if (media is MediaImageRes && media.data.isFromBytes) {
+        final data = await MediaFileUtils.getImageInfo(
           fileSource: media.data.fileSource,
         );
         media.data.width = data.image.width;
         media.data.height = data.image.height;
-      } else if (media is VMediaVideoRes) {
-        media.data.duration = await VMediaFileUtils.getVideoDurationMill(media.data.fileSource);
+      } else if (media is MediaVideoRes) {
+        media.data.duration = await MediaFileUtils.getVideoDurationMill(media.data.fileSource);
       }
     }
 
