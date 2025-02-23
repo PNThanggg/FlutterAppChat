@@ -5,7 +5,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:share_handler/share_handler.dart';
 
-Future<void> vInitReceiveShareHandler() async {
+Future<void> initReceiveShareHandler() async {
   if (!VPlatforms.isMobile) return;
 
   final handler = ShareHandlerPlatform.instance;

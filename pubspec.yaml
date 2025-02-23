@@ -38,6 +38,8 @@ dependencies:
     path: chat_sdk_core
   chat_shared_page:
     path: chat_shared_page
+  chat_receive_share:
+    path: chat_receive_share
   chat_translate:
     path: chat_translate
   chat_translation:
