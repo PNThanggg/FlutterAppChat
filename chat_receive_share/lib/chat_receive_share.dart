@@ -1,0 +1,101 @@
+import 'package:chat_media_editor/chat_media_editor.dart';
+import 'package:chat_platform/v_platform.dart';
+import 'package:chat_sdk_core/chat_sdk_core.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:share_handler/share_handler.dart';
+
+Future<void> vInitReceiveShareHandler() async {
+  if (!VPlatforms.isMobile) return;
+
+  final handler = ShareHandlerPlatform.instance;
+  final SharedMedia? media = await handler.getInitialSharedMedia();
+  if (media != null) {
+    _handleOnNewShare(media);
+  }
+  handler.sharedMediaStream.listen(
+    (SharedMedia media) async {
+      _handleOnNewShare(media);
+    },
+  );
+}
+
+Future<void> _handleOnNewShare(SharedMedia media) async {
+  final messages = <VBaseMessage>[];
+  final pFiles = <VPlatformFile>[];
+
+  if (media.attachments != null && media.attachments!.isNotEmpty) {
+    if (media.content != null) {
+      //
+    }
+    for (final m in media.attachments!) {
+      if (m == null) continue;
+      m.path.replaceAll("file://", "");
+      pFiles.add(
+        VPlatformFile.fromPath(
+          fileLocalPath: m.path,
+        ),
+      );
+    }
+    final context = VChatController.I.navigationContext;
+    final roomsIds = await VChatController.I.vNavigator.roomNavigator.toForwardPage(context, null);
+
+    if (context.mounted) {
+      if (roomsIds != null) {
+        final fileRes = await Navigator.of(context).push(
+          MaterialPageRoute(
+            builder: (context) => VMediaEditorView(
+              files: pFiles,
+            ),
+          ),
+        ) as List<BaseMediaRes>?;
+
+        if (fileRes == null) return;
+
+        for (final roomId in roomsIds) {
+          for (final file in fileRes) {
+            if (file is MediaImageRes) {
+              messages.add(
+                VImageMessage.buildMessage(
+                  roomId: roomId,
+                  data: VMessageImageData.fromMap(
+                    file.data.toMap(),
+                  ),
+                ),
+              );
+            } else if (file is MediaVideoRes) {
+              messages.add(
+                VVideoMessage.buildMessage(
+                  roomId: roomId,
+                  data: VMessageVideoData.fromMap(file.data.toMap()),
+                ),
+              );
+            } else {
+              messages.add(
+                VFileMessage.buildMessage(
+                  roomId: roomId,
+                  data: VMessageFileData(fileSource: file.getVPlatformFile()),
+                ),
+              );
+            }
+          }
+        }
+
+        if (messages.isNotEmpty) {
+          for (final message in messages) {
+            await VChatController.I.nativeApi.local.message.insertMessage(message);
+            try {
+              VMessageUploaderQueue.instance.addToQueue(
+                await MessageFactory.createUploadMessage(message),
+              );
+            } catch (err) {
+              if (kDebugMode) {
+                print(err);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

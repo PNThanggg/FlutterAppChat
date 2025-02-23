@@ -1,0 +1,26 @@
+name: chat_receive_share
+description: "A new Flutter package project."
+version: 0.0.1
+publish_to: none
+
+environment:
+  sdk: ">=3.0.0 <4.0.0"
+  flutter: ">=3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  chat_sdk_core:
+    path: ../chat_sdk_core
+  chat_media_editor:
+    path: ../chat_media_editor
+  chat_platform:
+    path: ../chat_platform
+
+  share_handler: ^0.0.22
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
