@@ -8,7 +8,6 @@ import android.os.Bundle;
 import com.modules.shortcut_badger.Badger;
 import com.modules.shortcut_badger.ShortcutBadgeException;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class HuaweiHomeBadger implements Badger {
@@ -24,6 +23,6 @@ public class HuaweiHomeBadger implements Badger {
 
     @Override
     public List<String> getSupportLaunchers() {
-        return Arrays.asList("com.huawei.android.launcher");
+        return List.of("com.huawei.android.launcher");
     }
 }
