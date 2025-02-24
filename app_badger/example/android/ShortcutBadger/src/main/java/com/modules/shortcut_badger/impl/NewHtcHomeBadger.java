@@ -8,7 +8,6 @@ import com.modules.shortcut_badger.Badger;
 import com.modules.shortcut_badger.ShortcutBadgeException;
 import com.modules.shortcut_badger.util.BroadcastHelper;
 
-import java.util.Collections;
 import java.util.List;
 
 public class NewHtcHomeBadger implements Badger {
@@ -50,12 +49,12 @@ public class NewHtcHomeBadger implements Badger {
         }
 
         if (!intent1Success && !intentSuccess) {
-            throw new ShortcutBadgeException("unable to resolve intent: " + intent.toString());
+            throw new ShortcutBadgeException("unable to resolve intent: " + intent);
         }
     }
 
     @Override
     public List<String> getSupportLaunchers() {
-        return Collections.singletonList("com.htc.launcher");
+        return List.of("com.htc.launcher");
     }
 }
