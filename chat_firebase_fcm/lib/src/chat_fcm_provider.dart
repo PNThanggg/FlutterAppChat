@@ -198,12 +198,16 @@ Future<void> vFirebaseMessagingBackgroundHandler(RemoteMessage message) async {
 
 @pragma('vm:entry-point')
 Future setDeliverForThisRoom(String roomId, String token) async {
-  final baseUrl = ChatPreferences.getStringOrNullKey("vBaseUrl");
+  final baseUrl = ChatPreferences.getStringOrNullKey(SStorageKeys.vBaseUrl.name);
   final res = await patch(
     Uri.parse(
       "$baseUrl/channel/$roomId/deliver",
     ),
-    headers: {'authorization': "Bearer $token", "clint-version": "2.0.0", "Accept-Language": "en"},
+    headers: {
+      'authorization': "Bearer $token",
+      "clint-version": "2.0.0",
+      "Accept-Language": "en",
+    },
   );
   if (res.statusCode != 200) {
     throw "cant deliver the message status in background for ${VPlatforms.currentPlatform}";
