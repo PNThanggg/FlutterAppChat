@@ -6,30 +6,26 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
-import android.os.Build;
 
 import com.modules.shortcut_badger.Badger;
 import com.modules.shortcut_badger.ShortcutBadgeException;
 import com.modules.shortcut_badger.util.CloseHelper;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class SamsungHomeBadger implements Badger {
     private static final String CONTENT_URI = "content://com.sec.badge/apps?notify=true";
     private static final String[] CONTENT_PROJECTION = new String[]{"_id", "class"};
 
-    private DefaultBadger defaultBadger;
+    private final DefaultBadger defaultBadger;
 
     public SamsungHomeBadger() {
-        if (Build.VERSION.SDK_INT >= 21) {
-            defaultBadger = new DefaultBadger();
-        }
+        defaultBadger = new DefaultBadger();
     }
 
     @Override
     public void executeBadge(Context context, ComponentName componentName, int badgeCount) throws ShortcutBadgeException {
-        if (defaultBadger != null && defaultBadger.isSupported(context)) {
+        if (defaultBadger.isSupported(context)) {
             defaultBadger.executeBadge(context, componentName, badgeCount);
         } else {
             Uri mUri = Uri.parse(CONTENT_URI);
@@ -44,8 +40,13 @@ public class SamsungHomeBadger implements Badger {
                         int id = cursor.getInt(0);
                         ContentValues contentValues = getContentValues(componentName, badgeCount, false);
                         contentResolver.update(mUri, contentValues, "_id=?", new String[]{String.valueOf(id)});
-                        if (entryActivityName.equals(cursor.getString(cursor.getColumnIndex("class")))) {
-                            entryActivityExist = true;
+                        int columnIndex = cursor.getColumnIndex("class");
+                        if (columnIndex >= 0) {
+                            if (entryActivityName.equals(cursor.getString(columnIndex))) {
+                                entryActivityExist = true;
+                            }
+                        } else {
+                            entryActivityExist = false;
                         }
                     }
 
@@ -74,6 +75,6 @@ public class SamsungHomeBadger implements Badger {
 
     @Override
     public List<String> getSupportLaunchers() {
-        return Arrays.asList("com.sec.android.app.launcher", "com.sec.android.app.twlauncher");
+        return List.of("com.sec.android.app.launcher", "com.sec.android.app.twlauncher");
     }
 }
