@@ -6,7 +6,7 @@ class VImagePicker extends StatefulWidget {
   final bool withCrop;
   final bool isFromCamera;
   final void Function(VPlatformFile file) onDone;
-  final int size;
+  final double size;
   final VPlatformFile initImage;
 
   const VImagePicker({
@@ -15,7 +15,7 @@ class VImagePicker extends StatefulWidget {
     this.isFromCamera = false,
     required this.onDone,
     required this.initImage,
-    this.size = 70,
+    this.size = 70.0,
   });
 
   @override
@@ -34,8 +34,8 @@ class _VImagePickerState extends State<VImagePicker> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: widget.size.toDouble(),
-      width: widget.size.toDouble(),
+      height: widget.size,
+      width: widget.size,
       child: Stack(
         fit: StackFit.expand,
         children: [
@@ -43,7 +43,7 @@ class _VImagePickerState extends State<VImagePicker> {
             source: current,
             borderRadius: BorderRadius.circular(130),
             fit: BoxFit.cover,
-            size: Size.fromHeight(widget.size.toDouble()),
+            size: Size.fromHeight(widget.size),
           ),
           PositionedDirectional(
             bottom: 1,
@@ -51,7 +51,7 @@ class _VImagePickerState extends State<VImagePicker> {
             child: GestureDetector(
               onTap: _getImage,
               child: Container(
-                padding: const EdgeInsets.all(3),
+                padding: const EdgeInsets.all(4),
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: Colors.lightGreen,
@@ -59,7 +59,7 @@ class _VImagePickerState extends State<VImagePicker> {
                 child: const Icon(
                   Icons.camera_alt,
                   color: Colors.black87,
-                  size: 19,
+                  size: 20,
                 ),
               ),
             ),
