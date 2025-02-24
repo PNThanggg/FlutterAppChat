@@ -12,7 +12,6 @@ import android.os.Looper;
 import com.modules.shortcut_badger.Badger;
 import com.modules.shortcut_badger.ShortcutBadgeException;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class SonyHomeBadger implements Badger {
@@ -43,7 +42,7 @@ public class SonyHomeBadger implements Badger {
 
     @Override
     public List<String> getSupportLaunchers() {
-        return Arrays.asList("com.sonyericsson.home", "com.sonymobile.home");
+        return List.of("com.sonyericsson.home", "com.sonymobile.home");
     }
 
     private static void executeBadgeByBroadcast(Context context, ComponentName componentName, int badgeCount) {
