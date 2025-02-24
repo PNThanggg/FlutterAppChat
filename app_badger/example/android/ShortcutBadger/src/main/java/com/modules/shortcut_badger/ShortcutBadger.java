@@ -36,7 +36,7 @@ public final class ShortcutBadger {
     private static final String LOG_TAG = "ShortcutBadger";
     private static final int SUPPORTED_CHECK_ATTEMPTS = 3;
 
-    private static final List<Class<? extends Badger>> BADGERS = new LinkedList<Class<? extends Badger>>();
+    private static final List<Class<? extends Badger>> BADGERS = new LinkedList<>();
 
     private volatile static Boolean sIsBadgeCounterSupported;
     private final static Object sCounterSupportedLock = new Object();
@@ -163,11 +163,10 @@ public final class ShortcutBadger {
     }
 
     /**
-     * @param context      Caller context
      * @param notification
      * @param badgeCount
      */
-    public static void applyNotification(Context context, Notification notification, int badgeCount) {
+    public static void applyNotification(Notification notification, int badgeCount) {
         if (Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) {
             try {
                 Field field = notification.getClass().getDeclaredField("extraNotification");
