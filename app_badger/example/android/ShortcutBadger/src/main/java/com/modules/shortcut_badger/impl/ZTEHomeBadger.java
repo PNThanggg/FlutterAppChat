@@ -24,7 +24,7 @@ public class ZTEHomeBadger implements Badger {
 
     @Override
     public List<String> getSupportLaunchers() {
-        return new ArrayList<String>(0);
+        return new ArrayList<>(0);
     }
 } 
 
