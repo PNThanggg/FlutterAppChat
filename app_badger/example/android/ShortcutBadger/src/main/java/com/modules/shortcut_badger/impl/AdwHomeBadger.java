@@ -8,7 +8,6 @@ import com.modules.shortcut_badger.Badger;
 import com.modules.shortcut_badger.ShortcutBadgeException;
 import com.modules.shortcut_badger.util.BroadcastHelper;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class AdwHomeBadger implements Badger {
@@ -30,6 +29,6 @@ public class AdwHomeBadger implements Badger {
 
     @Override
     public List<String> getSupportLaunchers() {
-        return Arrays.asList("org.adw.launcher", "org.adwfreak.launcher" );
+        return List.of("org.adw.launcher", "org.adwfreak.launcher");
     }
 }
