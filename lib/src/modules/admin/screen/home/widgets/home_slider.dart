@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:chat_config/chat_preferences.dart';
 import 'package:chat_core/chat_core.dart';
 import 'package:chat_translation/generated/l10n.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import 'package:sidebarx/sidebarx.dart';
