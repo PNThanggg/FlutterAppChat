@@ -4,7 +4,6 @@ import 'package:chat_core/chat_core.dart';
 import 'package:chat_model/model.dart';
 import 'package:chat_platform/v_platform.dart';
 import 'package:chat_sdk_core/chat_sdk_core.dart';
-import 'package:chat_shared_page/states.dart';
 import 'package:chat_translation/generated/l10n.dart';
 import 'package:email_validator/email_validator.dart';
 import 'package:enum_to_string/enum_to_string.dart';
