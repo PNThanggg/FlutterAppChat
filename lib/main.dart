@@ -49,7 +49,6 @@ void main() async {
   await ChatPreferences.init();
   await initVChat(navigatorKey);
 
-  // initCalls();
   // Set dark theme as default only on first run
   final savedTheme = ChatPreferences.getStringOrNullKey(SStorageKeys.appTheme.name);
   if (savedTheme == null) {
