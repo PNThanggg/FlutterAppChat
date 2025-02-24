@@ -9,7 +9,6 @@ import com.modules.shortcut_badger.Badger;
 import com.modules.shortcut_badger.ShortcutBadgeException;
 import com.modules.shortcut_badger.util.BroadcastHelper;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class DefaultBadger implements Badger {
@@ -30,7 +29,7 @@ public class DefaultBadger implements Badger {
 
     @Override
     public List<String> getSupportLaunchers() {
-        return Arrays.asList("fr.neamar.kiss", "com.quaap.launchtime", "com.quaap.launchtime_official");
+        return List.of("fr.neamar.kiss", "com.quaap.launchtime", "com.quaap.launchtime_official");
     }
 
     boolean isSupported(Context context) {
