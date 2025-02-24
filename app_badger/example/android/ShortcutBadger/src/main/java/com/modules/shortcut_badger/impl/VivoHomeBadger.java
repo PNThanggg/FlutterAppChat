@@ -7,7 +7,6 @@ import android.content.Intent;
 import com.modules.shortcut_badger.Badger;
 import com.modules.shortcut_badger.ShortcutBadgeException;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class VivoHomeBadger implements Badger {
@@ -23,6 +22,6 @@ public class VivoHomeBadger implements Badger {
 
     @Override
     public List<String> getSupportLaunchers() {
-        return Arrays.asList("com.vivo.launcher");
+        return List.of("com.vivo.launcher");
     }
 }
