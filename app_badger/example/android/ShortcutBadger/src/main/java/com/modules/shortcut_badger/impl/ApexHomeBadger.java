@@ -8,7 +8,6 @@ import com.modules.shortcut_badger.Badger;
 import com.modules.shortcut_badger.ShortcutBadgeException;
 import com.modules.shortcut_badger.util.BroadcastHelper;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class ApexHomeBadger implements Badger {
@@ -30,6 +29,6 @@ public class ApexHomeBadger implements Badger {
 
     @Override
     public List<String> getSupportLaunchers() {
-        return Arrays.asList("com.anddoes.launcher");
+        return List.of("com.anddoes.launcher");
     }
 }
