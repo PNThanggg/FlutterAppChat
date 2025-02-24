@@ -8,7 +8,6 @@ import android.net.Uri;
 import com.modules.shortcut_badger.Badger;
 import com.modules.shortcut_badger.ShortcutBadgeException;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class EverythingMeHomeBadger implements Badger {
@@ -29,6 +28,6 @@ public class EverythingMeHomeBadger implements Badger {
 
     @Override
     public List<String> getSupportLaunchers() {
-        return Arrays.asList("me.everything.launcher");
+        return List.of("me.everything.launcher");
     }
 }
