@@ -10,7 +10,6 @@ import com.modules.shortcut_badger.Badger;
 import com.modules.shortcut_badger.ShortcutBadgeException;
 import com.modules.shortcut_badger.util.BroadcastHelper;
 
-import java.util.Collections;
 import java.util.List;
 
 public class OPPOHomeBader implements Badger {
@@ -34,7 +33,7 @@ public class OPPOHomeBader implements Badger {
 
     @Override
     public List<String> getSupportLaunchers() {
-        return Collections.singletonList("com.oppo.launcher");
+        return List.of("com.oppo.launcher");
     }
 
     private void executeBadgeByBroadcast(Context context, ComponentName componentName, int badgeCount) throws ShortcutBadgeException {
