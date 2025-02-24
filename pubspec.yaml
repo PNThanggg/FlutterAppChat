@@ -84,7 +84,6 @@ dependencies:
   hexcolor: ^3.0.1
   background_downloader: ^8.9.4
   file_sizes: ^1.0.6
-  connectycube_flutter_call_kit: ^2.7.0
   permission_handler: ^11.4.0
   window_manager: ^0.4.3
   line_awesome_flutter: ^3.0.1
