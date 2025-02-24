@@ -8,7 +8,6 @@ import android.net.Uri;
 import com.modules.shortcut_badger.Badger;
 import com.modules.shortcut_badger.ShortcutBadgeException;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class NovaHomeBadger implements Badger {
@@ -27,6 +26,6 @@ public class NovaHomeBadger implements Badger {
 
     @Override
     public List<String> getSupportLaunchers() {
-        return Arrays.asList("com.teslacoilsw.launcher");
+        return List.of("com.teslacoilsw.launcher");
     }
 }
