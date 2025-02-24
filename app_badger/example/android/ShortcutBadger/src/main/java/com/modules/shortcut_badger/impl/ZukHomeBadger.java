@@ -8,7 +8,6 @@ import android.os.Bundle;
 import com.modules.shortcut_badger.Badger;
 import com.modules.shortcut_badger.ShortcutBadgeException;
 
-import java.util.Collections;
 import java.util.List;
 
 public class ZukHomeBadger implements Badger {
@@ -24,6 +23,6 @@ public class ZukHomeBadger implements Badger {
 
     @Override
     public List<String> getSupportLaunchers() {
-        return Collections.singletonList("com.zui.launcher");
+        return List.of("com.zui.launcher");
     }
 }
